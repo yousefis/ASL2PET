@@ -1,3 +1,4 @@
-# ASL_PET_translation--001
-# ASL2PET_translation
-# ASL2PET_translation
+# ASL_PET_translation
+
+# In this project inputs are ASL and T1 scans and output is PET scan
+
