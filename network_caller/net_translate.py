@@ -15,6 +15,7 @@ from reader import *
 from reader.data_reader import *
 from reader.image_class import *
 from losses.ssim_loss import SSIM,multistage_SSIM
+from losses.mssim_loss import tf_ms_ssim
 from losses.mse import mean_squared_error
 from threads import *
 from settings import *
@@ -198,7 +199,9 @@ class net_translate:
         with tf.name_scope('cost'):
             # ssim_val,denominator,ssim_map=SSIM(x1=augmented_data[-1], x2=y,max_val=1.0)
             # cost = tf.reduce_mean((1.0 - ssim_val), name="cost")
-            ssim_val=tf.reduce_mean(multistage_SSIM(x1=pet_plchld, x2=y,level1=loss_upsampling11, level2=loss_upsampling2,max_val=1.5)[0])
+            # ssim_val=tf.reduce_mean(multistage_SSIM(x1=pet_plchld, x2=y,level1=loss_upsampling11, level2=loss_upsampling2,max_val=1.5)[0])
+            # cost = tf.reduce_mean((ssim_val), name="cost")
+            ssim_val = tf.reduce_mean(tf_ms_ssim(pet_plchld, y,level=3)[0])
             cost = tf.reduce_mean((ssim_val), name="cost")
             # mse=mean_squared_error(labels=augmented_data[-1],logit=y)
 
