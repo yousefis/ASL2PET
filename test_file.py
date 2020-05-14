@@ -1,6 +1,6 @@
 import numpy as np
 import  SimpleITK as sitk
-from reader.data_reader import _read_data
+from functions.reader.data_reader import _read_data
 if __name__=="__main__":
     data_path="/exports/lkeb-hpc/syousefi/Data/asl_pet/"
     '''read path of the images for train, test, and validation'''
