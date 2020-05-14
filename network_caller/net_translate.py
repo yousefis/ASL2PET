@@ -39,8 +39,8 @@ class net_translate:
         self.sample_no = 2000000
         self.img_width = 500
         self.img_height = 500
-        self.asl_size = 77
-        self.pet_size = 63
+        self.asl_size = 77 #input slice size
+        self.pet_size = 63 #output slice size
         self.display_validation_step=5
         self.batch_no_validation=10
         self.batch_no=10
@@ -152,7 +152,8 @@ class net_translate:
                                                                                             t1_img=t1_plchld,
                                                                                               pet_img=pet_plchld,
                                                                                             input_dim=77,
-                                                                                            is_training=is_training)
+                                                                                            is_training=is_training,
+                                                                                              config=[2,2,2,2,2])
 
         show_img=augmented_data[0][:, :, :, 0, np.newaxis]
         tf.summary.image('00: input_asl', show_img, 3)
@@ -199,10 +200,10 @@ class net_translate:
         with tf.name_scope('cost'):
             # ssim_val,denominator,ssim_map=SSIM(x1=augmented_data[-1], x2=y,max_val=1.0)
             # cost = tf.reduce_mean((1.0 - ssim_val), name="cost")
-            # ssim_val=tf.reduce_mean(multistage_SSIM(x1=pet_plchld, x2=y,level1=loss_upsampling11, level2=loss_upsampling2,max_val=1.5)[0])
-            # cost = tf.reduce_mean((ssim_val), name="cost")
-            ssim_val = tf.reduce_mean(tf_ms_ssim(pet_plchld, y,level=3)[0])
+            ssim_val=tf.reduce_mean(multistage_SSIM(x1=pet_plchld, x2=y,level1=loss_upsampling11, level2=loss_upsampling2,max_val=1.5)[0])
             cost = tf.reduce_mean((ssim_val), name="cost")
+            # ssim_val = tf.reduce_mean(tf_ms_ssim(pet_plchld, y,level=3))
+            # cost = tf.reduce_mean((ssim_val), name="cost")
             # mse=mean_squared_error(labels=augmented_data[-1],logit=y)
 
             # cost = tf.reduce_mean(mse , name="cost")
