@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="19949bfa-827e-4252-b412-827257a1f8f6" name="Default Changelist" comment="">
+    <list default="true" id="19949bfa-827e-4252-b412-827257a1f8f6" name="Default Changelist" comment="mssim">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ASL_PET_translation--001.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ASL_PET_translation--001.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/losses/mssim_loss.py" beforeDir="false" afterPath="$PROJECT_DIR$/losses/mssim_loss.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/network_caller/net_translate.py" beforeDir="false" afterPath="$PROJECT_DIR$/network_caller/net_translate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run_net.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_net.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,62 +22,83 @@
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.12" value="1" />
           <entry key="project.open.time.13" value="1" />
+          <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.16" value="1" />
           <entry key="project.open.time.17" value="1" />
           <entry key="project.open.time.2" value="2" />
           <entry key="project.open.time.22" value="1" />
           <entry key="project.open.time.3" value="1" />
+          <entry key="project.open.time.30" value="1" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.9" value="3" />
-          <entry key="project.opened" value="16" />
+          <entry key="project.opened" value="18" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="164" />
+          <entry key="gitignore" value="4" />
+          <entry key="md" value="2" />
+          <entry key="py" value="182" />
+          <entry key="pyi" value="1" />
+          <entry key="sh" value="1" />
           <entry key="ssim" value="4" />
+          <entry key="txt" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="168" />
+          <entry key="Bash" value="1" />
+          <entry key="Markdown" value="2" />
+          <entry key="PLAIN_TEXT" value="5" />
+          <entry key="Python" value="186" />
+          <entry key="PythonStub" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="6209" />
+          <entry key="gitignore" value="29" />
+          <entry key="py" value="6778" />
           <entry key="ssim" value="69" />
-          <entry key="txt" value="13" />
+          <entry key="txt" value="74" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="13" />
-          <entry key="Python" value="6278" />
+          <entry key="PLAIN_TEXT" value="103" />
+          <entry key="Python" value="6847" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/network_caller/net_translate.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/functions/network_caller/net_translate.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="203" column="70" selection-start-line="203" selection-start-column="70" selection-end-line="203" selection-end-column="70" />
+            <state relative-caret-position="100">
+              <caret line="179" column="37" selection-start-line="179" selection-start-column="37" selection-end-line="179" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/submit_job.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="98">
+              <caret line="101" selection-start-line="101" selection-end-line="101" />
               <folding>
-                <element signature="e#1#12#0" expanded="true" />
+                <element signature="e#0#15#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/losses/mssim_loss.py">
+        <entry file="file://$PROJECT_DIR$/functions/losses/mssim_loss.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="158">
-              <caret line="103" column="58" selection-start-line="103" selection-start-column="58" selection-end-line="103" selection-end-column="58" />
+            <state relative-caret-position="365">
+              <caret line="49" column="4" selection-start-line="49" selection-start-column="4" selection-end-line="49" selection-end-column="4" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -86,23 +106,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cnn/multi_task_cnn.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="18" column="29" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/reader/image_class.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="279">
-              <caret line="75" column="21" selection-start-line="75" selection-start-column="21" selection-end-line="75" selection-end-column="21" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="45">
+              <caret line="3" column="11" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -110,19 +118,31 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/run_net.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="15" column="45" selection-start-line="15" selection-start-column="45" selection-end-line="15" selection-end-column="45" />
+            <state relative-caret-position="139">
+              <caret line="32" selection-start-line="32" selection-end-line="32" />
+              <folding>
+                <element signature="e#0#29#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/reader/patch_extractor.py">
+        <entry file="file://$PROJECT_DIR$/functions/cnn/multi_stage_denseunet.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" selection-start-line="14" selection-end-line="14" />
+            <state relative-caret-position="106">
+              <caret line="447" selection-start-line="447" selection-end-line="447" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/functions/threads/read_thread.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="86" selection-start-line="86" selection-end-line="86" />
               <folding>
-                <element signature="e#0#23#0" expanded="true" />
+                <element signature="e#0#22#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -139,36 +159,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>T1.</find>
-      <find>bunch_of_images_no</find>
-      <find>cost</find>
-      <find>optimizer</find>
-      <find>mask</find>
-      <find>learn</find>
-      <find>rotate_input</find>
-      <find>read_patche_online_from_image_bunch</find>
-      <find>normal_cnn</find>
-      <find>noisy_input</find>
-      <find>multi</find>
-      <find>cnn</find>
-      <find>multi_</find>
-      <find>para</find>
-      <find>multistage_SSIM</find>
-      <find>param</find>
-      <find>tens</find>
-      <find>power_factors</find>
-      <find>MultiScaleSSIM</find>
-      <find>multistage_MultiScaleSSIM</find>
-      <find>res</find>
-      <find>gpu_multistage_mssim</find>
-      <find>torch</find>
-      <find>[...,</find>
-      <find>msssim</find>
-      <find>mssim</find>
-      <find>tf.pack</find>
       <find>tf_ms_ssim</find>
-      <find>ssim</find>
+      <find>validation</find>
+      <find>loss_train1</find>
       <find>512</find>
+      <find>ssim</find>
+      <find>conc = self.paddingfree_conv</find>
+      <find>dense_loop</find>
+      <find>sg</find>
+      <find>sungrid</find>
+      <find>cong</find>
+      <find>.py</find>
+      <find>copy</find>
+      <find>conf</find>
+      <find>log</find>
+      <find>copyt</find>
+      <find>Log_asl_pet</find>
+      <find>LOGDIR</find>
+      <find>functions</find>
+      <find>log_asl_pet</find>
+      <find>log_asl</find>
+      <find>dista</find>
+      <find>distancemap</find>
+      <find>0_</find>
+      <find>copytree</find>
+      <find>output</find>
+      <find>out</find>
+      <find>shutil.copytree('./functions/',self.LOGDIR)</find>
+      <find>functions/</find>
+      <find>copyf</find>
+      <find>datetime</find>
     </findStrings>
     <replaceStrings>
       <replace>CT_image_patchs</replace>
@@ -213,19 +233,27 @@
         <option value="$PROJECT_DIR$/cnn/multi_stage_denseunet2.py" />
         <option value="$PROJECT_DIR$/reader/patch_extractor.py" />
         <option value="$PROJECT_DIR$/reader/image_class.py" />
-        <option value="$PROJECT_DIR$/cnn/multi_stage_denseunet.py" />
         <option value="$PROJECT_DIR$/losses/ssim_loss.py" />
         <option value="$PROJECT_DIR$/cnn/multi_task_cnn.py" />
         <option value="$PROJECT_DIR$/network_caller/multi_task_translate.py" />
-        <option value="$PROJECT_DIR$/run_net.py" />
         <option value="$PROJECT_DIR$/losses/mssim_loss.py" />
+        <option value="$PROJECT_DIR$/network_caller/multi-stage_denseunet2.py" />
+        <option value="$PROJECT_DIR$/cnn/multi_stage_denseunet.py" />
+        <option value="$PROJECT_DIR$/slurm/sungrid_utils.py" />
+        <option value="$PROJECT_DIR$/slurm/slurm_utils.py" />
+        <option value="$PROJECT_DIR$/gpu_server_manager/sungrid_utils.py" />
+        <option value="$PROJECT_DIR$/gpu_server_manager/oge_utils.py" />
+        <option value="$PROJECT_DIR$/run_net.py" />
         <option value="$PROJECT_DIR$/network_caller/net_translate.py" />
+        <option value="$PROJECT_DIR$/submit_job.py" />
+        <option value="$PROJECT_DIR$/functions/network_caller/net_translate.py" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="9" />
-    <option name="y" value="30" />
+    <option name="x" value="15" />
+    <option name="y" value="31" />
     <option name="width" value="1275" />
     <option name="height" value="738" />
   </component>
@@ -235,6 +263,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -245,25 +274,45 @@
             <path>
               <item name="ASL_PET_translation--001" type="b2602c69:ProjectViewProjectNode" />
               <item name="ASL_PET_translation--001" type="462c0819:PsiDirectoryNode" />
-              <item name="losses" type="462c0819:PsiDirectoryNode" />
+              <item name="0_Log_asl_pet" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ASL_PET_translation--001" type="b2602c69:ProjectViewProjectNode" />
               <item name="ASL_PET_translation--001" type="462c0819:PsiDirectoryNode" />
+              <item name="0_Log_asl_pet" type="462c0819:PsiDirectoryNode" />
+              <item name="net35753" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ASL_PET_translation--001" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ASL_PET_translation--001" type="462c0819:PsiDirectoryNode" />
+              <item name="functions" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ASL_PET_translation--001" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ASL_PET_translation--001" type="462c0819:PsiDirectoryNode" />
+              <item name="functions" type="462c0819:PsiDirectoryNode" />
               <item name="network_caller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ASL_PET_translation--001" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ASL_PET_translation--001" type="462c0819:PsiDirectoryNode" />
+              <item name="functions" type="462c0819:PsiDirectoryNode" />
+              <item name="settings" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/functions" />
+      <recent name="$PROJECT_DIR$/gpu_server_manager" />
       <recent name="$PROJECT_DIR$/network_caller" />
     </key>
   </component>
@@ -279,7 +328,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.run_net">
+  <component name="RunManager" selected="Python.submit_job">
     <configuration name="mssim_loss" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ASL_PET_translation--001" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -314,6 +363,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/run_net.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="submit_job" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="ASL_PET_translation--001" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/submit_job.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -369,9 +439,11 @@
       <item itemvalue="Python.mssim_loss" />
       <item itemvalue="Python.test_file" />
       <item itemvalue="Python.t1_preprocess" />
+      <item itemvalue="Python.submit_job" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.submit_job" />
         <item itemvalue="Python.run_net" />
         <item itemvalue="Python.mssim_loss" />
         <item itemvalue="Python.t1_preprocess" />
@@ -425,19 +497,62 @@
       <option name="project" value="LOCAL" />
       <updated>1589274797970</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="mssim">
+      <created>1589356384391</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1589356384391</updated>
+    </task>
+    <task id="LOCAL-00007" summary="mssim">
+      <created>1589441315239</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1589441315239</updated>
+    </task>
+    <task id="LOCAL-00008" summary="add utilities to run the cnn on the gpu server">
+      <created>1589469757659</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1589469757659</updated>
+    </task>
+    <task id="LOCAL-00009" summary="mssim">
+      <created>1589469998038</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1589469998038</updated>
+    </task>
+    <task id="LOCAL-00010" summary="mssim">
+      <created>1589470044181</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1589470044181</updated>
+    </task>
+    <task id="LOCAL-00011" summary="mssim">
+      <created>1589470086360</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1589470086360</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="9" y="30" width="1275" height="738" extended-state="0" />
+    <frame x="15" y="31" width="1275" height="738" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19617225" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19617225" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.55365473" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.38569206" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.34059098" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.4214619" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -458,70 +573,67 @@
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
     <MESSAGE value="first commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="first commit" />
+    <MESSAGE value="add utilities to run the cnn on the gpu server" />
+    <MESSAGE value="mssim" />
+    <option name="LAST_COMMIT_MESSAGE" value="mssim" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/losses/ssim_loss.py</url>
+          <url>file://$PROJECT_DIR$/functions/losses/ssim_loss.py</url>
           <line>104</line>
           <option name="timeStamp" value="67" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/threads/read_thread.py</url>
-          <line>76</line>
-          <option name="timeStamp" value="97" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/losses/ssim_loss.py</url>
+          <url>file://$PROJECT_DIR$/functions/losses/ssim_loss.py</url>
           <line>101</line>
           <option name="timeStamp" value="153" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/reader/data_reader.py</url>
+          <url>file://$PROJECT_DIR$/functions/reader/data_reader.py</url>
           <line>171</line>
           <option name="timeStamp" value="205" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/reader/data_reader.py</url>
+          <url>file://$PROJECT_DIR$/functions/reader/data_reader.py</url>
           <line>176</line>
           <option name="timeStamp" value="206" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/preprocessing/t1_preprocess.py</url>
+          <url>file://$PROJECT_DIR$/functions/preprocessing/t1_preprocess.py</url>
           <line>17</line>
           <option name="timeStamp" value="247" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/preprocessing/t1_preprocess.py</url>
+          <url>file://$PROJECT_DIR$/functions/preprocessing/t1_preprocess.py</url>
           <line>11</line>
           <option name="timeStamp" value="249" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/network_caller/multi_task_translate.py</url>
-          <line>236</line>
+          <url>file://$PROJECT_DIR$/functions/network_caller/multi_task_translate.py</url>
+          <line>226</line>
           <option name="timeStamp" value="257" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/network_caller/net_translate.py</url>
-          <line>203</line>
-          <option name="timeStamp" value="259" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/network_caller/net_translate.py</url>
-          <line>156</line>
-          <option name="timeStamp" value="260" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/losses/mssim_loss.py</url>
+          <url>file://$PROJECT_DIR$/functions/losses/mssim_loss.py</url>
           <line>101</line>
           <option name="timeStamp" value="262" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/losses/mssim_loss.py</url>
+          <url>file://$PROJECT_DIR$/functions/losses/mssim_loss.py</url>
           <line>78</line>
           <option name="timeStamp" value="263" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/functions/cnn/multi_stage_denseunet.py</url>
+          <line>312</line>
+          <option name="timeStamp" value="271" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/submit_job.py</url>
+          <line>101</line>
+          <option name="timeStamp" value="273" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -536,70 +648,57 @@
   <component name="debuggerHistoryManager">
     <expressions id="evaluateCodeFragment">
       <expression>
-        <expression-string>MultiScaleSSIM(target=x1, result=x2, max_val=max_val)</expression-string>
+        <expression-string>shutil.copytree('./functions/',self.LOGDIR)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>np.max(t1)</expression-string>
+        <expression-string>self.LOGDIR</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>import matplotlib.pyplot as plt
-plt.imshow(t1[5,:,:])
-plt.show()</expression-string>
+        <expression-string>tf.contrib.image.rotate((img_rows[i]), radian)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>import matplotlib.pyplot as plt
-plt.imshow(t1[15,:,:])
-plt.show()</expression-string>
+        <expression-string>tf.contrib.image.rotate(tf.squeeze(img_rows[i], 3), radian)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>import matplotlib.pyplot as plt
-plt.imshow(t1[15,:,:])</expression-string>
+        <expression-string>tf.contrib.image.rotate(tf.squeeze(img_rows[i], 3)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>np.max(norm_t1)</expression-string>
+        <expression-string>import tensorflow_addons as tfa
+# tfa.image.transform_ops.rotate(img_rows[i]), radian)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>np.min(norm_t1)</expression-string>
+        <expression-string>import tensorflow_addons as tfa
+tfa.image.transform_ops.rotate(img_rows[i]), radian)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>d['t1'].rsplit('.nii')[0]+'_norm.nii'</expression-string>
+        <expression-string># tf.contrib.image.rotate((img_rows[i]), radian)
+import tensorflow_addons as tfa
+tfa.image.transform_ops.rotate(img_rows[i]), radian)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>d['t1'].rsplit('.nii')+'_norm.nii'</expression-string>
+        <expression-string>tf.squeeze(img_rows[i], 3)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/threads/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/losses.py" />
-    <entry file="file://$PROJECT_DIR$/losses/ssim" />
-    <entry file="file://$PROJECT_DIR$/reader/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/settings/__init__.py" />
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -651,7 +750,7 @@ plt.imshow(t1[15,:,:])</expression-string>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/losses/__init__.py" />
-    <entry file="file://$PROJECT_DIR$/layers/kernels.py">
+    <entry file="file://$PROJECT_DIR$/functions/layers/kernels.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="13" selection-start-line="13" selection-end-line="13" />
@@ -679,7 +778,7 @@ plt.imshow(t1[15,:,:])</expression-string>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/layers/upsampling.py">
+    <entry file="file://$PROJECT_DIR$/functions/layers/upsampling.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="113" column="8" selection-start-line="113" selection-start-column="8" selection-end-line="113" selection-end-column="8" />
@@ -700,35 +799,28 @@ plt.imshow(t1[15,:,:])</expression-string>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/settings/settings.py">
+    <entry file="file://$PROJECT_DIR$/functions/settings/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="11" column="35" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../Programs/TF112/lib/python3.6/site-packages/tensorflow/python/layers/convolutional.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-399">
-          <caret line="1168" column="4" selection-start-line="1168" selection-start-column="4" selection-end-line="1168" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/losses/mse.py">
+    <entry file="file://$PROJECT_DIR$/functions/losses/mse.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" column="22" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cnn/unet.py">
+    <entry file="file://$PROJECT_DIR$/functions/cnn/unet.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="354">
           <caret line="112" selection-start-line="112" selection-end-line="112" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/preprocessing/t1_preprocess.py">
+    <entry file="file://$PROJECT_DIR$/functions/preprocessing/t1_preprocess.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" column="18" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="18" />
@@ -759,7 +851,7 @@ plt.imshow(t1[15,:,:])</expression-string>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/reader/data_reader.py">
+    <entry file="file://$PROJECT_DIR$/functions/reader/data_reader.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-253">
           <caret line="147" column="8" selection-start-line="147" selection-start-column="8" selection-end-line="147" selection-end-column="8" />
@@ -772,48 +864,17 @@ plt.imshow(t1[15,:,:])</expression-string>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cnn/multi_stage_denseunet2.py" />
-    <entry file="file://$PROJECT_DIR$/threads/read_thread.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="51" column="36" selection-start-line="51" selection-start-column="36" selection-end-line="51" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#22#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/threads/fill_thread.py">
+    <entry file="file://$PROJECT_DIR$/functions/threads/fill_thread.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="54" column="55" selection-start-line="54" selection-start-column="55" selection-end-line="54" selection-end-column="55" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cnn/multi_stage_denseunet.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2256">
-          <caret line="230" column="8" selection-start-line="230" selection-start-column="8" selection-end-line="230" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/network_caller/multi_task_translate.py">
+    <entry file="file://$PROJECT_DIR$/functions/network_caller/multi_task_translate.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="159">
           <caret line="231" column="40" selection-start-line="231" selection-start-column="35" selection-end-line="231" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/run_net.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="15" column="45" selection-start-line="15" selection-start-column="45" selection-end-line="15" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cnn/multi_task_cnn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="18" column="29" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
         </state>
       </provider>
     </entry>
@@ -824,10 +885,10 @@ plt.imshow(t1[15,:,:])</expression-string>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/losses/ssim_loss.py">
+    <entry file="file://$PROJECT_DIR$/functions/losses/ssim_loss.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1485">
-          <caret line="99" column="19" selection-start-line="99" selection-start-column="19" selection-end-line="99" selection-end-column="19" />
+        <state relative-caret-position="140">
+          <caret line="111" column="4" selection-start-line="111" selection-start-column="4" selection-end-line="111" selection-end-column="4" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
             <marker date="1589211115668" expanded="true" signature="4325:4326" ph="..." />
@@ -835,19 +896,61 @@ plt.imshow(t1[15,:,:])</expression-string>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/reader/patch_extractor.py">
+    <entry file="file://$PROJECT_DIR$/functions/reader/patch_extractor.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="14" selection-start-line="14" selection-end-line="14" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/reader/image_class.py">
+    <entry file="file://$PROJECT_DIR$/../../Programs/TF112/lib/python3.6/site-packages/tensorflow/python/layers/convolutional.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
+        <state relative-caret-position="15">
+          <caret line="1168" column="4" selection-start-line="1168" selection-start-column="4" selection-end-line="1168" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gpu_server_manager/sungrid_utils.py" />
+    <entry file="file://$PROJECT_DIR$/../../Programs/TF112/lib64/python3.6/shutil.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="314" selection-start-line="314" selection-end-line="314" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functions/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functions/gpu_server_manager/oge_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="690">
+          <caret line="46" selection-start-line="46" selection-end-line="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functions/network_caller/multi-stage_denseunet2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1485">
+          <caret line="104" column="25" selection-start-line="104" selection-start-column="25" selection-end-line="104" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functions/cnn/multi_task_cnn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="13" column="29" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functions/reader/image_class.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1050">
           <caret line="75" column="21" selection-start-line="75" selection-start-column="21" selection-end-line="75" selection-end-column="21" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
@@ -855,23 +958,91 @@ plt.imshow(t1[15,:,:])</expression-string>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/losses/mssim_loss.py">
+    <entry file="file://$PROJECT_DIR$/Log_asl_pet/net35753/backup-20200514_154045/functions/Log_asl_pet/net35753/backup-20200514_153642/submit_job.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="103" column="58" selection-start-line="103" selection-start-column="58" selection-end-line="103" selection-end-column="58" />
+        <state relative-caret-position="249">
+          <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Log_asl_pet/net35753/backup-20200514_154045/Jobs/jobscript_Slurm.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="65" selection-start-line="17" selection-start-column="65" selection-end-line="17" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functions/gpu_server_manager/slurm_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/3/shutil.pyi">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functions/threads/read_thread.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="86" selection-start-line="86" selection-end-line="86" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functions/cnn/multi_stage_denseunet.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="447" selection-start-line="447" selection-end-line="447" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/0_Log_asl_pet/net35753/backup-20200514_162812/Jobs/output.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functions/network_caller/net_translate.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="179" column="37" selection-start-line="179" selection-start-column="37" selection-end-line="179" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run_net.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="139">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functions/losses/mssim_loss.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="365">
+          <caret line="49" column="4" selection-start-line="49" selection-start-column="4" selection-end-line="49" selection-end-column="4" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/network_caller/net_translate.py">
+    <entry file="file://$PROJECT_DIR$/submit_job.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="203" column="70" selection-start-line="203" selection-start-column="70" selection-end-line="203" selection-end-column="70" />
+        <state relative-caret-position="98">
+          <caret line="101" selection-start-line="101" selection-end-line="101" />
           <folding>
-            <element signature="e#1#12#0" expanded="true" />
+            <element signature="e#0#15#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="11" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="11" />
         </state>
       </provider>
     </entry>
