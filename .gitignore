@@ -1,2 +1,4 @@
 0_Log_asl_pet
 .idea/
+*.pyc
+__pycache__
