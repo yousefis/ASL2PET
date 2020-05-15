@@ -6,7 +6,7 @@ from functions.cnn.multi_stage_denseunet import multi_stage_densenet
 # import wandb
 from functions.reader.data_reader import *
 from functions.reader.image_class import *
-from functions.losses.ssim_loss import multistage_SSIM
+from functions.losses.ssim_loss import multistage_SSIM,SSIM
 from functions.threads import *
 import psutil
 # calculate the dice coefficient
@@ -21,7 +21,7 @@ class net_translate:
         self.validation_samples=200
         self.Logs = Logs
         self.LOGDIR = server_path + self.Logs +  '/'
-        self.learning_rate = .001
+        self.learning_rate = .0001
         self.total_epochs=1000
 
         self.no_sample_per_each_itr = 1000
@@ -101,7 +101,7 @@ class net_translate:
         _patch_extractor_thread_vl.start()
         _read_thread_vl.start()
         # ======================================
-        bunch_of_images_no = 7
+        bunch_of_images_no = 15
         _image_class_tr = image_class(train_data,
                                    bunch_of_images_no=bunch_of_images_no,
                                    is_training=1,inp_size=self.asl_size,out_size=self.pet_size
@@ -125,9 +125,9 @@ class net_translate:
         # asl_plchld= tf.placeholder(tf.float32, shape=[None, None, None, 1])
         # t1_plchld= tf.placeholder(tf.float32, shape=[None, None, None, 1])
         # pet_plchld= tf.placeholder(tf.float32, shape=[None, None, None, 1])
-        asl_plchld = tf.placeholder(tf.float32, shape=[None, self.asl_size, self.asl_size, 1])
-        t1_plchld = tf.placeholder(tf.float32, shape=[None, self.asl_size, self.asl_size, 1])
-        pet_plchld = tf.placeholder(tf.float32, shape=[None, self.pet_size, self.pet_size, 1])
+        asl_plchld = tf.placeholder(tf.float32, shape=[self.batch_no, self.asl_size, self.asl_size, 1])
+        t1_plchld = tf.placeholder(tf.float32, shape=[self.batch_no, self.asl_size, self.asl_size, 1])
+        pet_plchld = tf.placeholder(tf.float32, shape=[self.batch_no, self.pet_size, self.pet_size, 1])
 
 
         ave_loss_vali = tf.placeholder(tf.float32)
@@ -138,12 +138,28 @@ class net_translate:
         # cnn_net = unet()  # create object
         # y,augmented_data = cnn_net.unet(t1=t1_plchld, asl=asl_plchld, pet=pet_plchld, is_training_bn=is_training_bn)
         msdensnet = multi_stage_densenet()
-        y,augmented_data,loss_upsampling11,loss_upsampling2  = msdensnet.multi_stage_densenet(asl_img=asl_plchld,
+        y,augmented_data,\
+        level_ds1,level_ds2,level_ds3,level_us2,level_us3  = msdensnet.multi_stage_densenet(asl_img=asl_plchld,
                                                                                             t1_img=t1_plchld,
                                                                                               pet_img=pet_plchld,
                                                                                             input_dim=77,
                                                                                             is_training=is_training,
                                                                                               config=self.config)
+
+        show_img = level_ds1[:, :, :, 0, np.newaxis]
+        tf.summary.image('04: level_ds1', show_img, 10)
+
+        show_img = level_ds2[:, :, :, 0, np.newaxis]
+        tf.summary.image('05: level_ds2', show_img, 10)
+
+        show_img = level_ds3[:, :, :, 0, np.newaxis]
+        tf.summary.image('06: level_ds3', show_img, 10)
+
+        show_img = level_us2[:, :, :, 0, np.newaxis]
+        tf.summary.image('07: level_us2', show_img, 10)
+
+        show_img = level_us3[:, :, :, 0, np.newaxis]
+        tf.summary.image('08: level_us3', show_img, 10)
 
         show_img=augmented_data[0][:, :, :, 0, np.newaxis]
         tf.summary.image('00: input_asl', show_img, 3)
@@ -153,10 +169,10 @@ class net_translate:
 
         show_img = augmented_data[2][:, :, :, 0, np.newaxis]
         tf.summary.image('02: target_pet', show_img, 3)
-
+        #
         show_img = y[:, :, :, 0, np.newaxis]
         tf.summary.image('03: output_pet', show_img, 3)
-        #
+#-----------------
         # show_img = loss_upsampling11[:, :, :, 0, np.newaxis]
         # tf.summary.image('04: loss_upsampling11', show_img, 3)
         # #
@@ -192,10 +208,10 @@ class net_translate:
         loadModel = 0
         # self.loss = ssim_loss()
         with tf.name_scope('cost'):
-            # ssim_val,denominator,ssim_map=SSIM(x1=augmented_data[-1], x2=y,max_val=1.0)
-            # cost = tf.reduce_mean((1.0 - ssim_val), name="cost")
-            ssim_val=tf.reduce_mean(multistage_SSIM(x1=pet_plchld, x2=y,level1=loss_upsampling11, level2=loss_upsampling2,max_val=1.5)[0])
-            cost = tf.reduce_mean((ssim_val), name="cost")
+            ssim_val=SSIM(x1=pet_plchld, x2=y,max_val=2.1)[0]
+            cost = tf.reduce_mean((1.0 - ssim_val), name="cost")
+            # ssim_val=tf.reduce_mean(multistage_SSIM(x1=pet_plchld, x2=y,level1=loss_upsampling11, level2=loss_upsampling2,max_val=2.1))
+            # cost = tf.reduce_mean((ssim_val), name="cost")
             # ssim_val = tf.reduce_mean(tf_ms_ssim(pet_plchld, y,level=3))
             # cost = tf.reduce_mean((ssim_val), name="cost")
             # mse=mean_squared_error(labels=augmented_data[-1],logit=y)
@@ -265,7 +281,7 @@ class net_translate:
 
 
                         tic=time.time()
-                        [loss_vali,out,augmented_dataout,] = sess.run([ cost,y,augmented_data,],
+                        [loss_vali] = sess.run([ cost],
                                                  feed_dict={asl_plchld:validation_asl_slices ,
                                                             t1_plchld: validation_t1_slices,
                                                             pet_plchld: validation_pet_slices,
@@ -329,7 +345,7 @@ class net_translate:
 
                     tic=time.time()
 
-                    [ loss_train1,out,augmented_dataout,opt] = sess.run([ cost,y,augmented_data,optimizer],
+                    [ loss_train1,opt,] = sess.run([ cost,optimizer,],
                                              feed_dict={asl_plchld: train_asl_slices,
                                                         t1_plchld: train_t1_slices,
                                                         pet_plchld: train_pet_slices,
@@ -348,7 +364,6 @@ class net_translate:
                     train_writer.add_summary(sum_train,point)
                     train_writer.flush()
                     step = step + 1
-
 
                     process = psutil.Process(os.getpid())
 

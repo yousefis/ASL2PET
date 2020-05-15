@@ -15,7 +15,7 @@ def submit_job():
     setting['never_generate_image'] = False
     TF='TF112' #version of tensorflow 1.12
 
-    net_config = [3, 5, 7, 5, 3]
+    net_config = [3, 3, 5, 3, 3]
     main_script = '/run_net.py'
 
 

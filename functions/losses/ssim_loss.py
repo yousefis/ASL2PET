@@ -111,7 +111,7 @@ def SSIM_loss(x1, x2, max_val=1.0):
 
 def multistage_SSIM(x1, x2,level1, level2,max_val):
     ssim_val1 = SSIM(x1=x1, x2=x2, max_val=max_val)[0]
-    ssim_val2 = SSIM(x1=level1, x2=x2, max_val=max_val)[0]
-    ssim_val3 = SSIM(x1=level2, x2=x2, max_val=max_val)[0]
+    # ssim_val2 = SSIM(x1=level1, x2=x2, max_val=max_val)[0]
+    # ssim_val3 = SSIM(x1=level2, x2=x2, max_val=max_val)[0]
 
-    return (1-ssim_val1), ssim_val1,ssim_val2,ssim_val3
+    return (1-ssim_val1), #ssim_val1,ssim_val2,ssim_val3

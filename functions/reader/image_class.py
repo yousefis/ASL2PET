@@ -69,9 +69,21 @@ class image_class:
         # asl = np.multiply(sitk.GetArrayFromImage(sitk.ReadImage(''.join(s['asl']))),mask)
         # pet = np.multiply(sitk.GetArrayFromImage(sitk.ReadImage(''.join(s['pet']))),mask)
 
-        t1 = sitk.GetArrayFromImage(T1)/10000
+        t1 = sitk.GetArrayFromImage(T1)
+        t1 = t1 / np.max(t1)
         asl = sitk.GetArrayFromImage(sitk.ReadImage(''.join(s['asl'])))
+        # asl = asl / np.max(asl)
         pet = sitk.GetArrayFromImage(sitk.ReadImage(''.join(s['pet'])))
+        # pet = pet / np.max(pet)
+        
+        t1[np.where(t1<0)]=0
+        asl[np.where(asl < 0)] = 0
+        pet[np.where(pet < 0)] = 0
+        
+        t1 = t1[1:-1]
+        asl = asl[1:-1]
+        pet = pet[1:-1]
+
         n = self.node(name_t1=s['t1'],name_asl=s['asl'],name_pet=s['pet'], t1=t1, asl=asl, pet=pet,
                       voxel_size=voxel_size, origin=origin, direction=direction)
         return n
@@ -189,7 +201,7 @@ class image_class:
             print(self.collection[ii].name_t1)
 
             '''random numbers for selecting random samples'''
-            random_slices_indx = list(range(0,17))
+            random_slices_indx = list(range(0,15))
             size_img = np.shape(asl)[1]
             ASL1 = [np.stack(asl[random_slices_indx[sn], int(size_img/2)-int(self.inp_size/2)-1:int(size_img/2)+int(self.inp_size/2),int(size_img/2)-int(self.inp_size/2)-1:int(size_img/2)+int(self.inp_size/2)])
                     for sn in range(len(random_slices_indx))]
