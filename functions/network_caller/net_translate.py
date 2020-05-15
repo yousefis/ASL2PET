@@ -21,7 +21,7 @@ class net_translate:
         self.validation_samples=200
         self.Logs = Logs
         self.LOGDIR = server_path + self.Logs +  '/'
-        self.learning_rate = .0001
+        self.learning_rate = .00001
         self.total_epochs=1000
 
         self.no_sample_per_each_itr = 1000
