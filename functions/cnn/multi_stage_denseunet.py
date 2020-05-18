@@ -192,7 +192,7 @@ class multi_stage_densenet:
         noisy_img_rows=[]
         #
         with tf.variable_scope("Noise"):
-            rnd = tf.greater_equal(tf.random_uniform([1], 0, 10, dtype=tf.int32, seed=self.seed()),5)[0]
+            rnd = tf.greater_equal(tf.random_uniform([1], 0, 10, dtype=tf.int32, seed=self.seed()),6)[0]
 
             mean=  tf.random_uniform([1], maxval=5, seed=self.seed())
             stdev=  tf.random_uniform([1], maxval=7, seed=self.seed())
@@ -215,8 +215,8 @@ class multi_stage_densenet:
         rotate_img_rows=[]
         #
         with tf.variable_scope("Rotate"):
-            rnd = tf.greater(tf.random_uniform([1], 0, 10, dtype=tf.int32, seed=self.seed()),-1)[0] # , seed=int(time.time())))
-            degree_angle = tf.random_uniform([1],minval=-45, maxval=45, seed=self.seed())[0]
+            rnd = tf.greater(tf.random_uniform([1], 0, 10, dtype=tf.int32, seed=self.seed()),6)[0] # , seed=int(time.time())))
+            degree_angle = tf.random_uniform([1],minval=-20, maxval=20, seed=self.seed())[0]
             # radian = degree_angle * math.pi / 180
             # if rnd:
             for j in range(len(img_rows)):
@@ -230,7 +230,7 @@ class multi_stage_densenet:
     def flip_lr_input(self, img_rows,is_training):
         flip_lr_img_rows=[]
         with tf.variable_scope("LR_Flip"):
-            rnd =(tf.greater(tf.random_uniform([1], 0, 10, dtype=tf.int32, seed=self.seed()),4))[0]  # , seed=int(time.time())))
+            rnd =(tf.greater(tf.random_uniform([1], 0, 10, dtype=tf.int32, seed=self.seed()),6))[0]  # , seed=int(time.time())))
             for i in range(len(img_rows)):
                 flip_lr_img_rows.append( tf.cond(tf.logical_and(is_training, rnd),
                                            lambda: tf.expand_dims(tf.image.flip_up_down(tf.squeeze(img_rows[i], 3)),
@@ -333,20 +333,20 @@ class multi_stage_densenet:
         # if mri !=None:
         #     img_rows.append(mri)
 
-        # with tf.variable_scope('augmentation'):
-        # with tf.variable_scope('noise'):
-        #     img_rows1=self.noisy_input( img_rows[0:-1],is_training)
-        #     img_rows1.append(img_rows[-1])
-        #     img_rows=img_rows1
-        # with tf.variable_scope('LR_flip'):
-        #     img_rows=self.flip_lr_input(img_rows, is_training)
-        # with tf.variable_scope('rotate'):
-        #     img_rows,degree=self.rotate_input(img_rows, is_training)
+        with tf.variable_scope('augmentation'):
+            # with tf.variable_scope('noise'):
+            #     img_rows1=self.noisy_input( img_rows[0:-1],is_training)
+            #     img_rows1.append(img_rows[-1])
+            #     img_rows=img_rows1
+            with tf.variable_scope('LR_flip'):
+                img_rows=self.flip_lr_input(img_rows, is_training)
+            with tf.variable_scope('rotate'):
+                img_rows,degree=self.rotate_input(img_rows, is_training)
         augmented_data=img_rows
 
         with tf.variable_scope('stack-contact'):
-            stack_concat=img_rows[0]
-            # stack_concat = tf.concat([img_rows[0], img_rows[1]], -1)
+            # stack_concat=img_rows[0]
+            stack_concat = tf.concat([img_rows[0], img_rows[1]], -1)
 
 
 

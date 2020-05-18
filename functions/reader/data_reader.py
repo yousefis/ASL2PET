@@ -176,9 +176,9 @@ class _read_data:
                     triple_atom = {'t1': t1_dir, 'asl': None, 'pet': pet}
                     triple_data.append(triple_atom)
 
-        test_data= triple_data[:15]
-        validation_data = triple_data[15:20]
-        trian_data= triple_data[20:]
+        test_data= triple_data[:10]
+        validation_data = triple_data[10:15]
+        trian_data= triple_data[15:]
 
 
 
