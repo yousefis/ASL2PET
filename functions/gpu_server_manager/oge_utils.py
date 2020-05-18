@@ -1,4 +1,17 @@
-
+##################################################
+## {Description}
+##################################################
+## {License_info}
+##################################################
+## Author: {Sahar Yousefi}
+## Copyright: Copyright {2020}, {LUMC}
+## Credits: [Sahar Yousefi]
+## License: {GPL}
+## Version: 1.0.0
+## Mmaintainer: {Sahar Yousefi}
+## Email: {s.yousefi.radi[at]lumc.nl}
+## Status: {Research}
+##################################################
 def job_script(setting, job_name=None, script_address=None, job_output_folder=None):
     '''
     This function is used when the gpu server is OGE

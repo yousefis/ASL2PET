@@ -1,3 +1,17 @@
+##################################################
+## {}
+##################################################
+## {License_info}
+##################################################
+## Author: {Sahar Yousefi}
+## Copyright: Copyright {2020}, {LUMC}
+## Credits: [Sahar Yousefi]
+## License: {GPL}
+## Version: 1.0.0
+## Mmaintainer: {Sahar Yousefi}
+## Email: {s.yousefi.radi[at]lumc.nl}
+## Status: {Research}
+##################################################
 import numpy as np
 from functions.reader.data_reader import *
 from functions.reader.data_reader import _read_data

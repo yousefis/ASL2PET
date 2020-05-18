@@ -1,3 +1,17 @@
+##################################################
+## {Description}
+##################################################
+## {License_info}
+##################################################
+## Author: {Sahar Yousefi}
+## Copyright: Copyright {2020}, {LUMC}
+## Credits: [Sahar Yousefi]
+## License: {GPL}
+## Version: 1.0.0
+## Mmaintainer: {Sahar Yousefi}
+## Email: {s.yousefi.radi[at]lumc.nl}
+## Status: {Research}
+##################################################
 from datetime import datetime
 from functions.network_caller.net_translate import net_translate
 import numpy as np

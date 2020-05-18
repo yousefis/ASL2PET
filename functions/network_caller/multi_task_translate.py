@@ -1,3 +1,17 @@
+##################################################
+## {}
+##################################################
+## {License_info}
+##################################################
+## Author: {Sahar Yousefi}
+## Copyright: Copyright {2020}, {LUMC}
+## Credits: [Sahar Yousefi]
+## License: {GPL}
+## Version: 1.0.0
+## Mmaintainer: {Sahar Yousefi}
+## Email: {s.yousefi.radi[at]lumc.nl}
+## Status: {Research}
+##################################################
 import shutil
 # from functions.densenet_unet import _densenet_unet
 # from functions.networks.dense_unet2 import _densenet_unet

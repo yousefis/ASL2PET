@@ -1,3 +1,17 @@
+##################################################
+## {}
+##################################################
+## {License_info}
+##################################################
+## Author: {Sahar Yousefi}
+## Copyright: Copyright {2020}, {LUMC}
+## Credits: [Sahar Yousefi]
+## License: {GPL}
+## Version: 1.0.0
+## Mmaintainer: {Sahar Yousefi}
+## Email: {s.yousefi.radi[at]lumc.nl}
+## Status: {Research}
+##################################################
 from threading import Lock
 def init():
     global bunch_t1_slices2, bunch_pet_slices,bunch_asl_slices2, bunch_pet_slices2,mutex,mutex2,bunch_t1_slices_vl2,bunch_t1_slices
