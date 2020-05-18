@@ -9,7 +9,7 @@ import functions.gpu_server_manager.slurm_utils as slurm
 def submit_job():
     # Choosing the preferred setting and backup the whole code and submit the job
     # script_address= server_path+Logs
-    queue = 'LKEBgpu'  # 'cpu', 'gpu', 'LKEBgpu'
+    queue = 'gpu'  # 'cpu', 'gpu', 'LKEBgpu'
     manager = 'Slurm'  # 'OGE', Slurm
     setting = dict()
     setting['never_generate_image'] = False
@@ -22,7 +22,7 @@ def submit_job():
     # Slurm
     setting['cluster_MemPerCPU'] = 6200   #2200  # 6200
     setting['cluster_Partition'] = queue             # 'gpu', 'LKEBgpu'
-    setting['cluster_NodeList'] = 'res-hpc-lkeb05'    # None, LKEBgpu: ['res-hpc-lkeb03', 'res-hpc-lkeb02', 'res-hpc-gpu01']
+    setting['cluster_NodeList'] = 'res-hpc-gpu02'    # None, LKEBgpu: ['res-hpc-lkeb03', 'res-hpc-lkeb02', 'res-hpc-gpu01']
     setting['cluster_NumberOfCPU'] = 7#10 #3               # Number of CPU per job
     setting['cluster_where_to_run'] = 'Cluster'      # 'Cluster', 'Auto'
     setting['cluster_venv_slurm'] = '/exports/lkeb-hpc/syousefi/Programs/'+TF+'/bin/activate'  # venv path
@@ -50,9 +50,16 @@ def write_and_submit_job(setting, manager, job_name, script_address):
     :param script_address:
     :return:
     """
-    backup_folder = script_address.rsplit('/', maxsplit=1)[0]
-    job_script_folder = backup_folder + '/Jobs/'
-    job_output_file = job_script_folder + 'output.txt'
+    # backup_folder = script_address.rsplit('/', maxsplit=1)[0]
+    # job_script_folder = backup_folder + '/Jobs/'
+    # job_output_file = job_script_folder + 'output.txt'
+
+    server_path = '/exports/lkeb-hpc/syousefi/Code/'
+    backup_folder='Log_asl_pet/denseunet_multistage_mssim6/'
+    job_script_folder = server_path+backup_folder+'Jobs/'
+    job_output_file =job_script_folder+'output.txt'
+
+    print(job_output_file)
     if not os.path.exists(job_script_folder):
         os.makedirs(job_script_folder)
     job_script_address = job_script_folder + 'jobscript_'+manager+'.sh'
