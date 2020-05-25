@@ -407,7 +407,6 @@ class image_class:
         settings.train_queue.acquire()
         asl_slices=[]
         pet_slices=[]
-        loss_coef=[]
         t1_slices=[]
         if len(settings.bunch_asl_slices)>=batch_no and\
             len(settings.bunch_pet_slices) >= batch_no  :

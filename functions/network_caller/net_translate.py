@@ -36,7 +36,7 @@ class net_translate:
         self.Logs = Logs
         self.LOGDIR = server_path + self.Logs +  '/'
         self.learning_rate = .00001
-        self.total_epochs=1000
+        self.total_iteration=100000
 
         self.no_sample_per_each_itr = 1000
         self.sample_no = 2000000
@@ -207,11 +207,14 @@ class net_translate:
 
         train_writer = tf.summary.FileWriter(self.LOGDIR + '/train' , graph=tf.get_default_graph())
         validation_writer = tf.summary.FileWriter(self.LOGDIR + '/validation' , graph=sess.graph)
-        os.mkdir(self.LOGDIR + 'code/')
-        copyfile('./run_net.py', self.LOGDIR + 'code/run_net.py')
-        copyfile('./submit_job.py', self.LOGDIR + 'code/submit_job.py')
-        copyfile('./test_file.py', self.LOGDIR + 'code/test_file.py')
-        shutil.copytree('./functions/',self.LOGDIR+'code/functions/')
+        try:
+            os.mkdir(self.LOGDIR + 'code/')
+            copyfile('./run_net.py', self.LOGDIR + 'code/run_net.py')
+            copyfile('./submit_job.py', self.LOGDIR + 'code/submit_job.py')
+            copyfile('./test_file.py', self.LOGDIR + 'code/test_file.py')
+            shutil.copytree('./functions/',self.LOGDIR+'code/functions/')
+        except:
+            a=1
 
         # validation_writer.flush()
         extra_update_ops = tf.get_collection(tf.GraphKeys.UPDATE_OPS)
@@ -267,9 +270,9 @@ class net_translate:
         '''loop for epochs'''
 
         
-        for epoch in range(self.total_epochs):
+        for itr in range(self.total_iteration):
             while self.no_sample_per_each_itr*int(point/self.no_sample_per_each_itr)<self.sample_no:
-                print("epoch #: %d" %(epoch))
+                print("epoch #: %d" %(settings.epochs_no))
                 startTime = time.time()
                 step = 0
                 self.beta_coeff=1+1 * np.exp(-point/2000)              
@@ -393,7 +396,7 @@ class net_translate:
                     if point%100==0:
                         '''saveing model inter epoch'''
                         chckpnt_path = os.path.join(self.chckpnt_dir,
-                                                    ('densenet_unet_inter_epoch%d_point%d.ckpt' % (epoch, point)))
+                                                    ('densenet_unet_inter_epoch%d_point%d.ckpt' % (itr, point)))
                         saver.save(sess, chckpnt_path, global_step=point)
 
 
@@ -418,5 +421,5 @@ class net_translate:
 
             '''saveing model after each epoch'''
             chckpnt_path = os.path.join(self.chckpnt_dir, 'densenet_unet.ckpt')
-            saver.save(sess, chckpnt_path, global_step=epoch)
-            print("End of epoch----> %d, elapsed time: %d" % (epoch, endTime - startTime))
+            saver.save(sess, chckpnt_path, global_step=itr)
+            print("End of epoch----> %d, elapsed time: %d" % (settings.epochs_no, endTime - startTime))

@@ -24,12 +24,12 @@ if __name__ == '__main__':
 
     '''
 
-    config = [3, 3, 4, 3, 3]
+    config = [1, 3, 1, 3, 1]
     np.random.seed(1)
     tf.set_random_seed(1)
 
     server_path = '/exports/lkeb-hpc/syousefi/Code/'
-    Logs = 'Log_asl_pet/denseunet_multistage_mssim6/'
+    Logs = 'Log_asl_pet/denseunet_multistage_mssim8/'
 
     # use mixed precision
     mixed_precision = True
