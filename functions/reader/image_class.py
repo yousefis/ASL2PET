@@ -18,7 +18,8 @@ import collections
 from random import shuffle
 from functions.settings import settings as settings
 import random
-
+from scipy import ndimage
+import random
 
 class image_class:
     def __init__(self,scans,inp_size,out_size,
@@ -110,6 +111,9 @@ class image_class:
         while True:
             yield random.randrange(low, high)
     # --------------------------------------------------------------------------------------------------------
+
+
+    # --------------------------------------------------------------------------------------------------------
     def read_bunch_of_images(self):  # for training
         if settings.tr_isread==False:
             return
@@ -128,6 +132,8 @@ class image_class:
         self.random_images = [x for x in range(len(self.random_images)) if
                               x not in rand_image_no]  # remove selected images from the choice list
         print(rand_image_no)
+
+
 
         for img_index in range(len(rand_image_no)):
 
@@ -290,21 +296,21 @@ class image_class:
             t1 = self.collection[ii].t1
             asl = self.collection[ii].asl
             pet = self.collection[ii].pet
-            voxel_size= self.collection[ii].voxel_size
-            origin= self.collection[ii].origin
-            direction = self.collection[ii].direction
-            name_t1 = self.collection[ii].name_t1
-            name_asl = self.collection[ii].name_asl
-            name_pet = self.collection[ii].name_pet
-
-
-            # print(self.collection[ii].name_t1)
-
+            # voxel_size= self.collection[ii].voxel_size
+            # origin= self.collection[ii].origin
+            # direction = self.collection[ii].direction
+            # name_t1 = self.collection[ii].name_t1
+            # name_asl = self.collection[ii].name_asl
+            # name_pet = self.collection[ii].name_pet
 
 
             '''random numbers for selecting random samples'''
             random_slices_indx=np.random.randint(1,np.shape(t1)[0] ,
                                            size=int(patch_no_per_image ))
+
+
+
+
             size_img= np.shape(asl)[1]
             ASL1 = [np.stack( asl[random_slices_indx[sn], int(size_img/2)-int(self.inp_size/2)-1:int(size_img/2)+int(self.inp_size/2),int(size_img/2)-int(self.inp_size/2)-1:int(size_img/2)+int(self.inp_size/2)])
                  for sn in range(len(random_slices_indx))]
@@ -314,6 +320,50 @@ class image_class:
 
             T11 = [np.stack(t1[random_slices_indx[sn],  int(size_img/2)-int(self.inp_size/2)-1:int(size_img/2)+int(self.inp_size/2),int(size_img/2)-int(self.inp_size/2)-1:int(size_img/2)+int(self.inp_size/2)])
                    for sn in range(len(random_slices_indx))]
+
+
+            #==============augment
+            if_rotate = np.random.randint(0, 10, len(random_slices_indx)) > 6
+            rotate_angle = random.sample(range(-15,15), len(random_slices_indx))
+            ASL2= [ndimage.rotate(ASL1[sn],rotate_angle[sn]) if if_rotate[sn] else ASL1[sn] for sn in range(len(random_slices_indx))]
+            ASL2= [ASL2[sn][int(ASL2[sn].shape[0]/2)-int(self.inp_size/2)-1:int(ASL2[sn].shape[0]/2)+int(self.inp_size/2),
+                   int(ASL2[sn].shape[1]/2)-int(self.inp_size/2)-1:int(ASL2[sn].shape[1]/2)+int(self.inp_size/2)]
+                   if ASL2[sn].shape[0]>self.inp_size or ASL2[sn].shape[1]>self.inp_size else ASL2[sn] for sn in range(len(random_slices_indx))]
+
+            PET2= [ndimage.rotate(PET1[sn],rotate_angle[sn]) if if_rotate[sn] else PET1[sn] for sn in range(len(random_slices_indx))]
+            PET2 = [PET2[sn][ int(PET2[sn].shape[0] / 2) - int(self.out_size / 2) - 1:int(PET2[sn].shape[0] / 2) + int(
+                self.out_size / 2),
+                    int(PET2[sn].shape[1] / 2) - int(self.out_size / 2) - 1:int(PET2[sn].shape[1] / 2) + int(
+                        self.out_size / 2)]
+                    if PET2[sn].shape[0] > self.out_size or PET2[sn].shape[1] > self.out_size else PET2[sn] for sn in
+                    range(len(random_slices_indx))]
+
+            T12= [ndimage.rotate(T11[sn],rotate_angle[sn]) if if_rotate[sn] else T11[sn] for sn in range(len(random_slices_indx))]
+            T12 = [T12[sn][ int(T12[sn].shape[0] / 2) - int(self.inp_size / 2) - 1:int(T12[sn].shape[0] / 2) + int(
+                self.inp_size / 2),
+                    int(T12[sn].shape[1] / 2) - int(self.inp_size / 2) - 1:int(T12[sn].shape[1] / 2) + int(
+                        self.inp_size / 2)]
+                    if T12[sn].shape[0] > self.inp_size or T12[sn].shape[1] > self.inp_size else T12[sn] for sn in
+                    range(len(random_slices_indx))]
+
+            ASL1=ASL2
+            PET1=PET2
+            T11=T12
+
+
+            if_flip = np.random.randint(0, 10, len(random_slices_indx)) > 5
+            ASL2 = [np.fliplr(ASL1[sn]) if if_flip[sn] else ASL1[sn] for sn in
+                    range(len(random_slices_indx))]
+            PET2 = [np.fliplr(PET1[sn]) if if_flip[sn] else PET1[sn] for sn in
+                    range(len(random_slices_indx))]
+            T12 = [np.fliplr(T11[sn]) if if_flip[sn] else T11[sn] for sn in
+                   range(len(random_slices_indx))]
+            ASL1 = ASL2
+            PET1 = PET2
+            T11 = T12
+
+            # if_noise = np.random.randint(0, 10, len(random_slices_indx)) > 6
+            #======================
 
 
             if len(ASL)==0:
