@@ -454,12 +454,30 @@ class image_class:
                 if len(asl_slices) != len(pet_slices) or len(t1_slices) != len(asl_slices):
                     print('smth wrong')
 
-
-                # loss_coef = ( np.asarray([[len(np.where(pet_slices[i, :, :, :] == 1)[0]) / np.power(self.pet_slices_window, 3)] for i in range(pet_slices.shape[0])]))
-
                 pet_slices = pet_slices[..., np.newaxis]
                 asl_slices = asl_slices[..., np.newaxis]
                 t1_slices = t1_slices[..., np.newaxis]
 
             return asl_slices, pet_slices,t1_slices
     # -------------------------------------------------------------------------------------------------------
+    def return_patches_test(self,start,end):
+        asl_slices = []
+        pet_slices = []
+        t1_slices = []
+
+        if (len(settings.bunch_asl_slices_vl) - (end)) >= 0 \
+                and (len(settings.bunch_pet_slices_vl) - (end)) >= 0 \
+                and (len(settings.bunch_t1_slices_vl) - (end)) >= 0:
+
+            asl_slices = settings.bunch_asl_slices_vl[start:end]
+            pet_slices = settings.bunch_pet_slices_vl[start:end]
+            t1_slices = settings.bunch_t1_slices_vl[start:end]
+
+            if len(asl_slices) != len(pet_slices) or len(t1_slices) != len(asl_slices):
+                print('smth wrong')
+
+            pet_slices = pet_slices[..., np.newaxis]
+            asl_slices = asl_slices[..., np.newaxis]
+            t1_slices = t1_slices[..., np.newaxis]
+
+        return asl_slices, pet_slices, t1_slices

@@ -23,7 +23,7 @@ import functions.gpu_server_manager.slurm_utils as slurm
 def submit_job():
     # Choosing the preferred setting and backup the whole code and submit the job
     # script_address= server_path+Logs
-    queue = 'LKEBgpu'  # 'cpu', 'gpu', 'LKEBgpu'
+    queue = 'gpu'  # 'cpu', 'gpu', 'LKEBgpu'
     manager = 'Slurm'  # 'OGE', Slurm
     setting = dict()
     setting['never_generate_image'] = False
@@ -34,9 +34,9 @@ def submit_job():
 
 
     # Slurm
-    setting['cluster_MemPerCPU'] = 6200   #2200  # 6200
+    setting['cluster_MemPerCPU'] = 4200   #2200  # 6200
     setting['cluster_Partition'] = queue             # 'gpu', 'LKEBgpu'
-    setting['cluster_NodeList'] = 'res-hpc-lkeb05'    # None, LKEBgpu: ['res-hpc-lkeb03', 'res-hpc-lkeb02', 'res-hpc-gpu01']
+    setting['cluster_NodeList'] = 'res-hpc-gpu01'    # None, LKEBgpu: ['res-hpc-lkeb03', 'res-hpc-lkeb02', 'res-hpc-gpu01']
     setting['cluster_NumberOfCPU'] = 7#10 #3               # Number of CPU per job
     setting['cluster_where_to_run'] = 'Cluster'      # 'Cluster', 'Auto'
     setting['cluster_venv_slurm'] = '/exports/lkeb-hpc/syousefi/Programs/'+TF+'/bin/activate'  # venv path

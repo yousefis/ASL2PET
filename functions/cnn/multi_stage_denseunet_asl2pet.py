@@ -347,15 +347,15 @@ class multi_stage_densenet:
         # if mri !=None:
         #     img_rows.append(mri)
 
-        with tf.variable_scope('augmentation'):
-            # with tf.variable_scope('noise'):
-            #     img_rows1=self.noisy_input( img_rows[0:-1],is_training)
-            #     img_rows1.append(img_rows[-1])
-            #     img_rows=img_rows1
-            with tf.variable_scope('LR_flip'):
-                img_rows=self.flip_lr_input(img_rows, is_training)
-            with tf.variable_scope('rotate'):
-                img_rows,degree=self.rotate_input(img_rows, is_training)
+        # with tf.variable_scope('augmentation'):
+        #     # with tf.variable_scope('noise'):
+        #     #     img_rows1=self.noisy_input( img_rows[0:-1],is_training)
+        #     #     img_rows1.append(img_rows[-1])
+        #     #     img_rows=img_rows1
+        #     with tf.variable_scope('LR_flip'):
+        #         img_rows=self.flip_lr_input(img_rows, is_training)
+        #     with tf.variable_scope('rotate'):
+        #         img_rows,degree=self.rotate_input(img_rows, is_training)
         augmented_data=img_rows
 
         with tf.variable_scope('stack-contact'):

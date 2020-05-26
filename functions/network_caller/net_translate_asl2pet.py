@@ -162,26 +162,26 @@ class net_translate:
                                                                                                is_training=is_training,
                                                                                                config=self.config)
 
-        show_img = level_ds1[:, :, :, 0, np.newaxis]
-        tf.summary.image('04: level_ds1', show_img, 10)
-
-        show_img = level_ds2[:, :, :, 0, np.newaxis]
-        tf.summary.image('05: level_ds2', show_img, 10)
-
-        show_img = level_ds3[:, :, :, 0, np.newaxis]
-        tf.summary.image('06: level_ds3', show_img, 10)
-
-        show_img = level_us2[:, :, :, 0, np.newaxis]
-        tf.summary.image('07: level_us2', show_img, 10)
-
-        show_img = level_us3[:, :, :, 0, np.newaxis]
-        tf.summary.image('08: level_us3', show_img, 10)
-
+        # show_img = level_ds1[:, :, :, 0, np.newaxis]
+        # tf.summary.image('04: level_ds1', show_img, 10)
+        #
+        # show_img = level_ds2[:, :, :, 0, np.newaxis]
+        # tf.summary.image('05: level_ds2', show_img, 10)
+        #
+        # show_img = level_ds3[:, :, :, 0, np.newaxis]
+        # tf.summary.image('06: level_ds3', show_img, 10)
+        #
+        # show_img = level_us2[:, :, :, 0, np.newaxis]
+        # tf.summary.image('07: level_us2', show_img, 10)
+        #
+        # show_img = level_us3[:, :, :, 0, np.newaxis]
+        # tf.summary.image('08: level_us3', show_img, 10)
+        #
         show_img = augmented_data[0][:, :, :, 0, np.newaxis]
         tf.summary.image('00: input_asl', show_img, 3)
 
-        show_img = augmented_data[1][:, :, :, 0, np.newaxis]
-        tf.summary.image('01: input_t1', show_img, 3)
+        # show_img = augmented_data[1][:, :, :, 0, np.newaxis]
+        # tf.summary.image('01: input_t1', show_img, 3)
 
         show_img = augmented_data[2][:, :, :, 0, np.newaxis]
         tf.summary.image('02: target_pet', show_img, 3)
