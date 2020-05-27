@@ -69,7 +69,7 @@ def write_and_submit_job(setting, manager, job_name, script_address):
     # job_output_file = job_script_folder + 'output.txt'
 
     server_path = '/exports/lkeb-hpc/syousefi/Code/'
-    backup_folder='Log_asl_pet/denseunet_multistage_mssim8/'
+    backup_folder='Log_asl_pet/denseunet_ssim_l1_noiseaug/'
     job_script_folder = server_path+backup_folder+'Jobs/'
     job_output_file =job_script_folder+'output.txt'
 
