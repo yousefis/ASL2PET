@@ -27,6 +27,8 @@ import psutil
 from shutil import copyfile
 from functions.reader.patch_extractor import _patch_extractor_thread
 from functions.reader.data_reader import _read_data
+from functions.losses.L1 import huber
+
 # --------------------------------------------------------------------------------------------------------
 class net_translate:
     def __init__(self,data_path,server_path , Logs,config):
@@ -225,15 +227,11 @@ class net_translate:
         loadModel = 0
         # self.loss = ssim_loss()
         with tf.name_scope('cost'):
-            ssim_val=SSIM(x1=pet_plchld, x2=y,max_val=2.1)[0]
-            cost = tf.reduce_mean((1.0 - ssim_val), name="cost")
-            # ssim_val=tf.reduce_mean(multistage_SSIM(x1=pet_plchld, x2=y,level1=loss_upsampling11, level2=loss_upsampling2,max_val=2.1))
-            # cost = tf.reduce_mean((ssim_val), name="cost")
-            # ssim_val = tf.reduce_mean(tf_ms_ssim(pet_plchld, y,level=3))
-            # cost = tf.reduce_mean((ssim_val), name="cost")
-            # mse=mean_squared_error(labels=augmented_data[-1],logit=y)
+            alpha=.84
+            ssim= tf.reduce_mean(1-SSIM(x1=pet_plchld, x2=y,max_val=2.1)[0])
+            loss=alpha * ssim+ (1-alpha) * tf.reduce_mean(huber(labels=pet_plchld, logit=y))
+            cost = loss
 
-            # cost = tf.reduce_mean(mse , name="cost")
         tf.summary.scalar("cost", cost)
         # tf.summary.scalar("denominator", denominator)
         extra_update_ops = tf.get_collection(tf.GraphKeys.UPDATE_OPS)

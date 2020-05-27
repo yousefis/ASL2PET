@@ -323,6 +323,7 @@ class image_class:
 
 
             #==============augment
+            #rotation
             if_rotate = np.random.randint(0, 10, len(random_slices_indx)) > 6
             rotate_angle = random.sample(range(-15,15), len(random_slices_indx))
             ASL2= [ndimage.rotate(ASL1[sn],rotate_angle[sn]) if if_rotate[sn] else ASL1[sn] for sn in range(len(random_slices_indx))]
@@ -350,7 +351,7 @@ class image_class:
             PET1=PET2
             T11=T12
 
-
+            #flip
             if_flip = np.random.randint(0, 10, len(random_slices_indx)) > 5
             ASL2 = [np.fliplr(ASL1[sn]) if if_flip[sn] else ASL1[sn] for sn in
                     range(len(random_slices_indx))]
@@ -360,6 +361,21 @@ class image_class:
                    range(len(random_slices_indx))]
             ASL1 = ASL2
             PET1 = PET2
+            T11 = T12
+
+            #gaussian noise
+            mean = 0
+            sigma = 0.1 ** 0.5
+
+
+            if_noise = np.random.randint(0, 10, len(random_slices_indx)) > 5
+            ASL2 = [ASL1[sn]+np.random.normal(mean, sigma, (self.inp_size, self.inp_size)).reshape(self.inp_size, self.inp_size)
+                    if if_noise[sn] else ASL1[sn] for sn in
+                    range(len(random_slices_indx))]
+            T12 = [ASL1[sn]+np.random.normal(mean, sigma, (self.inp_size, self.inp_size)).reshape(self.inp_size, self.inp_size)
+                   if if_noise[sn] else T11[sn] for sn in
+                   range(len(random_slices_indx))]
+            ASL1 = ASL2
             T11 = T12
 
             # if_noise = np.random.randint(0, 10, len(random_slices_indx)) > 6
