@@ -22,9 +22,9 @@ if __name__=="__main__":
     train_data, validation_data, test_data=_rd.read_data_path()
     m_t1=.00000000000000000000001
     M_t1=1
-    for d in validation_data:
+    for d in test_data:
         # print(d)
-        t1=sitk.GetArrayFromImage(sitk.ReadImage(d['t1']))
+        t1=sitk.GetArrayFromImage(sitk.ReadImage(d['asl']))
         mt1= np.min(t1)
         Mt1= np.max(t1)
         if mt1<m_t1:

@@ -1,5 +1,5 @@
 ##################################################
-## {}
+## {Description}
 ##################################################
 ## {License_info}
 ##################################################
@@ -16,40 +16,43 @@ import shutil
 # from functions.densenet_unet import _densenet_unet
 # from functions.networks.dense_unet2 import _densenet_unet
 import logging
-from functions.cnn.multi_task_cnn import multi_task_cnn
+from functions.cnn.multi_task_cnn import multi_stage_densenet
 # import wandb
 from functions.reader.data_reader import *
 from functions.reader.image_class import *
-from functions.losses.ssim_loss import multistage_SSIM
+from functions.losses.ssim_loss import multistage_SSIM, SSIM
 from functions.threads import *
 import psutil
 # calculate the dice coefficient
+from shutil import copyfile
 from functions.reader.patch_extractor import _patch_extractor_thread
 from functions.reader.data_reader import _read_data
+from functions.losses.L1 import huber
 
 
 # --------------------------------------------------------------------------------------------------------
 class net_translate:
-    def __init__(self, data_path, server_path, Logs):
+    def __init__(self, data_path, server_path, Logs, config):
         settings.init()
         self.data_path = data_path
         self.validation_samples = 200
         self.Logs = Logs
         self.LOGDIR = server_path + self.Logs + '/'
-        self.learning_rate = .001
-        self.total_epochs = 1000
+        self.learning_rate = .000001
+        self.total_iteration = 100000
 
         self.no_sample_per_each_itr = 1000
         self.sample_no = 2000000
         self.img_width = 500
         self.img_height = 500
-        self.asl_size = 77
-        self.pet_size = 63
+        self.asl_size = 77  # input slice size
+        self.pet_size = 63  # output slice size
         self.display_validation_step = 5
         self.batch_no_validation = 10
         self.batch_no = 10
         self.parent_path = '/exports/lkeb-hpc/syousefi/Code/'
         self.chckpnt_dir = self.parent_path + self.Logs + '/unet_checkpoints/'
+        self.config = config
 
     def copytree(self, src, dst, symlinks=False, ignore=None):
         for item in os.listdir(src):
@@ -116,7 +119,7 @@ class net_translate:
         _patch_extractor_thread_vl.start()
         _read_thread_vl.start()
         # ======================================
-        bunch_of_images_no = 7
+        bunch_of_images_no = 15
         _image_class_tr = image_class(train_data,
                                       bunch_of_images_no=bunch_of_images_no,
                                       is_training=1, inp_size=self.asl_size, out_size=self.pet_size
@@ -140,9 +143,10 @@ class net_translate:
         # asl_plchld= tf.placeholder(tf.float32, shape=[None, None, None, 1])
         # t1_plchld= tf.placeholder(tf.float32, shape=[None, None, None, 1])
         # pet_plchld= tf.placeholder(tf.float32, shape=[None, None, None, 1])
-        asl_plchld = tf.placeholder(tf.float32, shape=[None, self.asl_size, self.asl_size, 1])
-        t1_plchld = tf.placeholder(tf.float32, shape=[None, self.asl_size, self.asl_size, 1])
-        pet_plchld = tf.placeholder(tf.float32, shape=[None, self.pet_size, self.pet_size, 1])
+        asl_plchld = tf.placeholder(tf.float32, shape=[self.batch_no, self.asl_size, self.asl_size, 1])
+        t1_plchld = tf.placeholder(tf.float32, shape=[self.batch_no, self.asl_size, self.asl_size, 1])
+        pet_plchld = tf.placeholder(tf.float32, shape=[self.batch_no, self.pet_size, self.pet_size, 1])
+        asl_out_plchld = tf.placeholder(tf.float32, shape=[self.batch_no, self.pet_size, self.pet_size, 1])
 
         ave_loss_vali = tf.placeholder(tf.float32)
 
@@ -151,25 +155,30 @@ class net_translate:
 
         # cnn_net = unet()  # create object
         # y,augmented_data = cnn_net.unet(t1=t1_plchld, asl=asl_plchld, pet=pet_plchld, is_training_bn=is_training_bn)
-        msdensnet = multi_task_cnn()
-        y, augmented_data, loss_upsampling11, loss_upsampling2 = msdensnet.multi_stage_densenet(asl_img=asl_plchld,
-                                                                                                t1_img=t1_plchld,
-                                                                                                pet_img=pet_plchld,
-                                                                                                input_dim=77,
-                                                                                                is_training=is_training)
+        msdensnet = multi_stage_densenet()
+        asl_y,pet_y = msdensnet.multi_stage_densenet(asl_img=asl_plchld,
+                                                   t1_img=t1_plchld,
+                                                   pet_img=pet_plchld,
+                                                   input_dim=77,
+                                                   is_training=is_training,
+                                                   config=self.config)
 
-        show_img = augmented_data[0][:, :, :, 0, np.newaxis]
+
+        show_img = asl_plchld[:, :, :, 0, np.newaxis]
         tf.summary.image('00: input_asl', show_img, 3)
 
-        show_img = augmented_data[1][:, :, :, 0, np.newaxis]
+        show_img = t1_plchld[:, :, :, 0, np.newaxis]
         tf.summary.image('01: input_t1', show_img, 3)
 
-        show_img = augmented_data[2][:, :, :, 0, np.newaxis]
+        show_img = pet_plchld[:, :, :, 0, np.newaxis]
         tf.summary.image('02: target_pet', show_img, 3)
-
-        show_img = y[:, :, :, 0, np.newaxis]
-        tf.summary.image('03: output_pet', show_img, 3)
         #
+        show_img = asl_y[:, :, :, 0, np.newaxis]
+        tf.summary.image('03: output_asl', show_img, 3)
+
+        show_img = pet_y[:, :, :, 0, np.newaxis]
+        tf.summary.image('03: output_pet', show_img, 3)
+        # -----------------
         # show_img = loss_upsampling11[:, :, :, 0, np.newaxis]
         # tf.summary.image('04: loss_upsampling11', show_img, 3)
         # #
@@ -189,23 +198,33 @@ class net_translate:
         print('*****************************************')
 
         train_writer = tf.summary.FileWriter(self.LOGDIR + '/train', graph=tf.get_default_graph())
-
         validation_writer = tf.summary.FileWriter(self.LOGDIR + '/validation', graph=sess.graph)
+        try:
+            os.mkdir(self.LOGDIR + 'code/')
+            copyfile('./run_net.py', self.LOGDIR + 'code/run_net.py')
+            copyfile('./submit_job.py', self.LOGDIR + 'code/submit_job.py')
+            copyfile('./test_file.py', self.LOGDIR + 'code/test_file.py')
+            shutil.copytree('./functions/', self.LOGDIR + 'code/functions/')
+        except:
+            a = 1
+
+        # validation_writer.flush()
         extra_update_ops = tf.get_collection(tf.GraphKeys.UPDATE_OPS)
         saver = tf.train.Saver(tf.global_variables(), max_to_keep=1000)
-
+        # train_writer.close()
+        # validation_writer.close()
 
         loadModel = 0
         # self.loss = ssim_loss()
+        alpha = .84
         with tf.name_scope('cost'):
-            # ssim_val,denominator,ssim_map=SSIM(x1=augmented_data[-1], x2=y,max_val=1.0)
-            # cost = tf.reduce_mean((1.0 - ssim_val), name="cost")
-            ssim_val = tf.reduce_mean(
-                multistage_SSIM(x1=pet_plchld, x2=y, level1=loss_upsampling11, level2=loss_upsampling2, max_val=1.5)[0])
-            cost = tf.reduce_mean((ssim_val), name="cost")
-            # mse=mean_squared_error(labels=augmented_data[-1],logit=y)
+            ssim_asl = tf.reduce_mean(1 - SSIM(x1=asl_out_plchld, x2=asl_y, max_val=34.0)[0])
+            loss_asl = alpha * ssim_asl + (1 - alpha) * tf.reduce_mean(huber(labels=asl_out_plchld, logit=asl_y))
 
-            # cost = tf.reduce_mean(mse , name="cost")
+            ssim_pet = tf.reduce_mean(1 - SSIM(x1=pet_plchld, x2=pet_y, max_val=2.1)[0])
+            loss_pet = alpha * ssim_pet + (1 - alpha) * tf.reduce_mean(huber(labels=pet_plchld, logit=pet_y))
+            cost = loss_asl+loss_pet
+
         tf.summary.scalar("cost", cost)
         # tf.summary.scalar("denominator", denominator)
         extra_update_ops = tf.get_collection(tf.GraphKeys.UPDATE_OPS)
@@ -238,9 +257,9 @@ class net_translate:
         # patch_radius = 49
         '''loop for epochs'''
 
-        for epoch in range(self.total_epochs):
+        for itr in range(self.total_iteration):
             while self.no_sample_per_each_itr * int(point / self.no_sample_per_each_itr) < self.sample_no:
-                print("epoch #: %d" % (epoch))
+                print("epoch #: %d" % (settings.epochs_no))
                 startTime = time.time()
                 step = 0
                 self.beta_coeff = 1 + 1 * np.exp(-point / 2000)
@@ -268,14 +287,19 @@ class net_translate:
                             continue
 
                         tic = time.time()
-                        [loss_vali, out, augmented_dataout, ] = sess.run([cost, y, augmented_data, ],
-                                                                         feed_dict={asl_plchld: validation_asl_slices,
-                                                                                    t1_plchld: validation_t1_slices,
-                                                                                    pet_plchld: validation_pet_slices,
-                                                                                    is_training: False,
-                                                                                    ave_loss_vali: -1,
-                                                                                    is_training_bn: False,
-                                                                                    })
+                        [loss_vali] = sess.run([cost],
+                                               feed_dict={asl_plchld: validation_asl_slices,
+                                                          t1_plchld: validation_t1_slices,
+                                                          pet_plchld: validation_pet_slices,
+                                                          asl_out_plchld:validation_asl_slices[:,
+                                                                         int(self.asl_size/2)-int(self.pet_size/2)-1:
+                                                                         int(self.asl_size/2)+int(self.pet_size/2),
+                                                                         int(self.asl_size/2)-int(self.pet_size/2)-1:
+                                                                         int(self.asl_size/2)+int(self.pet_size/2),:],
+                                                          is_training: False,
+                                                          ave_loss_vali: -1,
+                                                          is_training_bn: False,
+                                                          })
                         elapsed = time.time() - tic
                         loss_validation += loss_vali
                         validation_step += 1
@@ -304,6 +328,11 @@ class net_translate:
                                                 feed_dict={asl_plchld: validation_asl_slices,
                                                            t1_plchld: validation_t1_slices,
                                                            pet_plchld: validation_pet_slices,
+                                                           asl_out_plchld:validation_asl_slices[:,
+                                                                         int(self.asl_size/2)-int(self.pet_size/2)-1:
+                                                                         int(self.asl_size/2)+int(self.pet_size/2),
+                                                                         int(self.asl_size/2)-int(self.pet_size/2)-1:
+                                                                         int(self.asl_size/2)+int(self.pet_size/2),:],
                                                            is_training: False,
                                                            ave_loss_vali: loss_validation,
                                                            is_training_bn: False,
@@ -328,19 +357,29 @@ class net_translate:
                         continue
 
                     tic = time.time()
-                    # with tf.Session() as sess:
-                    [loss_train1, out, augmented_dataout, opt] = sess.run([cost, y, augmented_data, optimizer],
-                                                                          feed_dict={asl_plchld: train_asl_slices,
-                                                                                     t1_plchld: train_t1_slices,
-                                                                                     pet_plchld: train_pet_slices,
-                                                                                     is_training: True,
-                                                                                     ave_loss_vali: -1,
-                                                                                     is_training_bn: True})
+
+                    [loss_train1, opt, ] = sess.run([cost, optimizer, ],
+                                                    feed_dict={asl_plchld: train_asl_slices,
+                                                               t1_plchld: train_t1_slices,
+                                                               pet_plchld: train_pet_slices,
+                                                               asl_out_plchld: train_asl_slices[:,
+                                                                         int(self.asl_size/2)-int(self.pet_size/2)-1:
+                                                                         int(self.asl_size/2)+int(self.pet_size/2),
+                                                                         int(self.asl_size/2)-int(self.pet_size/2)-1:
+                                                                         int(self.asl_size/2)+int(self.pet_size/2),:],
+                                                               is_training: True,
+                                                               ave_loss_vali: -1,
+                                                               is_training_bn: True})
                     elapsed = time.time() - tic
                     [sum_train] = sess.run([summ],
                                            feed_dict={asl_plchld: train_asl_slices,
                                                       t1_plchld: train_t1_slices,
                                                       pet_plchld: train_pet_slices,
+                                                      asl_out_plchld: train_asl_slices[:,
+                                                                         int(self.asl_size/2)-int(self.pet_size/2)-1:
+                                                                         int(self.asl_size/2)+int(self.pet_size/2),
+                                                                         int(self.asl_size/2)-int(self.pet_size/2)-1:
+                                                                         int(self.asl_size/2)+int(self.pet_size/2),:],
                                                       is_training: False,
                                                       ave_loss_vali: loss_train1,
                                                       is_training_bn: False
@@ -362,7 +401,7 @@ class net_translate:
                     if point % 100 == 0:
                         '''saveing model inter epoch'''
                         chckpnt_path = os.path.join(self.chckpnt_dir,
-                                                    ('densenet_unet_inter_epoch%d_point%d.ckpt' % (epoch, point)))
+                                                    ('densenet_unet_inter_epoch%d_point%d.ckpt' % (itr, point)))
                         saver.save(sess, chckpnt_path, global_step=point)
 
                     itr1 = itr1 + 1
@@ -374,5 +413,5 @@ class net_translate:
 
             '''saveing model after each epoch'''
             chckpnt_path = os.path.join(self.chckpnt_dir, 'densenet_unet.ckpt')
-            saver.save(sess, chckpnt_path, global_step=epoch)
-            print("End of epoch----> %d, elapsed time: %d" % (epoch, endTime - startTime))
+            saver.save(sess, chckpnt_path, global_step=itr)
+            print("End of epoch----> %d, elapsed time: %d" % (settings.epochs_no, endTime - startTime))

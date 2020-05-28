@@ -476,6 +476,7 @@ class image_class:
 
             return asl_slices, pet_slices,t1_slices
     # -------------------------------------------------------------------------------------------------------
+
     def return_patches_test(self,start,end):
         asl_slices = []
         pet_slices = []

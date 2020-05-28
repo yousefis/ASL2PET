@@ -1,5 +1,5 @@
 ##################################################
-## {Description}
+## {multi_stage_densenet network}
 ##################################################
 ## {License_info}
 ##################################################
@@ -21,8 +21,8 @@ from functions.layers.upsampling import upsampling
 
 # !!
 
-class multi_task_cnn:
-    def __init__(self, class_no=14):
+class multi_stage_densenet:
+    def __init__(self, class_no=2):
         print('create object _unet')
         self.class_no = class_no
         self.kernel_size1 = 1
@@ -71,7 +71,82 @@ class multi_task_cnn:
             # conv3 = bn
             return conc
     #==================================================
-    def level_design(self,input,level_name,filters1,filters2,is_training,kernel_size,in_size,crop_size,padding1,padding2,flag=2,paddingfree_scope='',filters3=0):
+    def level_design(self,input,level_name,filters1,filters2,is_training,kernel_size,padding1,padding2):
+        conc=input
+        with tf.variable_scope(level_name):
+            conv1 = tf.layers.conv2d(input,
+                                     filters=filters1,
+                                     kernel_size=kernel_size,
+                                     padding=padding1,
+                                     activation=None,
+                                     dilation_rate=1,
+                                     )
+            bn = tf.layers.batch_normalization(conv1, training=is_training, renorm=False)
+            bn = tf.nn.leaky_relu(bn)
+            conv1 = bn
+            conc = tf.concat([conc, conv1], -1)
+
+            conv2 = tf.layers.conv2d(conc,
+                                     filters=filters2,
+                                     kernel_size=kernel_size,
+                                     padding=padding2,
+                                     activation=None,
+                                     dilation_rate=1,
+                                     )
+            bn = tf.layers.batch_normalization(conv2, training=is_training, renorm=False)
+            bn = tf.nn.leaky_relu(bn)
+            conv2 = bn
+            conc=tf.concat([conc,conv2],-1)
+            # bottleneck layer
+            conv3 = tf.layers.conv2d(conc,
+                                     filters=filters2,
+                                     kernel_size=1,
+                                     padding=padding2,
+                                     activation=None,
+                                     dilation_rate=1,
+                                     )
+            bn = tf.layers.batch_normalization(conv3, training=is_training, renorm=False)
+            bn = tf.nn.leaky_relu(bn)
+            conc = bn
+        return conc
+    #===============================
+    def dense_loop(self, input,level_name,filters1,filters2,is_training,kernel_size,in_size,crop_size,padding1,padding2,flag=2,filters3=0,loop=2):
+        with tf.name_scope(level_name):
+            output = input
+            for i in range(loop):
+                output = self.level_design(output,level_name=level_name+str(i),filters1=filters1,filters2=filters2,is_training=is_training,kernel_size=kernel_size,padding1=padding1,padding2=padding2)
+            conc=output
+            if flag == 1:
+                # with tf.variable_scope(paddingfree_scope):
+                conc = self.paddingfree_conv(input=output, filters=int(filters3*2/3), kernel_size=3, is_training=is_training)
+                #bottelneck layer:
+                # conv = tf.layers.conv2d(conc,
+                #                         filters=int(filters3/2),
+                #                         kernel_size=1,
+                #                         padding='same',
+                #                         activation=None,
+                #                         dilation_rate=1,
+                #                         )
+                # bn = tf.layers.batch_normalization(conv, training=is_training, renorm=False)
+                # bn = tf.nn.leaky_relu(bn)
+                # conc = bn
+
+                cropped = conc[:,
+                       tf.to_int32(in_size / 2) - tf.to_int32(crop_size / 2) - 1:
+                       tf.to_int32(in_size / 2) + tf.to_int32(crop_size / 2),
+                       tf.to_int32(in_size / 2) - tf.to_int32(crop_size / 2) - 1:
+                       tf.to_int32(in_size / 2) + tf.to_int32(crop_size / 2), :]
+            if flag == 2:
+                cropped = conc[:,
+                       tf.to_int32(in_size / 2) - tf.to_int32(crop_size / 2) - 1:
+                       tf.to_int32(in_size / 2) + tf.to_int32(crop_size / 2),
+                       tf.to_int32(in_size / 2) - tf.to_int32(crop_size / 2) - 1:
+                       tf.to_int32(in_size / 2) + tf.to_int32(crop_size / 2), :]
+
+        return conc, cropped
+    #==================================================
+    def level_design_nonloop(self, input, level_name, filters1, filters2, is_training, kernel_size, in_size, crop_size,
+                     padding1, padding2, flag=2, paddingfree_scope='', filters3=0):
         with tf.variable_scope(level_name):
             conv1 = tf.layers.conv2d(input,
                                      filters=filters1,
@@ -96,44 +171,42 @@ class multi_task_cnn:
             bn = tf.nn.leaky_relu(bn)
             conv2 = bn
 
-
-            conc=tf.concat([conc,conv2],-1)
-
+            conc = tf.concat([conc, conv2], -1)
 
             # bottleneck layer
-            conv3 = tf.layers.conv2d(conc,
-                                     filters=filters2,
-                                     kernel_size=1,
-                                     padding=padding2,
-                                     activation=None,
-                                     dilation_rate=1,
-                                     )
-            bn = tf.layers.batch_normalization(conv3, training=is_training, renorm=False)
-            bn = tf.nn.leaky_relu(bn)
-            conv3 = bn
-            if flag==1:
+            # conv3 = tf.layers.conv2d(conc,
+            #                          filters=filters2,
+            #                          kernel_size=1,
+            #                          padding=padding2,
+            #                          activation=None,
+            #                          dilation_rate=1,
+            #                          )
+            # bn = tf.layers.batch_normalization(conv3, training=is_training, renorm=False)
+            # bn = tf.nn.leaky_relu(bn)
+            # conv3 = bn
+            if flag == 1:
                 with tf.variable_scope(paddingfree_scope):
-                    conc = self.paddingfree_conv(input=conv3, filters=filters3, kernel_size=3, is_training=is_training)
+                    conc = self.paddingfree_conv(input=conc, filters=filters3, kernel_size=3, is_training=is_training)
                 crop = conc[:,
-                          tf.to_int32(in_size / 2) - tf.to_int32(crop_size / 2) - 1:
-                          tf.to_int32(in_size / 2) + tf.to_int32(crop_size / 2),
-                          tf.to_int32(in_size / 2) - tf.to_int32(crop_size / 2) - 1:
-                          tf.to_int32(in_size / 2) + tf.to_int32(crop_size / 2),:]
-            if flag==2:
+                       tf.to_int32(in_size / 2) - tf.to_int32(crop_size / 2) - 1:
+                       tf.to_int32(in_size / 2) + tf.to_int32(crop_size / 2),
+                       tf.to_int32(in_size / 2) - tf.to_int32(crop_size / 2) - 1:
+                       tf.to_int32(in_size / 2) + tf.to_int32(crop_size / 2), :]
+            if flag == 2:
                 crop = conc[:,
                        tf.to_int32(in_size / 2) - tf.to_int32(crop_size / 2) - 1:
                        tf.to_int32(in_size / 2) + tf.to_int32(crop_size / 2),
                        tf.to_int32(in_size / 2) - tf.to_int32(crop_size / 2) - 1:
                        tf.to_int32(in_size / 2) + tf.to_int32(crop_size / 2), :]
 
-            return conc,crop
+            return conc, crop
 
-    #==================================================
+    # ==================================================
     def noisy_input(self,img_rows,is_training):
         noisy_img_rows=[]
         #
         with tf.variable_scope("Noise"):
-            rnd = tf.greater_equal(tf.random_uniform([1], 0, 10, dtype=tf.int32, seed=self.seed()),5)[0]
+            rnd = tf.greater_equal(tf.random_uniform([1], 0, 10, dtype=tf.int32, seed=self.seed()),6)[0]
 
             mean=  tf.random_uniform([1], maxval=5, seed=self.seed())
             stdev=  tf.random_uniform([1], maxval=7, seed=self.seed())
@@ -156,15 +229,14 @@ class multi_task_cnn:
         rotate_img_rows=[]
         #
         with tf.variable_scope("Rotate"):
-            rnd = tf.greater(tf.random_uniform([1], 0, 10, dtype=tf.int32, seed=self.seed()),4)[0] # , seed=int(time.time())))
-            degree_angle = tf.random_uniform([1],minval=-45, maxval=45, seed=self.seed())[0]
-            radian = degree_angle * math.pi / 180
+            rnd = tf.greater(tf.random_uniform([1], 0, 10, dtype=tf.int32, seed=self.seed()),6)[0] # , seed=int(time.time())))
+            degree_angle = tf.random_uniform([1],minval=-20, maxval=20, seed=self.seed())[0]
+            # radian = degree_angle * math.pi / 180
             # if rnd:
-            for i in range(len(img_rows)):
+            for j in range(len(img_rows)):
                 rotate_img_rows.append( tf.cond(tf.logical_and(is_training,rnd),
-                                          lambda: tf.expand_dims(tf.contrib.image.rotate(tf.squeeze(img_rows[i], 3), radian),
-                                                                 axis=-1)
-                                          , lambda: img_rows[i]))
+                                          lambda: tf.contrib.image.rotate((img_rows[j]), degree_angle)
+                                          , lambda: img_rows[j]))
 
         return rotate_img_rows,degree_angle
     # ========================
@@ -172,7 +244,7 @@ class multi_task_cnn:
     def flip_lr_input(self, img_rows,is_training):
         flip_lr_img_rows=[]
         with tf.variable_scope("LR_Flip"):
-            rnd =(tf.greater(tf.random_uniform([1], 0, 10, dtype=tf.int32, seed=self.seed()),4))[0]  # , seed=int(time.time())))
+            rnd =(tf.greater(tf.random_uniform([1], 0, 10, dtype=tf.int32, seed=self.seed()),6))[0]  # , seed=int(time.time())))
             for i in range(len(img_rows)):
                 flip_lr_img_rows.append( tf.cond(tf.logical_and(is_training, rnd),
                                            lambda: tf.expand_dims(tf.image.flip_up_down(tf.squeeze(img_rows[i], 3)),
@@ -237,7 +309,7 @@ class multi_task_cnn:
 
 
     #==================================================
-    def multi_stage_densenet(self, asl_img, t1_img,pet_img,  input_dim, is_training,conv_transpose=True):
+    def multi_stage_densenet(self, asl_img, t1_img,pet_img,  input_dim, is_training,config,conv_transpose=True):
         # mri=None
         # in_size0 = tf.to_int32(0, name='in_size0')
         # in_size1 = 77
@@ -275,118 +347,73 @@ class multi_task_cnn:
         # if mri !=None:
         #     img_rows.append(mri)
 
-        with tf.variable_scope('augmentation'):
-            with tf.variable_scope('noise'):
-                img_rows1=self.noisy_input( img_rows[0:-1],is_training)
-                img_rows1.append(img_rows[-1])
-                img_rows=img_rows1
-            with tf.variable_scope('LR_flip'):
-                img_rows=self.flip_lr_input(img_rows, is_training)
-            with tf.variable_scope('rotate'):
-                img_rows,degree=self.rotate_input(img_rows, is_training)
+        # with tf.variable_scope('augmentation'):
+        #     # with tf.variable_scope('noise'):
+        #     #     img_rows1=self.noisy_input( img_rows[0:-1],is_training)
+        #     #     img_rows1.append(img_rows[-1])
+        #     #     img_rows=img_rows1
+        #     with tf.variable_scope('LR_flip'):
+        #         img_rows=self.flip_lr_input(img_rows, is_training)
+        #     with tf.variable_scope('rotate'):
+        #         img_rows,degree=self.rotate_input(img_rows, is_training)
         augmented_data=img_rows
 
         with tf.variable_scope('stack-contact'):
-                stack_concat = tf.concat([img_rows[0], img_rows[1]], -1)
+            # stack_concat=img_rows[0]
+            stack_concat = tf.concat([img_rows[0], img_rows[1]], -1)
 
 
 
-            # stack_concat = tf.concat([stack_concat, img_rows[3]], 4)
-            # stack_concat = tf.concat([stack_concat, img_rows[4]], 4)
-            # stack_concat = tf.concat([stack_concat, img_rows[5]], 4)
-            # stack_concat = tf.concat([stack_concat, img_rows[6]], 4)
-            # stack_concat = tf.concat([stack_concat, img_rows[7]], 4)
+
         #== == == == == == == == == == == == == == == == == == == == == ==
         #level 1 of unet
-        [level_ds1, crop1] = self.level_design(stack_concat,
+        [level_ds1, crop1] = self.dense_loop(stack_concat,
                                                'level_ds1',
                                                filters1=16,
                                                filters2=16,
-                                               filters3=16,
+                                               filters3=32,
                                                is_training=is_training,
                                                kernel_size=3,
                                                in_size=in_size3,
                                                crop_size=crop_size2,
                                                padding1='same',
                                                padding2='same',
-                                               paddingfree_scope='paddingfree_conv1',
-                                               flag=1)
+                                               flag=1,loop=config[0])
         with tf.variable_scope('maxpool1'):
             pool1 = tf.layers.max_pooling2d(inputs=level_ds1, pool_size=(2, 2), strides=(2, 2))
         # level 2 of unet
-        [level_ds2, crop2] = self.level_design(pool1,
+        [level_ds2, crop2] = self.dense_loop(pool1,
                                                'level_ds2',
                                                filters1=32,
                                                filters2=32,
-                                               filters3=32,
+                                               filters3=64,
                                                is_training=is_training,
                                                kernel_size=3,
                                                in_size=in_size4,
                                                crop_size=crop_size1,
                                                padding1='same',
                                                padding2='same',
-                                               paddingfree_scope='paddingfree_conv2',
-                                               flag=1)
+                                               flag=1,loop=config[1])
         with tf.variable_scope('maxpool2'):
             pool2 = tf.layers.max_pooling2d(inputs=level_ds2, pool_size=(2, 2), strides=(2, 2))
 
         # level 3 of unet
-        [level_ds3, crop3] = self.level_design(pool2, 'level_ds3',
+        [level_ds3, crop3] = self.dense_loop(pool2, 'level_ds3',
                                                filters1=64,
                                                filters2=64,
-                                               filters3=64,
+                                               filters3=128,
                                                is_training=is_training,
                                                kernel_size=3,
                                                in_size=in_size5,
                                                crop_size=crop_size0,
                                                padding1='same',
                                                padding2='same',
-                                               paddingfree_scope='paddingfree_conv3',
-                                               flag=1)
-        with tf.variable_scope('loss_upsampling1'):
-            if conv_transpose:
-                loss_upsampling1 = tf.layers.conv2d_transpose(level_ds3,
-                                                              filters=1,
-                                                              kernel_size=3,
-                                                              strides=(2, 2),
-                                                              padding='valid',
-                                                              use_bias=False)
-                loss_upsampling11 = tf.layers.conv2d_transpose(loss_upsampling1,
-                                                               filters=1,
-                                                               kernel_size=3,
-                                                               strides=(2, 2),
-                                                               padding='valid',
-                                                               use_bias=False)
-            else:
-                conv_up1 = tf.layers.conv2d(level_ds3,
-                                         filters=1,
-                                         kernel_size=3,
-                                         padding='same',
-                                         activation=None,
-                                         dilation_rate=1,
-                                         )
-                bn = tf.layers.batch_normalization(conv_up1, training=is_training, renorm=False)
-                bn = tf.nn.leaky_relu(bn)
-                loss_upsampling1 = self.upsampling3d.upsampling2d(bn,
-                                                                  scope='loss_upsampling1',
-                                                                  scale=2,
-                                                                  interpolator='trilinear',
-                                                                  padding_mode='SYMMETRIC',
-                                                                  padding_constant=0,
-                                                                  trainable=False,
-                                                                  padding='valid')
-                loss_upsampling11 = self.upsampling3d.upsampling2d(loss_upsampling1,
-                                                                   scope='loss_upsampling11',
-                                                                   scale=2,
-                                                                   interpolator='trilinear',
-                                                                   padding_mode='SYMMETRIC',
-                                                                   padding_constant=0,
-                                                                   trainable=False,
-                                                                   padding='valid')
+                                               flag=1,loop=config[2])
 
+        ####################################### PET Fork
         with tf.variable_scope('conv_transpose1'):
             deconv1 = tf.layers.conv2d_transpose(level_ds3,
-                                                 filters=32,
+                                                 filters=64,
                                                  kernel_size=3,
                                                  strides=(2, 2),
                                                  padding='valid',
@@ -396,40 +423,14 @@ class multi_task_cnn:
             conc12 = tf.concat([crop2, deconv1], -1)
 
         # level 2 of unet
-        [level_us2, crop0] = self.level_design(conc12, 'level_us2',
-                                               filters1=32,
+        [level_us2, crop0] = self.dense_loop(conc12, 'level_us2',
+                                               filters1=64,
                                                filters2=32,
                                                is_training=is_training,
                                                kernel_size=3,
                                                in_size=in_size0,
                                                crop_size=crop_size0,
-                                               padding1='same', padding2='same')
-        with tf.variable_scope('loss_upsampling2'):
-            if conv_transpose:
-                loss_upsampling2 = tf.layers.conv2d_transpose(level_us2,
-                                                     filters=1,
-                                                     kernel_size=3,
-                                                     strides=(2, 2),
-                                                     padding='valid',
-                                                     use_bias=False)
-            else:
-                conv_up2 = tf.layers.conv2d(level_us2,
-                                         filters=1,
-                                         kernel_size=3,
-                                         padding='same',
-                                         activation=None,
-                                         dilation_rate=1,
-                                         )
-                bn = tf.layers.batch_normalization(conv_up2, training=is_training, renorm=False)
-                bn = tf.nn.leaky_relu(bn)
-                loss_upsampling2 = self.upsampling3d.upsampling2d(bn,
-                                                                  scope='loss_upsampling2',
-                                                                  scale=2,
-                                                                  interpolator='trilinear',
-                                                                  padding_mode='SYMMETRIC',
-                                                                  padding_constant=0,
-                                                                  trainable=False,
-                                                                  padding='valid')
+                                               padding1='same', padding2='same',loop=config[3])
 
         with tf.variable_scope('conv_transpose2'):
             deconv2 = tf.layers.conv2d_transpose(level_us2,
@@ -443,14 +444,14 @@ class multi_task_cnn:
             conc23 = tf.concat([crop1, deconv2], -1)
 
         # level 1 of unet
-        [level_us3, crop0] = self.level_design(conc23, 'level_us3',
-                                               filters1=16,
-                                               filters2=16,
+        [level_us3, crop0] = self.dense_loop(conc23, 'level_us3',
+                                               filters1=32,
+                                               filters2=32,
                                                is_training=is_training,
                                                kernel_size=3,
                                                in_size=in_size0,
                                                crop_size=crop_size0,
-                                               padding1='same', padding2='same')
+                                               padding1='same', padding2='same',loop=config[4])
 
         with tf.variable_scope('last_layer'):
             conv1 = tf.layers.conv2d(level_us3,
@@ -467,10 +468,71 @@ class multi_task_cnn:
                              kernel_size=1,
                              padding='same',
                              activation=None,
-                             dilation_rate=1,
+                             dilation_rate=1,name='PET'
                              )
+            pet=tf.nn.tanh(y)
 
+        ####################################### ASL Fork
+        with tf.variable_scope('conv_transpose1_fork2'):
+            deconv1 = tf.layers.conv2d_transpose(level_ds3,
+                                                 filters=64,
+                                                 kernel_size=3,
+                                                 strides=(2, 2),
+                                                 padding='valid',
+                                                 use_bias=False)
 
+        with tf.variable_scope('concat1_fork2'):
+            conc12 = tf.concat([crop2, deconv1], -1)
+
+        # level 2 of unet
+        [level_us2, crop0] = self.dense_loop(conc12, 'level_us2_fork2',
+                                             filters1=64,
+                                             filters2=32,
+                                             is_training=is_training,
+                                             kernel_size=3,
+                                             in_size=in_size0,
+                                             crop_size=crop_size0,
+                                             padding1='same', padding2='same', loop=config[3])
+
+        with tf.variable_scope('conv_transpose2_fork2'):
+            deconv2 = tf.layers.conv2d_transpose(level_us2,
+                                                 filters=16,
+                                                 kernel_size=3,
+                                                 strides=(2, 2),
+                                                 padding='valid',
+                                                 use_bias=False)
+
+        with tf.variable_scope('concat2_fork2'):
+            conc23 = tf.concat([crop1, deconv2], -1)
+
+        # level 1 of unet
+        [level_us3, crop0] = self.dense_loop(conc23, 'level_us3_fork2',
+                                             filters1=32,
+                                             filters2=32,
+                                             is_training=is_training,
+                                             kernel_size=3,
+                                             in_size=in_size0,
+                                             crop_size=crop_size0,
+                                             padding1='same', padding2='same', loop=config[4])
+
+        with tf.variable_scope('last_layer_fork2'):
+            conv1 = tf.layers.conv2d(level_us3,
+                                     filters=8,
+                                     kernel_size=1,
+                                     padding='same',
+                                     activation=None,
+                                     dilation_rate=1,
+                                     )
+            bn = tf.layers.batch_normalization(conv1, training=is_training, renorm=False)
+            y = tf.nn.leaky_relu(bn)
+            y = tf.layers.conv2d(y,
+                                 filters=1,
+                                 kernel_size=1,
+                                 padding='same',
+                                 activation=None,
+                                 dilation_rate=1,name='ASL'
+                                 )
+            asl = tf.nn.tanh(y)
 
         # == == == == == == == == == == == == == == == == == == == == == ==
 
@@ -487,5 +549,5 @@ class multi_task_cnn:
 
 
 
-        return  y,augmented_data,loss_upsampling11,loss_upsampling2
+        return  pet, asl
 
