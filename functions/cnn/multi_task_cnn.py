@@ -481,8 +481,8 @@ class multi_stage_densenet:
                                                  padding='valid',
                                                  use_bias=False)
 
-        with tf.variable_scope('concat1_fork2'):
-            conc12 = tf.concat([crop2, deconv1], -1)
+        # with tf.variable_scope('concat1_fork2'):
+        #     conc12 = tf.concat([crop2, deconv1], -1)
 
         # level 2 of unet
         [level_us2, crop0] = self.dense_loop(conc12, 'level_us2_fork2',
@@ -502,8 +502,8 @@ class multi_stage_densenet:
                                                  padding='valid',
                                                  use_bias=False)
 
-        with tf.variable_scope('concat2_fork2'):
-            conc23 = tf.concat([crop1, deconv2], -1)
+        # with tf.variable_scope('concat2_fork2'):
+        #     conc23 = tf.concat([crop1, deconv2], -1)
 
         # level 1 of unet
         [level_us3, crop0] = self.dense_loop(conc23, 'level_us3_fork2',
