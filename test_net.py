@@ -10,6 +10,7 @@ from functions.reader.data_reader import _read_data
 from functions.cnn.multi_stage_denseunet import multi_stage_densenet
 from functions.measures.measures import _measure
 from functions.reader.image_class import image_class
+import pandas as pd
 import numpy as np
 import SimpleITK as sitk
 eps = 1E-5
@@ -93,14 +94,20 @@ def test_all_nets(out_dir,Log,which_data):
                                   is_training=0,
                                   inp_size=asl_size,
                                   out_size=pet_size)
+    list_ssim=[]
+    list_name=[]
     for scan in range(len(data)):
-
+        ss = str(data[scan]['asl']).split("/")
         imm = _image_class.read_image(data[scan])
-
+        try:
+            os.mkdir(parent_path + Log + out_dir +ss[-3])
+        except:
+            a=1
+        os.mkdir(parent_path + Log + out_dir +ss[-3]+'/'+ss[-1].split(".")[0].split("ASL_")[1])
         for img_indx in range(np.shape(imm[3])[0]):
             print('img_indx:%s' %(img_indx))
-            ss = str(data[scan]['asl']).split("/")
-            name =ss[-3] + '_' +ss[-2] + '_' + ss[-1].split(".")[0].split("ASL_")[1]+'_'+str(img_indx)
+
+            name =ss[-3] + '_' +ss[-2] + '_' +str(img_indx)
             # name = (ss[10] + '_' + ss[11] + '_' + ss[12].split('%')[0]).split('_CT')[0]
             tic = time.time()
             t1 = imm[3][img_indx,
@@ -120,22 +127,38 @@ def test_all_nets(out_dir,Log,which_data):
                                                        is_training: False,
                                                        ave_loss_vali: -1,
                                                        is_training_bn: False})
+            
             # plt.imshow(np.squeeze(out))
             # plt.figure()
             # plt.imshow(np.squeeze(pet))
             ssim=1-loss
+            list_ssim.append(ssim)
+            list_name.append(ss[-3]+'_'+ss[-1].split(".")[0].split("ASL_")[1] + '_t1_'+name)
             print(ssim)
-            matplotlib.image.imsave(parent_path + Log + out_dir + 't1_'+name+'.png', np.squeeze(t1))
-            matplotlib.image.imsave(parent_path + Log + out_dir + 'asl_'+name+'_'+'.png', np.squeeze(asl))
-            matplotlib.image.imsave(parent_path + Log + out_dir + 'pet_'+name+'_'+'.png', np.squeeze(pet))
-            matplotlib.image.imsave(parent_path + Log + out_dir + 'res_'+name+'_'+str(ssim)+'.png', np.squeeze(out))
+            matplotlib.image.imsave(parent_path + Log + out_dir+ss[-3]+'/'+ss[-1].split(".")[0].split("ASL_")[1] + '/t1_'+name+'.png', np.squeeze(t1), cmap='gray')
+            matplotlib.image.imsave(parent_path + Log + out_dir +ss[-3]+'/'+ss[-1].split(".")[0].split("ASL_")[1]+ '/asl_'+name+'_'+'.png', np.squeeze(asl), cmap='gray')
+            matplotlib.image.imsave(parent_path + Log + out_dir +ss[-3]+'/'+ss[-1].split(".")[0].split("ASL_")[1]+ '/pet_'+name+'_'+'.png', np.squeeze(pet), cmap='gray')
+            matplotlib.image.imsave(parent_path + Log + out_dir +ss[-3]+'/'+ ss[-1].split(".")[0].split("ASL_")[1]+'/res_'+name+'_'+str(ssim)+'.png', np.squeeze(out), cmap='gray')
 
             elapsed = time.time() - tic
 
 
+    df = pd.DataFrame(list_ssim,
+                     columns=pd.Index(['ssim'],
+                     name='Genus')).round(2)
+    # Create a Pandas Excel writer using XlsxWriter as the engine.
+    writer = pd.ExcelWriter(parent_path + Log + out_dir+'/all_ssim.xlsx',
+                            engine='xlsxwriter')
+    # Convert the dataframe to an XlsxWriter Excel object.
+    df.to_excel(writer, sheet_name='Sheet1')
+    # Close the Pandas Excel writer and output the Excel file.
+    writer.save()
+
+    print(parent_path + Log + out_dir + '/all_ssim.xlsx')
+
 if __name__=="__main__":
     Log="Log_asl_pet/denseunet_multistage_mssim7/"
-    which_data = 3
+    which_data = 1
     if which_data==1:
         out_dir="0_vali_result/"
     elif which_data==2:
