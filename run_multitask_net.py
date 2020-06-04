@@ -29,7 +29,7 @@ if __name__ == '__main__':
     tf.set_random_seed(1)
 
     server_path = '/exports/lkeb-hpc/syousefi/Code/'
-    Logs = 'Log_asl_pet/denseunet_multitask_01/'
+    Logs = 'Log_asl_pet/denseunet_multitask_02/'
 
     # use mixed precision
     mixed_precision = True

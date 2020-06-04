@@ -36,7 +36,7 @@ def submit_job():
     # Slurm
     setting['cluster_MemPerCPU'] = 6200   #2200  # 6200
     setting['cluster_Partition'] = queue             # 'gpu', 'LKEBgpu'
-    setting['cluster_NodeList'] = 'res-hpc-lkeb05'    # None, LKEBgpu: ['res-hpc-lkeb03', 'res-hpc-lkeb02', 'res-hpc-gpu01']
+    setting['cluster_NodeList'] = 'res-hpc-lkeb03'    # None, LKEBgpu: ['res-hpc-lkeb03', 'res-hpc-lkeb02', 'res-hpc-gpu01']
     setting['cluster_NumberOfCPU'] = 7#10 #3               # Number of CPU per job
     setting['cluster_where_to_run'] = 'Cluster'      # 'Cluster', 'Auto'
     setting['cluster_venv_slurm'] = '/exports/lkeb-hpc/syousefi/Programs/'+TF+'/bin/activate'  # venv path
@@ -69,7 +69,7 @@ def write_and_submit_job(setting, manager, job_name, script_address):
     # job_output_file = job_script_folder + 'output.txt'
 
     server_path = '/exports/lkeb-hpc/syousefi/Code/'
-    backup_folder='Log_asl_pet/denseunet_ssim_l1_noiseaug2/'
+    backup_folder='Log_asl_pet/denseunet_ssim_l1/'
     job_script_folder = server_path+backup_folder+'Jobs/'
     job_output_file =job_script_folder+'output.txt'
 
