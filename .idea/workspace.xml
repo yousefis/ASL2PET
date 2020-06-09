@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="19949bfa-827e-4252-b412-827257a1f8f6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/run_hybrid_multitask_net.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/network_caller/net_translate.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions/network_caller/net_translate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run_net.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_net.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/submit_job.py" beforeDir="false" afterPath="$PROJECT_DIR$/submit_job.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,16 +15,17 @@
     <session id="-1943779844">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="8" />
+          <entry key="project.closed" value="9" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.12" value="1" />
           <entry key="project.open.time.13" value="2" />
           <entry key="project.open.time.14" value="1" />
+          <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.16" value="1" />
           <entry key="project.open.time.17" value="1" />
-          <entry key="project.open.time.2" value="4" />
+          <entry key="project.open.time.2" value="5" />
           <entry key="project.open.time.22" value="1" />
           <entry key="project.open.time.26" value="1" />
           <entry key="project.open.time.3" value="1" />
@@ -34,15 +33,15 @@
           <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.9" value="3" />
-          <entry key="project.opened" value="22" />
+          <entry key="project.opened" value="24" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="gitignore" value="4" />
+          <entry key="gitignore" value="5" />
           <entry key="md" value="3" />
           <entry key="png" value="1" />
-          <entry key="py" value="308" />
+          <entry key="py" value="313" />
           <entry key="pyi" value="1" />
           <entry key="sh" value="3" />
           <entry key="ssim" value="4" />
@@ -55,8 +54,8 @@
           <entry key="Bash" value="3" />
           <entry key="Image" value="1" />
           <entry key="Markdown" value="3" />
-          <entry key="PLAIN_TEXT" value="6" />
-          <entry key="Python" value="312" />
+          <entry key="PLAIN_TEXT" value="7" />
+          <entry key="Python" value="317" />
           <entry key="PythonStub" value="1" />
           <entry key="XML" value="1" />
         </counts>
@@ -65,7 +64,7 @@
         <counts>
           <entry key="dummy" value="3" />
           <entry key="gitignore" value="29" />
-          <entry key="py" value="10159" />
+          <entry key="py" value="10166" />
           <entry key="sh" value="1" />
           <entry key="ssim" value="69" />
           <entry key="txt" value="418" />
@@ -75,7 +74,7 @@
         <counts>
           <entry key="Bash" value="1" />
           <entry key="PLAIN_TEXT" value="450" />
-          <entry key="Python" value="10228" />
+          <entry key="Python" value="10235" />
         </counts>
       </usages-collector>
     </session>
@@ -83,52 +82,28 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/run_net.py">
+        <entry file="file://$PROJECT_DIR$/submit_job_multitask.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="94">
-              <caret line="31" column="43" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="43" />
-              <folding>
-                <element signature="e#461#490#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="322">
+              <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/run_multitask_net.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="49">
+              <caret line="31" column="32" lean-forward="true" selection-start-line="31" selection-start-column="32" selection-end-line="31" selection-end-column="32" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/submit_job.py">
+        <entry file="file://$PROJECT_DIR$/run_hybrid_multitask_net.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/functions/network_caller/net_translate.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="39" column="34" selection-start-line="39" selection-start-column="34" selection-end-line="39" selection-end-column="34" />
-              <folding>
-                <element signature="e#461#474#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/functions/cnn/multi_task_cnn.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="66">
-              <caret line="422" column="52" lean-forward="true" selection-start-line="422" selection-start-column="52" selection-end-line="422" selection-end-column="52" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/submit_job_multitask.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="71" column="44" selection-start-line="71" selection-start-column="32" selection-end-line="71" selection-end-column="44" />
+            <state relative-caret-position="225">
+              <caret line="15" column="37" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -144,8 +119,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>out</find>
-      <find>read_image</find>
       <find>image_c</find>
       <find>loss</find>
       <find>collection.a</find>
@@ -174,6 +147,8 @@
       <find>backup_folder</find>
       <find>cost</find>
       <find>denseunet_ssim_l1_2</find>
+      <find>summ</find>
+      <find>ave_loss_vali</find>
     </findStrings>
     <replaceStrings>
       <replace>CT_image_patchs</replace>
@@ -198,7 +173,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/reader/data_reader.py" />
         <option value="$PROJECT_DIR$/cnn/multi_stage_denseunet2.py" />
         <option value="$PROJECT_DIR$/reader/patch_extractor.py" />
         <option value="$PROJECT_DIR$/reader/image_class.py" />
@@ -249,6 +223,7 @@
         <option value="$PROJECT_DIR$/run_net.py" />
         <option value="$PROJECT_DIR$/functions/network_caller/net_translate.py" />
         <option value="$PROJECT_DIR$/submit_job.py" />
+        <option value="$PROJECT_DIR$/run_hybrid_multitask_net.py" />
       </list>
     </option>
   </component>
@@ -288,6 +263,9 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/functions" />
@@ -307,7 +285,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.submit_job">
+  <component name="RunManager" selected="Python.test_net">
     <configuration name="run_multitask_net" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ASL_PET_translation--001" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -422,10 +400,10 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.test_net" />
         <item itemvalue="Python.submit_job" />
         <item itemvalue="Python.run_net" />
         <item itemvalue="Python.submit_job_multitask" />
-        <item itemvalue="Python.test_net" />
         <item itemvalue="Python.run_multitask_net" />
       </list>
     </recent_temporary>
@@ -630,25 +608,33 @@
       <option name="project" value="LOCAL" />
       <updated>1591257620278</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="multi task learning. pet with &amp; asl without skip connections.">
+      <created>1591368833746</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1591368833746</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="8" y="30" width="1276" height="738" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1816733" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21354581" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.8565737" visible="true" weight="0.43701398" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.8557769" visible="true" weight="0.2488336" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.85338646" weight="0.29393467" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.1434263" side_tool="true" visible="true" weight="0.43701398" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.14422311" side_tool="true" visible="true" weight="0.2488336" />
       <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -908,17 +894,7 @@ print('/exports/lkeb-hpc/syousefi/Code/Log_asl_pet/denseunet_multistage_mssim7/0
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/3/shutil.pyi">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/0_Log_asl_pet/net35753/backup-20200514_162812/Jobs/output.txt" />
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="11" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../Programs/TF112/lib/python3.6/site-packages/tensorflow/python/ops/math_ops.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="139">
@@ -1049,10 +1025,6 @@ print('/exports/lkeb-hpc/syousefi/Code/Log_asl_pet/denseunet_multistage_mssim7/0
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="314">
           <caret line="192" column="17" selection-start-line="192" selection-start-column="17" selection-end-line="192" selection-end-column="17" />
-          <folding>
-            <marker date="1589818552315" expanded="true" signature="753:761" ph="..." />
-            <marker date="1589818552315" expanded="true" signature="787:794" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1088,9 +1060,6 @@ print('/exports/lkeb-hpc/syousefi/Code/Log_asl_pet/denseunet_multistage_mssim7/0
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
           <caret line="371" column="74" lean-forward="true" selection-start-line="371" selection-start-column="74" selection-end-line="371" selection-end-column="74" />
-          <folding>
-            <element signature="e#478#489#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1188,40 +1157,6 @@ print('/exports/lkeb-hpc/syousefi/Code/Log_asl_pet/denseunet_multistage_mssim7/0
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_net.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="110" column="56" lean-forward="true" selection-start-line="110" selection-end-line="111" />
-          <folding>
-            <element signature="e#17#48#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/functions/cnn/multi_task_cnn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="422" column="52" lean-forward="true" selection-start-line="422" selection-start-column="52" selection-end-line="422" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/submit_job_multitask.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="71" column="44" selection-start-line="71" selection-start-column="32" selection-end-line="71" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/run_multitask_net.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="47" column="18" selection-start-line="47" selection-start-column="18" selection-end-line="47" selection-end-column="18" />
-          <folding>
-            <element signature="e#461#490#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/functions/network_caller/multi_task_translate.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="201">
@@ -1232,10 +1167,41 @@ print('/exports/lkeb-hpc/syousefi/Code/Log_asl_pet/denseunet_multistage_mssim7/0
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/functions/cnn/multi_task_cnn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="422" column="52" selection-start-line="422" selection-start-column="52" selection-end-line="422" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/submit_job.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_net.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="667">
+          <caret line="138" column="150" selection-start-line="138" selection-start-column="150" selection-end-line="138" selection-end-column="150" />
+          <folding>
+            <element signature="e#17#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="11" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/functions/network_caller/net_translate.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="39" column="34" selection-start-line="39" selection-start-column="34" selection-end-line="39" selection-end-column="34" />
+        <state relative-caret-position="118">
+          <caret line="367" column="69" selection-start-line="367" selection-start-column="56" selection-end-line="367" selection-end-column="69" />
           <folding>
             <element signature="e#461#474#0" expanded="true" />
           </folding>
@@ -1244,18 +1210,32 @@ print('/exports/lkeb-hpc/syousefi/Code/Log_asl_pet/denseunet_multistage_mssim7/0
     </entry>
     <entry file="file://$PROJECT_DIR$/run_net.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="94">
-          <caret line="31" column="43" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="43" />
+        <state relative-caret-position="289">
+          <caret line="47" column="19" lean-forward="true" selection-start-line="47" selection-start-column="19" selection-end-line="47" selection-end-column="19" />
           <folding>
             <element signature="e#461#490#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/submit_job.py">
+    <entry file="file://$PROJECT_DIR$/submit_job_multitask.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+        <state relative-caret-position="322">
+          <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run_multitask_net.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="49">
+          <caret line="31" column="32" lean-forward="true" selection-start-line="31" selection-start-column="32" selection-end-line="31" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run_hybrid_multitask_net.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="37" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
         </state>
       </provider>
     </entry>
