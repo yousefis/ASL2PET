@@ -507,7 +507,7 @@ class multi_stage_densenet:
         #     conc12 = tf.concat([crop2, deconv1], -1)
 
         # level 2 of unet
-        [level_us2, crop0] = self.dense_loop(conc12, 'level_us2_fork2',
+        [level_us2, crop0] = self.dense_loop(deconv1, 'level_us2_fork2',
                                              filters1=64,
                                              filters2=32,
                                              is_training=is_training,
@@ -532,7 +532,7 @@ class multi_stage_densenet:
         #     conc23 = tf.concat([crop1, deconv2], -1)
 
         # level 1 of unet
-        [level_us3, crop0] = self.dense_loop(conc23, 'level_us3_fork2',
+        [level_us3, crop0] = self.dense_loop(deconv2, 'level_us3_fork2',
                                              filters1=32,
                                              filters2=32,
                                              is_training=is_training,
@@ -560,7 +560,7 @@ class multi_stage_densenet:
                                  padding='same',
                                  activation=None,
                                  dilation_rate=1,name='ASL',
-                                               trainable=True
+                                 trainable=True
                                  )
             asl = tf.nn.tanh(y)
 
