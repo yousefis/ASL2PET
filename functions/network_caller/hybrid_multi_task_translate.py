@@ -161,6 +161,7 @@ class net_translate:
         asl_y,pet_y = msdensnet.multi_stage_densenet(asl_img=asl_plchld,
                                                    t1_img=t1_plchld,
                                                    pet_img=pet_plchld,
+                                                   hybrid_training_flag=hybrid_training_flag,
                                                    input_dim=77,
                                                    is_training=is_training,
                                                    config=self.config)

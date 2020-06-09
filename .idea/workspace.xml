@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="19949bfa-827e-4252-b412-827257a1f8f6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/cnn/hybrid_multi_task_cnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions/cnn/hybrid_multi_task_cnn.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/functions/network_caller/hybrid_multi_task_translate.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions/network_caller/hybrid_multi_task_translate.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -41,7 +42,7 @@
           <entry key="gitignore" value="5" />
           <entry key="md" value="3" />
           <entry key="png" value="1" />
-          <entry key="py" value="323" />
+          <entry key="py" value="324" />
           <entry key="pyi" value="1" />
           <entry key="sh" value="3" />
           <entry key="ssim" value="4" />
@@ -55,7 +56,7 @@
           <entry key="Image" value="1" />
           <entry key="Markdown" value="3" />
           <entry key="PLAIN_TEXT" value="7" />
-          <entry key="Python" value="327" />
+          <entry key="Python" value="328" />
           <entry key="PythonStub" value="1" />
           <entry key="XML" value="1" />
         </counts>
@@ -64,30 +65,42 @@
         <counts>
           <entry key="dummy" value="3" />
           <entry key="gitignore" value="29" />
-          <entry key="py" value="10378" />
+          <entry key="py" value="10454" />
           <entry key="sh" value="1" />
           <entry key="ssim" value="69" />
-          <entry key="txt" value="459" />
+          <entry key="txt" value="645" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Bash" value="1" />
-          <entry key="PLAIN_TEXT" value="491" />
-          <entry key="Python" value="10447" />
+          <entry key="PLAIN_TEXT" value="677" />
+          <entry key="Python" value="10523" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/functions/network_caller/hybrid_multi_task_translate.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-961">
-              <caret line="344" column="98" selection-start-line="344" selection-start-column="98" selection-end-line="344" selection-end-column="98" />
+            <state relative-caret-position="284">
+              <caret line="160" column="47" selection-start-line="160" selection-start-column="47" selection-end-line="160" selection-end-column="47" />
               <folding>
                 <element signature="e#461#474#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/functions/cnn/hybrid_multi_task_cnn.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="314">
+              <caret line="562" column="61" selection-start-line="562" selection-start-column="61" selection-end-line="562" selection-end-column="61" />
+              <folding>
+                <element signature="e#478#489#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -117,11 +130,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>image_c</find>
-      <find>loss</find>
-      <find>collection.a</find>
-      <find>asl2</find>
-      <find>pet_plchld</find>
       <find>smth</find>
       <find>ssim</find>
       <find>copy</find>
@@ -147,6 +155,11 @@
       <find>ave_loss_vali</find>
       <find>.py</find>
       <find>cost</find>
+      <find>unet</find>
+      <find>une</find>
+      <find>multi_stage_densenet</find>
+      <find>level_design</find>
+      <find>paddingfree_conv</find>
     </findStrings>
     <replaceStrings>
       <replace>CT_image_patchs</replace>
@@ -171,7 +184,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/reader/image_class.py" />
         <option value="$PROJECT_DIR$/losses/ssim_loss.py" />
         <option value="$PROJECT_DIR$/cnn/multi_task_cnn.py" />
         <option value="$PROJECT_DIR$/network_caller/multi_task_translate.py" />
@@ -222,6 +234,7 @@
         <option value="$PROJECT_DIR$/run_hybrid_multitask_net.py" />
         <option value="$PROJECT_DIR$/submit_job_hybrid_multitask.py" />
         <option value="$PROJECT_DIR$/functions/network_caller/hybrid_multi_task_translate.py" />
+        <option value="$PROJECT_DIR$/functions/cnn/hybrid_multi_task_cnn.py" />
       </list>
     </option>
   </component>
@@ -641,7 +654,14 @@
       <option name="project" value="LOCAL" />
       <updated>1591713042258</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="add hybrid_training_flag for managing the training in the network, this var. is updated based on the length of pet patches">
+      <created>1591714142055</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1591714142055</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -689,7 +709,8 @@
     <MESSAGE value="multi task learning. pet with &amp; asl without skip connections." />
     <MESSAGE value="hybrid multi-task learning" />
     <MESSAGE value="submit hybrid multi-task learning" />
-    <option name="LAST_COMMIT_MESSAGE" value="submit hybrid multi-task learning" />
+    <MESSAGE value="add hybrid_training_flag for managing the training in the network, this var. is updated based on the length of pet patches" />
+    <option name="LAST_COMMIT_MESSAGE" value="add hybrid_training_flag for managing the training in the network, this var. is updated based on the length of pet patches" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1221,16 +1242,6 @@ print('/exports/lkeb-hpc/syousefi/Code/Log_asl_pet/denseunet_multistage_mssim7/0
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/functions/cnn/hybrid_multi_task_cnn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="37" column="56" lean-forward="true" selection-start-line="37" selection-start-column="56" selection-end-line="37" selection-end-column="56" />
-          <folding>
-            <element signature="e#478#489#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/submit_job_multitask.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="307">
@@ -1288,10 +1299,20 @@ print('/exports/lkeb-hpc/syousefi/Code/Log_asl_pet/denseunet_multistage_mssim7/0
     </entry>
     <entry file="file://$PROJECT_DIR$/functions/network_caller/hybrid_multi_task_translate.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-961">
-          <caret line="344" column="98" selection-start-line="344" selection-start-column="98" selection-end-line="344" selection-end-column="98" />
+        <state relative-caret-position="284">
+          <caret line="160" column="47" selection-start-line="160" selection-start-column="47" selection-end-line="160" selection-end-column="47" />
           <folding>
             <element signature="e#461#474#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functions/cnn/hybrid_multi_task_cnn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="314">
+          <caret line="562" column="61" selection-start-line="562" selection-start-column="61" selection-end-line="562" selection-end-column="61" />
+          <folding>
+            <element signature="e#478#489#0" expanded="true" />
           </folding>
         </state>
       </provider>
