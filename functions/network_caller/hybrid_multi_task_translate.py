@@ -148,7 +148,9 @@ class net_translate:
         pet_plchld = tf.placeholder(tf.float32, shape=[self.batch_no, self.pet_size, self.pet_size, 1])
         asl_out_plchld = tf.placeholder(tf.float32, shape=[self.batch_no, self.pet_size, self.pet_size, 1])
 
-        ave_loss_vali = tf.placeholder(tf.float32)
+        ave_loss_vali = tf.placeholder(tf.float32,name='ave_loss_vali')
+        # True: train in a multi-task fashion, False: train in a single-task fashion
+        hybrid_training_flag = tf.placeholder(tf.float32,name='hybrid_training_flag')
 
         is_training = tf.placeholder(tf.bool, name='is_training')
         is_training_bn = tf.placeholder(tf.bool, name='is_training_bn')
@@ -223,7 +225,7 @@ class net_translate:
 
             ssim_pet = tf.reduce_mean(1 - SSIM(x1=pet_plchld, x2=pet_y, max_val=2.1)[0])
             loss_pet = alpha * ssim_pet + (1 - alpha) * tf.reduce_mean(huber(labels=pet_plchld, logit=pet_y))
-            cost = loss_asl+loss_pet
+            cost = tf.cond(hybrid_training_flag, lambda: tf.add(loss_asl,loss_pet), lambda: loss_asl)
 
         tf.summary.scalar("cost", cost)
         # tf.summary.scalar("denominator", denominator)
@@ -285,7 +287,10 @@ class net_translate:
                             time.sleep(0.5)
                             # print('sleep 3 validation')
                             continue
-
+                        if len(validation_pet_slices):
+                            hybrid_training_f = True
+                        else:
+                            hybrid_training_f = False
                         tic = time.time()
                         [loss_vali] = sess.run([cost],
                                                feed_dict={asl_plchld: validation_asl_slices,
@@ -299,6 +304,7 @@ class net_translate:
                                                           is_training: False,
                                                           ave_loss_vali: -1,
                                                           is_training_bn: False,
+                                                          hybrid_training_flag:hybrid_training_f
                                                           })
                         elapsed = time.time() - tic
                         loss_validation += loss_vali
@@ -336,6 +342,7 @@ class net_translate:
                                                            is_training: False,
                                                            ave_loss_vali: loss_validation,
                                                            is_training_bn: False,
+                                                           hybrid_training_flag: hybrid_training_f
                                                            })
 
                     validation_writer.add_summary(sum_validation, point)
@@ -357,7 +364,10 @@ class net_translate:
                         continue
 
                     tic = time.time()
-
+                    if len(train_pet_slices):
+                        hybrid_training_f = True
+                    else:
+                        hybrid_training_f = False
                     [loss_train1, opt, ] = sess.run([cost, optimizer, ],
                                                     feed_dict={asl_plchld: train_asl_slices,
                                                                t1_plchld: train_t1_slices,
@@ -369,7 +379,8 @@ class net_translate:
                                                                          int(self.asl_size/2)+int(self.pet_size/2),:],
                                                                is_training: True,
                                                                ave_loss_vali: -1,
-                                                               is_training_bn: True})
+                                                               is_training_bn: True,
+                                                               hybrid_training_flag: hybrid_training_f})
                     elapsed = time.time() - tic
                     [sum_train] = sess.run([summ],
                                            feed_dict={asl_plchld: train_asl_slices,
@@ -382,7 +393,8 @@ class net_translate:
                                                                          int(self.asl_size/2)+int(self.pet_size/2),:],
                                                       is_training: False,
                                                       ave_loss_vali: loss_train1,
-                                                      is_training_bn: False
+                                                      is_training_bn: False,
+                                                      hybrid_training_flag: hybrid_training_f
                                                       })
                     train_writer.add_summary(sum_train, point)
                     train_writer.flush()
