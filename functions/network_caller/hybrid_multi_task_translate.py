@@ -26,7 +26,7 @@ import psutil
 # calculate the dice coefficient
 from shutil import copyfile
 from functions.reader.patch_extractor import _patch_extractor_thread
-from functions.reader.data_reader import _read_data
+from functions.reader.data_reader_hybrid import _read_data
 from functions.losses.L1 import huber
 
 
@@ -88,13 +88,13 @@ class net_translate:
             nb_params = nb_params * int(dim)
         return nb_params
 
-    def run_net(self):
+    def run_net(self,no_averages):
 
         self.alpha_coeff = 1
 
         '''read path of the images for train, test, and validation'''
         _rd = _read_data(self.data_path)
-        train_data, validation_data, test_data = _rd.read_data_path()
+        train_data, validation_data, test_data = _rd.read_data_path(average_no=no_averages)
 
         # ======================================
         bunch_of_images_no = 1

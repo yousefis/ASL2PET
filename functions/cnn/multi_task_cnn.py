@@ -549,5 +549,5 @@ class multi_stage_densenet:
 
 
 
-        return  pet, asl
+        return  asl,pet
 

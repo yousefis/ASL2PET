@@ -146,9 +146,9 @@ class _read_data:
         return CT_image, GTV_image, Torso_image, Penalize_image, GTV_image.shape[0], voxel_size, origin, direction
 
     # ========================
-    def read_data_path(self):  # join(self.resampled_path, f)
+    def read_data_path(self,average_no=52):  # join(self.resampled_path, f)
         print('Reading images from hard drive!')
-        average_no=52
+
         data_dir = [join(self.data_path, f)
                     for f in listdir(self.data_path)
                     if (not (isfile(join(self.data_path, f))) and

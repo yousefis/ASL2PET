@@ -23,7 +23,7 @@ if __name__ == '__main__':
     this function calls the translation network
 
     '''
-
+    no_averages=32
     config = [1, 3, 1, 3, 1]
     np.random.seed(1)
     tf.set_random_seed(1)
@@ -47,6 +47,6 @@ if __name__ == '__main__':
 
     dc12 = net_translate(data_path="/exports/lkeb-hpc/syousefi/Data/asl_pet/", server_path=server_path, Logs=Logs,
                          config=config)
-    dc12.run_net()
+    dc12.run_net(no_averages)
 
 
