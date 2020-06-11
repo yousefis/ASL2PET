@@ -45,7 +45,9 @@ if __name__ == '__main__':
     now = datetime.now()
     date_time = now.strftime("%m%d%Y_%H")
 
-    dc12 = net_translate(data_path="/exports/lkeb-hpc/syousefi/Data/asl_pet/", server_path=server_path, Logs=Logs,
+    dc12 = net_translate(data_path_AMUC="/exports/lkeb-hpc/syousefi/Data/asl_pet/",
+                         data_path_LUMC="/exports/lkeb-hpc/syousefi/Data/asl_pet2/",
+                         server_path=server_path, Logs=Logs,
                          config=config)
     dc12.run_net(no_averages)
 

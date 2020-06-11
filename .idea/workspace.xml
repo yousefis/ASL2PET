@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="19949bfa-827e-4252-b412-827257a1f8f6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/functions/reader/data_reader_hybrid.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/cnn/multi_task_cnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions/cnn/multi_task_cnn.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/functions/network_caller/hybrid_multi_task_translate.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions/network_caller/hybrid_multi_task_translate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/reader/data_reader.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions/reader/data_reader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/reader/data_reader_hybrid.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions/reader/data_reader_hybrid.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run_hybrid_multitask_net.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_hybrid_multitask_net.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -67,28 +66,28 @@
         <counts>
           <entry key="dummy" value="3" />
           <entry key="gitignore" value="29" />
-          <entry key="py" value="10487" />
+          <entry key="py" value="10613" />
           <entry key="sh" value="1" />
           <entry key="ssim" value="69" />
-          <entry key="txt" value="895" />
+          <entry key="txt" value="913" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Bash" value="1" />
-          <entry key="PLAIN_TEXT" value="927" />
-          <entry key="Python" value="10556" />
+          <entry key="PLAIN_TEXT" value="945" />
+          <entry key="Python" value="10682" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/functions/reader/data_reader_hybrid.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="122">
-              <caret line="148" column="38" selection-start-line="148" selection-start-column="28" selection-end-line="148" selection-end-column="38" />
+            <state relative-caret-position="135">
+              <caret line="160" column="12" selection-start-line="160" selection-start-column="12" selection-end-line="160" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -96,7 +95,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/run_hybrid_multitask_net.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="343">
+            <state relative-caret-position="404">
               <caret line="47" column="19" selection-start-line="47" selection-start-column="19" selection-end-line="47" selection-end-column="19" />
               <folding>
                 <element signature="e#461#490#0" expanded="true" />
@@ -105,11 +104,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/functions/network_caller/hybrid_multi_task_translate.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="62">
-              <caret line="90" column="32" selection-start-line="90" selection-start-column="32" selection-end-line="90" selection-end-column="32" />
+            <state relative-caret-position="166">
+              <caret line="96" column="20" lean-forward="true" selection-start-line="96" selection-start-column="20" selection-end-line="96" selection-end-column="20" />
               <folding>
                 <element signature="e#461#474#0" expanded="true" />
               </folding>
@@ -128,9 +127,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>dense_loop</find>
-      <find>conca</find>
-      <find>ssim_l1</find>
       <find>l1</find>
       <find>net</find>
       <find>concat</find>
@@ -158,6 +154,9 @@
       <find>_read_data</find>
       <find>read_data_path</find>
       <find>52</find>
+      <find>run_ne</find>
+      <find>data_path_LUMC</find>
+      <find>data_path_AMUC</find>
     </findStrings>
     <replaceStrings>
       <replace>CT_image_patchs</replace>
@@ -223,7 +222,6 @@
         <option value="$PROJECT_DIR$/run_net.py" />
         <option value="$PROJECT_DIR$/functions/network_caller/net_translate.py" />
         <option value="$PROJECT_DIR$/submit_job.py" />
-        <option value="$PROJECT_DIR$/run_hybrid_multitask_net.py" />
         <option value="$PROJECT_DIR$/submit_job_hybrid_multitask.py" />
         <option value="$PROJECT_DIR$/run_multitask_net.py" />
         <option value="$PROJECT_DIR$/submit_job_multitask.py" />
@@ -231,8 +229,9 @@
         <option value="$PROJECT_DIR$/functions/cnn/multi_task_cnn.py" />
         <option value="$PROJECT_DIR$/functions/cnn/hybrid_multi_task_cnn.py" />
         <option value="$PROJECT_DIR$/functions/reader/data_reader.py" />
-        <option value="$PROJECT_DIR$/functions/reader/data_reader_hybrid.py" />
         <option value="$PROJECT_DIR$/functions/network_caller/hybrid_multi_task_translate.py" />
+        <option value="$PROJECT_DIR$/run_hybrid_multitask_net.py" />
+        <option value="$PROJECT_DIR$/functions/reader/data_reader_hybrid.py" />
       </list>
     </option>
   </component>
@@ -675,7 +674,14 @@
       <option name="project" value="LOCAL" />
       <updated>1591716191761</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="hybrid data reader">
+      <created>1591889889889</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1591889889889</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -694,7 +700,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.14422311" side_tool="true" visible="true" weight="0.16485226" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.14422311" side_tool="true" visible="true" weight="0.102643855" />
       <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -727,7 +733,8 @@
     <MESSAGE value="add trainable flag to all the layers of the network to manage training for different types of patches" />
     <MESSAGE value="solving a mistake for removing the skip connections" />
     <MESSAGE value="submit job and running multi task after solving the skip-connection problem" />
-    <option name="LAST_COMMIT_MESSAGE" value="submit job and running multi task after solving the skip-connection problem" />
+    <MESSAGE value="hybrid data reader" />
+    <option name="LAST_COMMIT_MESSAGE" value="hybrid data reader" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -811,6 +818,11 @@
           <url>file://$PROJECT_DIR$/functions/cnn/hybrid_multi_task_cnn.py</url>
           <line>14</line>
           <option name="timeStamp" value="350" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/functions/reader/data_reader_hybrid.py</url>
+          <line>163</line>
+          <option name="timeStamp" value="351" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -1212,6 +1224,9 @@ print('/exports/lkeb-hpc/syousefi/Code/Log_asl_pet/denseunet_multistage_mssim7/0
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="118">
           <caret line="367" column="69" selection-start-line="367" selection-start-column="56" selection-end-line="367" selection-end-column="69" />
+          <folding>
+            <element signature="e#461#474#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1219,6 +1234,9 @@ print('/exports/lkeb-hpc/syousefi/Code/Log_asl_pet/denseunet_multistage_mssim7/0
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="47" column="19" lean-forward="true" selection-start-line="47" selection-start-column="19" selection-end-line="47" selection-end-column="19" />
+          <folding>
+            <element signature="e#461#490#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1304,7 +1322,7 @@ print('/exports/lkeb-hpc/syousefi/Code/Log_asl_pet/denseunet_multistage_mssim7/0
     </entry>
     <entry file="file://$PROJECT_DIR$/run_hybrid_multitask_net.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
+        <state relative-caret-position="404">
           <caret line="47" column="19" selection-start-line="47" selection-start-column="19" selection-end-line="47" selection-end-column="19" />
           <folding>
             <element signature="e#461#490#0" expanded="true" />
@@ -1312,20 +1330,20 @@ print('/exports/lkeb-hpc/syousefi/Code/Log_asl_pet/denseunet_multistage_mssim7/0
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/functions/reader/data_reader_hybrid.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="148" column="38" selection-start-line="148" selection-start-column="28" selection-end-line="148" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/functions/network_caller/hybrid_multi_task_translate.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="62">
-          <caret line="90" column="32" selection-start-line="90" selection-start-column="32" selection-end-line="90" selection-end-column="32" />
+        <state relative-caret-position="166">
+          <caret line="96" column="20" lean-forward="true" selection-start-line="96" selection-start-column="20" selection-end-line="96" selection-end-column="20" />
           <folding>
             <element signature="e#461#474#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functions/reader/data_reader_hybrid.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="160" column="12" selection-start-line="160" selection-start-column="12" selection-end-line="160" selection-end-column="12" />
         </state>
       </provider>
     </entry>

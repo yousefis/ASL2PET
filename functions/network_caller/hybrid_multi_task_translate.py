@@ -32,9 +32,10 @@ from functions.losses.L1 import huber
 
 # --------------------------------------------------------------------------------------------------------
 class net_translate:
-    def __init__(self, data_path, server_path, Logs, config):
+    def __init__(self, data_path_AMUC,data_path_LUMC, server_path, Logs, config):
         settings.init()
-        self.data_path = data_path
+        self.data_path_AMUC = data_path_AMUC
+        self.data_path_LUMC = data_path_LUMC
         self.validation_samples = 200
         self.Logs = Logs
         self.LOGDIR = server_path + self.Logs + '/'
@@ -93,7 +94,7 @@ class net_translate:
         self.alpha_coeff = 1
 
         '''read path of the images for train, test, and validation'''
-        _rd = _read_data(self.data_path)
+        _rd = _read_data(self.data_path_AMUC,self.data_path_LUMC)
         train_data, validation_data, test_data = _rd.read_data_path(average_no=no_averages)
 
         # ======================================
