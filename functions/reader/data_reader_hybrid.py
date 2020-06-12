@@ -157,7 +157,27 @@ class _read_data:
         data_dir_lumc.sort()
         triple_data_lumc = []
         tags = ['checkerboard.nii', 'motor.nii', 'rest.nii', 'tomenjerry.nii']
-        for pp in triple_data_lumc:
+        for pp in data_dir_lumc:
+            asl_dir = pp + '/ASL_' + str(average_no) + '/'
+            asls = [join(asl_dir, f)
+                    for f in listdir(asl_dir)
+                    if ((isfile(join(asl_dir, f))))]
+            asls.sort()
+
+            t1_dir = pp + '/T1/T1.nii'
+
+            for i in range(len(tags)):
+                asl = asl_dir + tags[i]
+                if asl in asls:
+                    triple_atom_lumc = {'t1': t1_dir, 'asl': asl, 'pet': None, 'mask': None}
+                    triple_data_lumc.append(triple_atom_lumc)
+
+
+        test_data_lumc = triple_data_lumc[:27]
+        validation_data_lumc = triple_data_lumc[27:39]
+        trian_data_lumc = triple_data_lumc[39:]
+
+        #===================
 
 
         #read AMUC data
@@ -202,11 +222,15 @@ class _read_data:
         trian_data_amuc= triple_data_amuc[15:]
 
 
+        trian_data=trian_data_amuc+trian_data_lumc
+
+        validation_data=validation_data_amuc+validation_data_lumc
+
+        test_data=test_data_amuc+test_data_lumc
 
 
 
-
-        return trian_data_amuc, validation_data_amuc, test_data_amuc
+        return trian_data, validation_data, test_data
 
     # ========================
     def read_image_path3(self, image_path):  # for padding_images
