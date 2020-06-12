@@ -19,7 +19,7 @@ import logging
 from functions.cnn.hybrid_multi_task_cnn import multi_stage_densenet
 # import wandb
 from functions.reader.data_reader import *
-from functions.reader.image_class import *
+from functions.reader.image_class_hybrid import *
 from functions.losses.ssim_loss import  SSIM
 from functions.threads import *
 import psutil
