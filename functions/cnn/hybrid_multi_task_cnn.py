@@ -113,7 +113,7 @@ class multi_stage_densenet:
             conc = bn
         return conc
     #===============================
-    def dense_loop(self, input,level_name,filters1,filters2,is_training,kernel_size,in_size,crop_size,padding1,padding2,trainable,flag=2,filters3=0,loop=2):
+    def dense_loop(self, input,level_name,filters1,filters2,is_training,kernel_size,in_size,crop_size,padding1,padding2,trainable=True,flag=2,filters3=0,loop=2):
         with tf.name_scope(level_name):
             output = input
             for i in range(loop):
@@ -418,8 +418,8 @@ class multi_stage_densenet:
                                                trainable=True)
 
         ####################################### PET Fork
-        train_flg = tf.cond(hybrid_training_flag, lambda: True, lambda: False)
-        
+        # train_flg = tf.cond(hybrid_training_flag, lambda: True, lambda: False)
+
         with tf.variable_scope('conv_transpose1'):
             deconv1 = tf.layers.conv2d_transpose(level_ds3,
                                                  filters=64,
@@ -427,7 +427,8 @@ class multi_stage_densenet:
                                                  strides=(2, 2),
                                                  padding='valid',
                                                  use_bias=False,
-                                                 trainable=train_flg)
+                                                 )
+            deconv1 = tf.cond(hybrid_training_flag,lambda:tf.identity(deconv1),lambda:tf.stop_gradient(deconv1))
 
         with tf.variable_scope('concat1'):
             conc12 = tf.concat([crop2, deconv1], -1)
@@ -442,8 +443,10 @@ class multi_stage_densenet:
                                                crop_size=crop_size0,
                                                padding1='same',
                                                padding2='same',
-                                               loop=config[3],
-                                               trainable=train_flg)
+                                               loop=config[3]
+                                               )
+        crop0 = tf.cond(hybrid_training_flag, lambda: tf.identity( crop0), lambda: tf.stop_gradient( crop0))
+        level_us2 = tf.cond(hybrid_training_flag, lambda: tf.identity(level_us2), lambda: tf.stop_gradient(level_us2))
 
         with tf.variable_scope('conv_transpose2'):
             deconv2 = tf.layers.conv2d_transpose(level_us2,
@@ -452,7 +455,8 @@ class multi_stage_densenet:
                                                  strides=(2, 2),
                                                  padding='valid',
                                                  use_bias=False,
-                                                 trainable=train_flg)
+                                                 )
+            deconv2 = tf.cond(hybrid_training_flag, lambda: tf.identity(deconv2), lambda: tf.stop_gradient(deconv2))
 
         with tf.variable_scope('concat2'):
             conc23 = tf.concat([crop1, deconv2], -1)
@@ -467,8 +471,10 @@ class multi_stage_densenet:
                                                crop_size=crop_size0,
                                                padding1='same',
                                                padding2='same',
-                                               loop=config[4],
-                                               trainable=train_flg)
+                                               loop=config[4]
+                                               )
+        crop0 = tf.cond(hybrid_training_flag, lambda: tf.identity( crop0 ),lambda: tf.stop_gradient( crop0 ))
+        level_us3  = tf.cond(hybrid_training_flag, lambda: tf.identity(level_us3 ),lambda: tf.stop_gradient(level_us3 ))
 
         with tf.variable_scope('last_layer'):
             conv1 = tf.layers.conv2d(level_us3,
@@ -477,10 +483,12 @@ class multi_stage_densenet:
                                      padding='same',
                                      activation=None,
                                      dilation_rate=1,
-                                     trainable=train_flg
+                                     
                                      )
+            conv1 = tf.cond(hybrid_training_flag, lambda: tf.identity(conv1), lambda: tf.stop_gradient(conv1))
             bn = tf.layers.batch_normalization(conv1, training=is_training, renorm=False,
-                                               trainable=train_flg)
+                                               )
+            bn = tf.cond(hybrid_training_flag, lambda: tf.identity(bn), lambda: tf.stop_gradient(bn))
             y = tf.nn.leaky_relu(bn)
             y= tf.layers.conv2d(y,
                              filters=1,
@@ -489,8 +497,9 @@ class multi_stage_densenet:
                              activation=None,
                              dilation_rate=1,
                              name='PET',
-                             trainable=train_flg
+                             
                              )
+            y = tf.cond(hybrid_training_flag, lambda: tf.identity(y), lambda: tf.stop_gradient(y))
             pet=tf.nn.tanh(y)
 
         ####################################### ASL Fork
