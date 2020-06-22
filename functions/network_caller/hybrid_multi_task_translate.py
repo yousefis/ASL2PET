@@ -359,8 +359,7 @@ class net_translate:
 
                 while (step * self.batch_no < self.no_sample_per_each_itr):
 
-                    [train_asl_slices, train_pet_slices, train_t1_slices] = _image_class_tr.return_patches(
-                        self.batch_no)
+                    [train_asl_slices, train_pet_slices, train_t1_slices] = _image_class_tr.return_patches(self.batch_no,step%2)
 
                     if (len(train_asl_slices) < self.batch_no) | (len(train_pet_slices) < self.batch_no) \
                             | (len(train_t1_slices) < self.batch_no):

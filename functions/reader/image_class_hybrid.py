@@ -298,6 +298,7 @@ class image_class:
         ASL=[]
         PET=[]
         T1=[]
+
         for ii in range(len(self.collection) ):
             t1 = self.collection[ii].t1
             asl = self.collection[ii].asl
@@ -428,21 +429,40 @@ class image_class:
             print('smth wrong')
 
     #--------------------------------------------------------------------------------------------------------
-    def return_patches(self,batch_no):
+    def return_patches(self,batch_no,hybrid=0):
         settings.train_queue.acquire()
         asl_slices=[]
         pet_slices=[]
         t1_slices=[]
+        list_indx=[]
         if len(settings.bunch_asl_slices)>=batch_no and\
             len(settings.bunch_pet_slices) >= batch_no  :
             # \                        len(settings.bunch_t1_slices) >= batch_no:
-            asl_slices= settings.bunch_asl_slices[0:batch_no]
-            pet_slices= settings.bunch_pet_slices[0:batch_no]
-            t1_slices= settings.bunch_t1_slices[0:batch_no]
+            for k in range(len(settings.bunch_asl_slices)): #read batches with or without pet patch
+                if hybrid==1: #pet
+                    # for k in range(len(settings.bunch_asl_slices)):
+                    if settings.bunch_pet_slices[k][0, 0] is not None:
+                        list_indx.append(k)
 
-            settings.bunch_asl_slices=np.delete(settings.bunch_asl_slices, range(batch_no), axis=0)
-            settings.bunch_pet_slices=np.delete(settings.bunch_pet_slices, range(batch_no), axis=0)
-            settings.bunch_t1_slices=np.delete(settings.bunch_t1_slices, range(batch_no), axis=0)
+                else: #no pet
+                    # for k in range(len(settings.bunch_asl_slices)):
+                    if settings.bunch_pet_slices[k][0, 0] is None:
+                        list_indx.append(k)
+                if len(list_indx) == batch_no:
+                    break
+
+
+
+            asl_slices= settings.bunch_asl_slices[list_indx]#[0:batch_no]
+            pet_slices= settings.bunch_pet_slices[list_indx]#[0:batch_no]
+            t1_slices= settings.bunch_t1_slices[list_indx]#[0:batch_no]
+
+            # settings.bunch_asl_slices=np.delete(settings.bunch_asl_slices, range(batch_no), axis=0)
+            # settings.bunch_pet_slices=np.delete(settings.bunch_pet_slices, range(batch_no), axis=0)
+            # settings.bunch_t1_slices=np.delete(settings.bunch_t1_slices, range(batch_no), axis=0)
+            settings.bunch_asl_slices = np.delete(settings.bunch_asl_slices, list_indx, axis=0)
+            settings.bunch_pet_slices = np.delete(settings.bunch_pet_slices, list_indx, axis=0)
+            settings.bunch_t1_slices = np.delete(settings.bunch_t1_slices, list_indx, axis=0)
             pet_slices = pet_slices[..., np.newaxis]
             asl_slices = asl_slices[..., np.newaxis]
             t1_slices = t1_slices[..., np.newaxis]

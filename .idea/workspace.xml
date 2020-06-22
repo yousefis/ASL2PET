@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="19949bfa-827e-4252-b412-827257a1f8f6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/cnn/hybrid_multi_task_cnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions/cnn/hybrid_multi_task_cnn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/network_caller/hybrid_multi_task_translate.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions/network_caller/hybrid_multi_task_translate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/reader/image_class_hybrid.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions/reader/image_class_hybrid.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -65,17 +66,17 @@
         <counts>
           <entry key="dummy" value="3" />
           <entry key="gitignore" value="29" />
-          <entry key="py" value="11245" />
+          <entry key="py" value="11555" />
           <entry key="sh" value="1" />
           <entry key="ssim" value="69" />
-          <entry key="txt" value="983" />
+          <entry key="txt" value="1004" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Bash" value="1" />
-          <entry key="PLAIN_TEXT" value="1015" />
-          <entry key="Python" value="11314" />
+          <entry key="PLAIN_TEXT" value="1036" />
+          <entry key="Python" value="11624" />
         </counts>
       </usages-collector>
     </session>
@@ -133,8 +134,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/run_hybrid_multitask_net.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="51" selection-start-line="51" selection-end-line="51" />
+            <state relative-caret-position="141">
+              <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
               <folding>
                 <element signature="e#461#490#0" expanded="true" />
               </folding>
@@ -145,8 +146,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/functions/network_caller/hybrid_multi_task_translate.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="361" column="99" lean-forward="true" selection-start-line="361" selection-start-column="99" selection-end-line="361" selection-end-column="99" />
+            <state relative-caret-position="158">
+              <caret line="361" column="101" lean-forward="true" selection-start-line="361" selection-start-column="101" selection-end-line="361" selection-end-column="101" />
               <folding>
                 <element signature="e#461#474#0" expanded="true" />
               </folding>
@@ -157,8 +158,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/functions/reader/image_class_hybrid.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="151">
-              <caret line="442" column="90" lean-forward="true" selection-start-line="442" selection-start-column="90" selection-end-line="442" selection-end-column="90" />
+            <state relative-caret-position="182">
+              <caret line="441" column="28" selection-start-line="441" selection-start-column="28" selection-end-line="441" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -293,10 +294,10 @@
         <option value="$PROJECT_DIR$/functions/reader/data_reader.py" />
         <option value="$PROJECT_DIR$/run_hybrid_multitask_net.py" />
         <option value="$PROJECT_DIR$/functions/reader/data_reader_hybrid.py" />
-        <option value="$PROJECT_DIR$/functions/network_caller/hybrid_multi_task_translate.py" />
-        <option value="$PROJECT_DIR$/functions/reader/image_class_hybrid.py" />
         <option value="$PROJECT_DIR$/test_file.py" />
         <option value="$PROJECT_DIR$/functions/cnn/hybrid_multi_task_cnn.py" />
+        <option value="$PROJECT_DIR$/functions/network_caller/hybrid_multi_task_translate.py" />
+        <option value="$PROJECT_DIR$/functions/reader/image_class_hybrid.py" />
       </list>
     </option>
   </component>
@@ -774,7 +775,14 @@
       <option name="project" value="LOCAL" />
       <updated>1592829683041</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="hybrid image reading">
+      <created>1592834168419</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1592834168419</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -787,13 +795,13 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.85338646" weight="0.46189734" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.84940237" visible="true" weight="0.39657855" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.84940237" visible="true" weight="0.30637637" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.1505976" side_tool="true" visible="true" weight="0.39657855" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.1505976" side_tool="true" visible="true" weight="0.30637637" />
       <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -830,7 +838,8 @@
     <MESSAGE value="read data from the LUMC dataset" />
     <MESSAGE value="read data from the LUMC and AMUC dataset" />
     <MESSAGE value="image_class hybrid" />
-    <option name="LAST_COMMIT_MESSAGE" value="image_class hybrid" />
+    <MESSAGE value="hybrid image reading" />
+    <option name="LAST_COMMIT_MESSAGE" value="hybrid image reading" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -917,13 +926,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/functions/network_caller/hybrid_multi_task_translate.py</url>
-          <line>364</line>
+          <line>363</line>
           <option name="timeStamp" value="375" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/functions/reader/image_class_hybrid.py</url>
-          <line>458</line>
-          <option name="timeStamp" value="380" />
+          <line>455</line>
+          <option name="timeStamp" value="384" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -938,97 +947,47 @@
   <component name="debuggerHistoryManager">
     <expressions id="evaluateCodeFragment">
       <expression>
-        <expression-string>import tensorflow as tf
-
-tf.reset_default_graph()
-
-a = tf.Variable(10.0)
-b = tf.Variable(10.0)
-switch = tf.placeholder(tf.bool)
-res = tf.cond(switch, lambda: (2.0* a), lambda: tf.square(b))
-opt = tf.train.GradientDescentOptimizer(0.05)
-grads = opt.compute_gradients(res)
-train = opt.apply_gradients(grads)
-init = tf.global_variables_initializer()
-
-with tf.Session() as sess:
-    sess.run(init)
-    print(sess.run(grads, {switch: True}))</expression-string>
+        <expression-string>range(len(settings.bunch_asl_slices))</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>import tensorflow as tf
-
-tf.reset_default_graph()
-
-a = tf.Variable(10.0)
-b = tf.Variable(10.0)
-switch = tf.placeholder(tf.bool)
-res = tf.cond(switch, lambda: tf.multiply(2.0, a), lambda: tf.square(b))
-opt = tf.train.GradientDescentOptimizer(0.05)
-grads = opt.compute_gradients(res)
-train = opt.apply_gradients(grads)
-init = tf.global_variables_initializer()
-
-with tf.Session() as sess:
-    sess.run(init)
-    print(sess.run(grads, {switch: True}))</expression-string>
+        <expression-string>settings.bunch_pet_slices[0][0,0]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>import tensorflow as tf
-
-tf.reset_default_graph()
-
-a = tf.Variable(10.0)
-b = tf.Variable(10.0)
-switch = tf.placeholder(tf.bool)
-res = tf.cond(switch, lambda: tf.mul(2.0, a), lambda: tf.square(b))
-opt = tf.train.GradientDescentOptimizer(0.05)
-grads = opt.compute_gradients(res)
-train = opt.apply_gradients(grads)
-init = tf.global_variables_initializer()
-
-with tf.Session() as sess:
-    sess.run(init)
-    print(sess.run(grads, {switch: True}))</expression-string>
+        <expression-string>settings.bunch_pet_slices[0][0,0,0]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>tf.cond((hybrid_training_flag), lambda: 1, lambda: 0)</expression-string>
+        <expression-string>settings.bunch_pet_slices[0][0]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>tf.cond(tf.greater(hybrid_training_flag, 0), lambda: 1, lambda: 0)</expression-string>
+        <expression-string>settings.bunch_pet_slices</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>tf.cond(tf.greater(x, 0), lambda: 1, lambda: 0)</expression-string>
+        <expression-string>self.collection</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>np.reshape(len(ASL1) * self.out_size*self.out_size*[None],(len(ASL1),self.out_size,self.out_size))</expression-string>
+        <expression-string>self.collection[2].pet</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>np.vstack(([np.reshape(63*63*[None],(63,63))],PET1))</expression-string>
+        <expression-string>self.collection.pet</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>np.reshape(63*63*[None],(63,63))</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>np.vstack((np.reshape(63*63*[None],(63,63)),PET1))</expression-string>
+        <expression-string>self.collection[ii].pet</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
@@ -1328,16 +1287,6 @@ with tf.Session() as sess:
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/run_hybrid_multitask_net.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="51" selection-start-line="51" selection-end-line="51" />
-          <folding>
-            <element signature="e#461#490#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../Programs/TF112/lib/python3.6/site-packages/tensorflow/python/ops/math_ops.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
@@ -1376,10 +1325,20 @@ with tf.Session() as sess:
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/run_hybrid_multitask_net.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="141">
+          <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
+          <folding>
+            <element signature="e#461#490#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/functions/network_caller/hybrid_multi_task_translate.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="361" column="99" lean-forward="true" selection-start-line="361" selection-start-column="99" selection-end-line="361" selection-end-column="99" />
+        <state relative-caret-position="158">
+          <caret line="361" column="101" lean-forward="true" selection-start-line="361" selection-start-column="101" selection-end-line="361" selection-end-column="101" />
           <folding>
             <element signature="e#461#474#0" expanded="true" />
           </folding>
@@ -1388,8 +1347,8 @@ with tf.Session() as sess:
     </entry>
     <entry file="file://$PROJECT_DIR$/functions/reader/image_class_hybrid.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="151">
-          <caret line="442" column="90" lean-forward="true" selection-start-line="442" selection-start-column="90" selection-end-line="442" selection-end-column="90" />
+        <state relative-caret-position="182">
+          <caret line="441" column="28" selection-start-line="441" selection-start-column="28" selection-end-line="441" selection-end-column="28" />
         </state>
       </provider>
     </entry>
