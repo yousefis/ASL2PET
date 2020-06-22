@@ -151,7 +151,7 @@ class net_translate:
 
         ave_loss_vali = tf.placeholder(tf.float32,name='ave_loss_vali')
         # True: train in a multi-task fashion, False: train in a single-task fashion
-        hybrid_training_flag = tf.placeholder(tf.float32,name='hybrid_training_flag')
+        hybrid_training_flag = tf.placeholder(tf.bool,name='hybrid_training_flag')
 
         is_training = tf.placeholder(tf.bool, name='is_training')
         is_training_bn = tf.placeholder(tf.bool, name='is_training_bn')
@@ -165,7 +165,9 @@ class net_translate:
                                                    hybrid_training_flag=hybrid_training_flag,
                                                    input_dim=77,
                                                    is_training=is_training,
-                                                   config=self.config)
+                                                   config=self.config,
+                                                     )
+
 
 
         show_img = asl_plchld[:, :, :, 0, np.newaxis]
@@ -232,6 +234,8 @@ class net_translate:
         tf.summary.scalar("cost", cost)
         # tf.summary.scalar("denominator", denominator)
         extra_update_ops = tf.get_collection(tf.GraphKeys.UPDATE_OPS)
+
+
         with tf.control_dependencies(extra_update_ops):
             optimizer = tf.train.AdamOptimizer(learning_rate=self.learning_rate, ).minimize(cost)
 

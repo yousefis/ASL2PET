@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="19949bfa-827e-4252-b412-827257a1f8f6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/functions/reader/image_class_hybrid.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/cnn/hybrid_multi_task_cnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions/cnn/hybrid_multi_task_cnn.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/functions/network_caller/hybrid_multi_task_translate.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions/network_caller/hybrid_multi_task_translate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run_hybrid_multitask_net.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_hybrid_multitask_net.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/reader/data_reader_hybrid.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions/reader/data_reader_hybrid.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/reader/image_class_hybrid.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions/reader/image_class_hybrid.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_file.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_file.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,10 +35,10 @@
           <entry key="project.open.time.26" value="1" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.30" value="1" />
-          <entry key="project.open.time.4" value="1" />
+          <entry key="project.open.time.4" value="2" />
           <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.9" value="3" />
-          <entry key="project.opened" value="26" />
+          <entry key="project.opened" value="27" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -44,7 +46,7 @@
           <entry key="gitignore" value="5" />
           <entry key="md" value="3" />
           <entry key="png" value="1" />
-          <entry key="py" value="339" />
+          <entry key="py" value="344" />
           <entry key="pyi" value="1" />
           <entry key="sh" value="3" />
           <entry key="ssim" value="4" />
@@ -58,7 +60,7 @@
           <entry key="Image" value="1" />
           <entry key="Markdown" value="3" />
           <entry key="PLAIN_TEXT" value="7" />
-          <entry key="Python" value="343" />
+          <entry key="Python" value="348" />
           <entry key="PythonStub" value="1" />
           <entry key="XML" value="1" />
         </counts>
@@ -67,17 +69,17 @@
         <counts>
           <entry key="dummy" value="3" />
           <entry key="gitignore" value="29" />
-          <entry key="py" value="10754" />
+          <entry key="py" value="11101" />
           <entry key="sh" value="1" />
           <entry key="ssim" value="69" />
-          <entry key="txt" value="958" />
+          <entry key="txt" value="983" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Bash" value="1" />
-          <entry key="PLAIN_TEXT" value="990" />
-          <entry key="Python" value="10823" />
+          <entry key="PLAIN_TEXT" value="1015" />
+          <entry key="Python" value="11170" />
         </counts>
       </usages-collector>
     </session>
@@ -87,17 +89,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/functions/reader/data_reader_hybrid.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="137">
-              <caret line="227" lean-forward="true" selection-start-line="227" selection-end-line="227" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/functions/reader/image_class.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="197">
-              <caret line="78" column="26" lean-forward="true" selection-start-line="78" selection-start-column="26" selection-end-line="78" selection-end-column="26" />
+            <state relative-caret-position="-592">
+              <caret line="176" column="34" selection-start-line="176" selection-start-column="34" selection-end-line="176" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -105,8 +98,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/functions/cnn/hybrid_multi_task_cnn.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="12" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
+            <state relative-caret-position="885">
+              <caret line="424" column="53" lean-forward="true" selection-start-line="424" selection-start-column="53" selection-end-line="424" selection-end-column="53" />
+              <folding>
+                <element signature="e#478#489#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/test_file.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="5" column="21" lean-forward="true" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -114,8 +119,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/run_hybrid_multitask_net.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="127">
-              <caret line="25" column="18" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
+            <state relative-caret-position="171">
+              <caret line="51" selection-start-line="51" selection-end-line="51" />
               <folding>
                 <element signature="e#461#490#0" expanded="true" />
               </folding>
@@ -123,11 +128,50 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/functions/network_caller/hybrid_multi_task_translate.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="21" column="40" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="40" />
+            <state relative-caret-position="127">
+              <caret line="237" selection-start-line="237" selection-end-line="237" />
+              <folding>
+                <element signature="e#461#474#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/functions/reader/image_class_hybrid.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="326" column="119" selection-start-line="326" selection-start-column="119" selection-end-line="326" selection-end-column="119" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../Programs/TF112/lib/python3.6/site-packages/numpy/core/shape_base.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="77">
+              <caret line="282" selection-start-line="282" selection-end-line="282" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/functions/reader/patch_extractor.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="48">
+              <caret line="42" selection-start-line="42" selection-end-line="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/functions/threads/fill_thread.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1020">
+              <caret line="70" selection-start-line="70" selection-end-line="70" />
             </state>
           </provider>
         </entry>
@@ -143,14 +187,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>l1</find>
-      <find>net</find>
-      <find>concat</find>
-      <find>multi</find>
-      <find>enseunet_mul</find>
-      <find>lear</find>
-      <find>noiseaug</find>
-      <find>noi</find>
       <find>backup_folder</find>
       <find>denseunet_ssim_l1_2</find>
       <find>summ</find>
@@ -173,6 +209,14 @@
       <find>run_ne</find>
       <find>data_path_AMUC</find>
       <find>data_path_LUMC</find>
+      <find>image_class</find>
+      <find>imm</find>
+      <find>lambda</find>
+      <find>max_pooling2d</find>
+      <find>matplotlib</find>
+      <find>hybrid_training_flag</find>
+      <find>trainable=train_flg</find>
+      <find>opt</find>
     </findStrings>
     <replaceStrings>
       <replace>CT_image_patchs</replace>
@@ -197,7 +241,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/cnn/multi_task_cnn.py" />
         <option value="$PROJECT_DIR$/network_caller/multi_task_translate.py" />
         <option value="$PROJECT_DIR$/losses/mssim_loss.py" />
         <option value="$PROJECT_DIR$/network_caller/multi-stage_denseunet2.py" />
@@ -232,7 +275,6 @@
         <option value="$PROJECT_DIR$/submit_job_asl2pet.py" />
         <option value="$PROJECT_DIR$/functions/measures/measures.py" />
         <option value="$PROJECT_DIR$/functions/losses/L1.py" />
-        <option value="$PROJECT_DIR$/test_file.py" />
         <option value="$PROJECT_DIR$/functions/reader/image_class.py" />
         <option value="$PROJECT_DIR$/test_net.py" />
         <option value="$PROJECT_DIR$/run_net.py" />
@@ -243,11 +285,13 @@
         <option value="$PROJECT_DIR$/submit_job_multitask.py" />
         <option value="$PROJECT_DIR$/functions/network_caller/multi_task_translate.py" />
         <option value="$PROJECT_DIR$/functions/cnn/multi_task_cnn.py" />
-        <option value="$PROJECT_DIR$/functions/cnn/hybrid_multi_task_cnn.py" />
         <option value="$PROJECT_DIR$/functions/reader/data_reader.py" />
         <option value="$PROJECT_DIR$/run_hybrid_multitask_net.py" />
         <option value="$PROJECT_DIR$/functions/reader/data_reader_hybrid.py" />
         <option value="$PROJECT_DIR$/functions/network_caller/hybrid_multi_task_translate.py" />
+        <option value="$PROJECT_DIR$/functions/reader/image_class_hybrid.py" />
+        <option value="$PROJECT_DIR$/functions/cnn/hybrid_multi_task_cnn.py" />
+        <option value="$PROJECT_DIR$/test_file.py" />
       </list>
     </option>
   </component>
@@ -318,7 +362,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.run_hybrid_multitask_net">
+  <component name="RunManager" selected="Python.test_file">
     <configuration name="run_hybrid_multitask_net" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ASL_PET_translation--001" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -332,27 +376,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/run_hybrid_multitask_net.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="run_net" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="ASL_PET_translation--001" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/run_net.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -403,6 +426,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="test_file" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="ASL_PET_translation--001" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_file.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="test_net" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ASL_PET_translation--001" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -428,16 +472,16 @@
       <item itemvalue="Python.submit_job" />
       <item itemvalue="Python.submit_job_multitask" />
       <item itemvalue="Python.test_net" />
-      <item itemvalue="Python.run_net" />
       <item itemvalue="Python.run_hybrid_multitask_net" />
+      <item itemvalue="Python.test_file" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.test_file" />
         <item itemvalue="Python.run_hybrid_multitask_net" />
         <item itemvalue="Python.submit_job_multitask" />
         <item itemvalue="Python.test_net" />
         <item itemvalue="Python.submit_job" />
-        <item itemvalue="Python.run_net" />
       </list>
     </recent_temporary>
   </component>
@@ -711,26 +755,33 @@
       <option name="project" value="LOCAL" />
       <updated>1591967257127</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="image_class hybrid">
+      <created>1591967309676</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1591967309676</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="8" y="30" width="1276" height="738" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21354581" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.0996016" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.8557769" weight="0.16485226" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.8517928" visible="true" weight="0.36547434" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.85338646" weight="0.46189734" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.84940237" visible="true" weight="0.5318818" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.14820717" side_tool="true" visible="true" weight="0.36547434" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.1505976" side_tool="true" visible="true" weight="0.5318818" />
       <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -766,7 +817,8 @@
     <MESSAGE value="hybrid data reader" />
     <MESSAGE value="read data from the LUMC dataset" />
     <MESSAGE value="read data from the LUMC and AMUC dataset" />
-    <option name="LAST_COMMIT_MESSAGE" value="read data from the LUMC and AMUC dataset" />
+    <MESSAGE value="image_class hybrid" />
+    <option name="LAST_COMMIT_MESSAGE" value="image_class hybrid" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -847,14 +899,29 @@
           <option name="timeStamp" value="349" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/functions/reader/data_reader_hybrid.py</url>
-          <line>176</line>
-          <option name="timeStamp" value="351" />
+          <url>file://$PROJECT_DIR$/functions/cnn/hybrid_multi_task_cnn.py</url>
+          <line>345</line>
+          <option name="timeStamp" value="364" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/functions/reader/data_reader_hybrid.py</url>
-          <line>232</line>
-          <option name="timeStamp" value="358" />
+          <url>file://$PROJECT_DIR$/functions/network_caller/hybrid_multi_task_translate.py</url>
+          <line>364</line>
+          <option name="timeStamp" value="375" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/functions/cnn/hybrid_multi_task_cnn.py</url>
+          <line>423</line>
+          <option name="timeStamp" value="376" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/functions/cnn/hybrid_multi_task_cnn.py</url>
+          <line>420</line>
+          <option name="timeStamp" value="378" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/test_file.py</url>
+          <line>8</line>
+          <option name="timeStamp" value="379" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -869,121 +936,97 @@
   <component name="debuggerHistoryManager">
     <expressions id="evaluateCodeFragment">
       <expression>
-        <expression-string>(validation_data_amuc+validation_data_lumc)</expression-string>
+        <expression-string>import tensorflow as tf
+
+tf.reset_default_graph()
+
+a = tf.Variable(10.0)
+b = tf.Variable(10.0)
+switch = tf.placeholder(tf.bool)
+res = tf.cond(switch, lambda: (2.0* a), lambda: tf.square(b))
+opt = tf.train.GradientDescentOptimizer(0.05)
+grads = opt.compute_gradients(res)
+train = opt.apply_gradients(grads)
+init = tf.global_variables_initializer()
+
+with tf.Session() as sess:
+    sess.run(init)
+    print(sess.run(grads, {switch: True}))</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>validation_data=[]
-validation_data.append((validation_data_amuc,validation_data_lumc))</expression-string>
+        <expression-string>import tensorflow as tf
+
+tf.reset_default_graph()
+
+a = tf.Variable(10.0)
+b = tf.Variable(10.0)
+switch = tf.placeholder(tf.bool)
+res = tf.cond(switch, lambda: tf.multiply(2.0, a), lambda: tf.square(b))
+opt = tf.train.GradientDescentOptimizer(0.05)
+grads = opt.compute_gradients(res)
+train = opt.apply_gradients(grads)
+init = tf.global_variables_initializer()
+
+with tf.Session() as sess:
+    sess.run(init)
+    print(sess.run(grads, {switch: True}))</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>validation_data=[]
-validation_data.append(validation_data_amuc,validation_data_lumc)</expression-string>
+        <expression-string>import tensorflow as tf
+
+tf.reset_default_graph()
+
+a = tf.Variable(10.0)
+b = tf.Variable(10.0)
+switch = tf.placeholder(tf.bool)
+res = tf.cond(switch, lambda: tf.mul(2.0, a), lambda: tf.square(b))
+opt = tf.train.GradientDescentOptimizer(0.05)
+grads = opt.compute_gradients(res)
+train = opt.apply_gradients(grads)
+init = tf.global_variables_initializer()
+
+with tf.Session() as sess:
+    sess.run(init)
+    print(sess.run(grads, {switch: True}))</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>df = pd.DataFrame(list_ssim,
-                 columns=pd.Index(['ssim'],
-                 name='Genus')).round(2)
-
-
-# Create a Pandas Excel writer using XlsxWriter as the engine.
-writer = pd.ExcelWriter(parent_path + Log + out_dir+'/all_ssim.xlsx',
-                        engine='xlsxwriter')
-
-# Convert the dataframe to an XlsxWriter Excel object.
-df.to_excel(writer, sheet_name='Sheet1')
-# Close the Pandas Excel writer and output the Excel file.
-writer.save()
-print(parent_path + Log + out_dir + '/all_ssim.xlsx')</expression-string>
+        <expression-string>tf.cond((hybrid_training_flag), lambda: 1, lambda: 0)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>df = pd.DataFrame(list_ssim).round(2)
-
-
-# Create a Pandas Excel writer using XlsxWriter as the engine.
-writer = pd.ExcelWriter(parent_path + Log + out_dir+'/all_ssim.xlsx',
-                       engine='xlsxwriter')
-# print('/exports/lkeb-hpc/syousefi/Code/Log_asl_pet/denseunet_multistage_mssim7/0_vali_result/all_ssim.xlsx')
-df.to_excel(writer, sheet_name='Sheet1')
-
-writer.save()</expression-string>
+        <expression-string>tf.cond(tf.greater(hybrid_training_flag, 0), lambda: 1, lambda: 0)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>df = pd.DataFrame(list_ssim,index=range(len(list_ssim)),
-                  columns=pd.Index(['ssim'],
-                                   name='Genus')).round(2)
-
-
-# Create a Pandas Excel writer using XlsxWriter as the engine.
-writer = pd.ExcelWriter(parent_path + Log + out_dir+'/all_ssim.xlsx',
-                       engine='xlsxwriter')
-# print('/exports/lkeb-hpc/syousefi/Code/Log_asl_pet/denseunet_multistage_mssim7/0_vali_result/all_ssim.xlsx')
-writer.save()</expression-string>
+        <expression-string>tf.cond(tf.greater(x, 0), lambda: 1, lambda: 0)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>df = pd.DataFrame(list_ssim,
-index=range(len(list_ssim)),
-                  columns=pd.Index(['ssim'],
-                                   name='Genus')).round(2)
-
-
-# Create a Pandas Excel writer using XlsxWriter as the engine.
-writer = pd.ExcelWriter('/exports/lkeb-hpc/syousefi/Code/Log_asl_pet/denseunet_multistage_mssim7/0_vali_result/all_ssim.xlsx',
-                       engine='xlsxwriter')
-print('/exports/lkeb-hpc/syousefi/Code/Log_asl_pet/denseunet_multistage_mssim7/0_vali_result/all_ssim.xlsx')
-writer.save()</expression-string>
+        <expression-string>np.reshape(len(ASL1) * self.out_size*self.out_size*[None],(len(ASL1),self.out_size,self.out_size))</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>df = pd.DataFrame(list_ssim,
-index=range(len(list_ssim)),
-                  columns=pd.Index(['ssim'],
-                                   name='Genus')).round(2)
-
-
-# Create a Pandas Excel writer using XlsxWriter as the engine.
-writer = pd.ExcelWriter(parent_path + Log + out_dir+'/all_ssim.xlsx',
-                       engine='xlsxwriter')
-print('/exports/lkeb-hpc/syousefi/Code/Log_asl_pet/denseunet_multistage_mssim7/0_vali_result/all_ssim.xlsx')
-writer.save()</expression-string>
+        <expression-string>np.vstack(([np.reshape(63*63*[None],(63,63))],PET1))</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>df = pd.DataFrame(list_ssim,
-                  columns=pd.Index(['ssim'],
-                                   name='Genus')).round(2)
-
-
-# Create a Pandas Excel writer using XlsxWriter as the engine.
-writer = pd.ExcelWriter(parent_path + Log + out_dir+'/all_ssim.xlsx',
-                       engine='xlsxwriter')
-print('/exports/lkeb-hpc/syousefi/Code/Log_asl_pet/denseunet_multistage_mssim7/0_vali_result/all_ssim.xlsx')
-writer.save()</expression-string>
+        <expression-string>np.reshape(63*63*[None],(63,63))</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>df = pd.DataFrame(list_ssim )
-
-
-# Create a Pandas Excel writer using XlsxWriter as the engine.
-writer = pd.ExcelWriter(parent_path + Log + out_dir+'/all_ssim.xlsx',
-                       engine='xlsxwriter')
-print('/exports/lkeb-hpc/syousefi/Code/Log_asl_pet/denseunet_multistage_mssim7/0_vali_result/all_ssim.xlsx')
-writer.save()</expression-string>
+        <expression-string>np.vstack((np.reshape(63*63*[None],(63,63)),PET1))</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
@@ -1059,13 +1102,6 @@ writer.save()</expression-string>
     <entry file="file://$PROJECT_DIR$/functions/reader/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/functions/threads/fill_thread.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/functions/threads/read_thread.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -1095,20 +1131,6 @@ writer.save()</expression-string>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="121">
           <caret line="915" selection-start-line="915" selection-end-line="915" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/functions/reader/patch_extractor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="47" selection-start-line="47" selection-end-line="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../Programs/TF112/lib/python3.6/site-packages/numpy/core/shape_base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="282" selection-start-line="282" selection-end-line="282" />
         </state>
       </provider>
     </entry>
@@ -1192,13 +1214,6 @@ writer.save()</expression-string>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
           <caret line="563" lean-forward="true" selection-start-line="563" selection-end-line="563" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_file.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="24" column="22" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -1297,44 +1312,82 @@ writer.save()</expression-string>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/functions/reader/data_reader_average.py" />
-    <entry file="file://$PROJECT_DIR$/functions/cnn/hybrid_multi_task_cnn.py">
+    <entry file="file://$PROJECT_DIR$/functions/reader/image_class.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="12" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
+        <state relative-caret-position="-613">
+          <caret line="78" column="26" lean-forward="true" selection-start-line="78" selection-start-column="26" selection-end-line="78" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/functions/reader/image_class_hybrid.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/functions/reader/image_class.py">
+    <entry file="file://$PROJECT_DIR$/functions/threads/fill_thread.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="78" column="26" lean-forward="true" selection-start-line="78" selection-start-column="26" selection-end-line="78" selection-end-column="26" />
+        <state relative-caret-position="1020">
+          <caret line="70" selection-start-line="70" selection-end-line="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functions/reader/data_reader_hybrid.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-592">
+          <caret line="176" column="34" selection-start-line="176" selection-start-column="34" selection-end-line="176" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../Programs/TF112/lib/python3.6/site-packages/numpy/core/shape_base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="77">
+          <caret line="282" selection-start-line="282" selection-end-line="282" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functions/reader/patch_extractor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/run_hybrid_multitask_net.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="25" column="18" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
+        <state relative-caret-position="171">
+          <caret line="51" selection-start-line="51" selection-end-line="51" />
           <folding>
             <element signature="e#461#490#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/functions/reader/data_reader_hybrid.py">
+    <entry file="file://$PROJECT_DIR$/functions/reader/image_class_hybrid.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="227" lean-forward="true" selection-start-line="227" selection-end-line="227" />
+        <state relative-caret-position="15">
+          <caret line="326" column="119" selection-start-line="326" selection-start-column="119" selection-end-line="326" selection-end-column="119" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/functions/network_caller/hybrid_multi_task_translate.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="21" column="40" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="40" />
+        <state relative-caret-position="127">
+          <caret line="237" selection-start-line="237" selection-end-line="237" />
+          <folding>
+            <element signature="e#461#474#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functions/cnn/hybrid_multi_task_cnn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="885">
+          <caret line="424" column="53" lean-forward="true" selection-start-line="424" selection-start-column="53" selection-end-line="424" selection-end-column="53" />
+          <folding>
+            <element signature="e#478#489#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_file.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="21" lean-forward="true" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
         </state>
       </provider>
     </entry>

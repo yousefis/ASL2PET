@@ -173,9 +173,9 @@ class _read_data:
                     triple_data_lumc.append(triple_atom_lumc)
 
 
-        test_data_lumc = triple_data_lumc[:27]
-        validation_data_lumc = triple_data_lumc[27:39]
-        trian_data_lumc = triple_data_lumc[39:]
+        test_data_lumc = []#triple_data_lumc[:27]
+        validation_data_lumc = []#triple_data_lumc[27:39]
+        trian_data_lumc = triple_data_lumc#[39:]
 
         #===================
 

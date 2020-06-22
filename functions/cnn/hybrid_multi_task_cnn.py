@@ -312,7 +312,7 @@ class multi_stage_densenet:
 
 
     #==================================================
-    def multi_stage_densenet(self, asl_img, t1_img,pet_img,  input_dim, is_training,config,hybrid_training_flag,trainable,conv_transpose=True):
+    def multi_stage_densenet(self, asl_img, t1_img,pet_img,  input_dim, is_training,config,hybrid_training_flag,conv_transpose=True):
         # mri=None
         # in_size0 = tf.to_int32(0, name='in_size0')
         # in_size1 = 77
@@ -340,11 +340,11 @@ class multi_stage_densenet:
         # t1_img = tf.layers.batch_normalization(t1_img, training=is_training, renorm=False)
         # pet_img = tf.layers.batch_normalization(pet_img, training=is_training, renorm=False)
 
-        img_rows=[]
-        img_rows.append(asl_img)
-        img_rows.append(t1_img)
-        if hybrid_training_flag:
-            img_rows.append(pet_img)
+        # img_rows=[]
+        # img_rows.append(asl_img)
+        # img_rows.append(t1_img)
+        # if hybrid_training_flag:
+        #     img_rows.append(pet_img)
 
 
 
@@ -360,11 +360,11 @@ class multi_stage_densenet:
         #         img_rows=self.flip_lr_input(img_rows, is_training)
         #     with tf.variable_scope('rotate'):
         #         img_rows,degree=self.rotate_input(img_rows, is_training)
-        augmented_data=img_rows
+        # augmented_data=img_rows
 
         with tf.variable_scope('stack-contact'):
             # stack_concat=img_rows[0]
-            stack_concat = tf.concat([img_rows[0], img_rows[1]], -1)
+            stack_concat = tf.concat([asl_img, t1_img], -1)
 
 
 
@@ -385,8 +385,7 @@ class multi_stage_densenet:
                                                flag=1,loop=config[0],
                                                trainable=True)
         with tf.variable_scope('maxpool1'):
-            pool1 = tf.layers.max_pooling2d(inputs=level_ds1, pool_size=(2, 2), strides=(2, 2),
-                                               trainable=True)
+            pool1 = tf.layers.max_pooling2d(inputs=level_ds1, pool_size=(2, 2), strides=(2, 2))
         # level 2 of unet
         [level_ds2, crop2] = self.dense_loop(pool1,
                                                'level_ds2',
@@ -402,8 +401,7 @@ class multi_stage_densenet:
                                                flag=1,loop=config[1],
                                                trainable=True)
         with tf.variable_scope('maxpool2'):
-            pool2 = tf.layers.max_pooling2d(inputs=level_ds2, pool_size=(2, 2), strides=(2, 2),
-                                               trainable=True)
+            pool2 = tf.layers.max_pooling2d(inputs=level_ds2, pool_size=(2, 2), strides=(2, 2))
 
         # level 3 of unet
         [level_ds3, crop3] = self.dense_loop(pool2, 'level_ds3',
@@ -420,6 +418,8 @@ class multi_stage_densenet:
                                                trainable=True)
 
         ####################################### PET Fork
+        train_flg = tf.cond(hybrid_training_flag, lambda: True, lambda: False)
+        
         with tf.variable_scope('conv_transpose1'):
             deconv1 = tf.layers.conv2d_transpose(level_ds3,
                                                  filters=64,
@@ -427,7 +427,7 @@ class multi_stage_densenet:
                                                  strides=(2, 2),
                                                  padding='valid',
                                                  use_bias=False,
-                                                 trainable=trainable)
+                                                 trainable=train_flg)
 
         with tf.variable_scope('concat1'):
             conc12 = tf.concat([crop2, deconv1], -1)
@@ -443,7 +443,7 @@ class multi_stage_densenet:
                                                padding1='same',
                                                padding2='same',
                                                loop=config[3],
-                                               trainable=trainable)
+                                               trainable=train_flg)
 
         with tf.variable_scope('conv_transpose2'):
             deconv2 = tf.layers.conv2d_transpose(level_us2,
@@ -452,7 +452,7 @@ class multi_stage_densenet:
                                                  strides=(2, 2),
                                                  padding='valid',
                                                  use_bias=False,
-                                                 trainable=trainable)
+                                                 trainable=train_flg)
 
         with tf.variable_scope('concat2'):
             conc23 = tf.concat([crop1, deconv2], -1)
@@ -468,7 +468,7 @@ class multi_stage_densenet:
                                                padding1='same',
                                                padding2='same',
                                                loop=config[4],
-                                               trainable=trainable)
+                                               trainable=train_flg)
 
         with tf.variable_scope('last_layer'):
             conv1 = tf.layers.conv2d(level_us3,
@@ -477,10 +477,10 @@ class multi_stage_densenet:
                                      padding='same',
                                      activation=None,
                                      dilation_rate=1,
-                                     trainable=trainable
+                                     trainable=train_flg
                                      )
             bn = tf.layers.batch_normalization(conv1, training=is_training, renorm=False,
-                                               trainable=trainable)
+                                               trainable=train_flg)
             y = tf.nn.leaky_relu(bn)
             y= tf.layers.conv2d(y,
                              filters=1,
@@ -489,7 +489,7 @@ class multi_stage_densenet:
                              activation=None,
                              dilation_rate=1,
                              name='PET',
-                             trainable=trainable
+                             trainable=train_flg
                              )
             pet=tf.nn.tanh(y)
 

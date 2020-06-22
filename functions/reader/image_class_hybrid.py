@@ -78,7 +78,7 @@ class image_class:
         voxel_size = T1.GetSpacing()
         origin = T1.GetOrigin()
         direction = T1.GetDirection()
-        mask = sitk.GetArrayFromImage(sitk.ReadImage(''.join(s['mask'])))
+        # mask = sitk.GetArrayFromImage(sitk.ReadImage(''.join(s['mask'])))
 
         # t1 = np.multiply(sitk.GetArrayFromImage(T1),mask)/1000
         # asl = np.multiply(sitk.GetArrayFromImage(sitk.ReadImage(''.join(s['asl']))),mask)
@@ -88,16 +88,21 @@ class image_class:
         t1 = t1 / np.max(t1)
         asl = sitk.GetArrayFromImage(sitk.ReadImage(''.join(s['asl'])))
         # asl = asl / np.max(asl)
-        pet = sitk.GetArrayFromImage(sitk.ReadImage(''.join(s['pet'])))
-        # pet = pet / np.max(pet)
+        if s['pet']==None:
+            pet=None
+        else:
+            pet = sitk.GetArrayFromImage(sitk.ReadImage(''.join(s['pet'])))
+            pet[np.where(pet < 0)] = 0
+            pet = pet[1:-1]
+
         
         t1[np.where(t1<0)]=0
         asl[np.where(asl < 0)] = 0
-        pet[np.where(pet < 0)] = 0
+
         
         t1 = t1[1:-1]
         asl = asl[1:-1]
-        pet = pet[1:-1]
+
 
         n = self.node(name_t1=s['t1'],name_asl=s['asl'],name_pet=s['pet'], t1=t1, asl=asl, pet=pet,
                       voxel_size=voxel_size, origin=origin, direction=direction)
@@ -229,6 +234,7 @@ class image_class:
             PET1 = [np.stack(pet[random_slices_indx[sn],int(size_img/2)-int(self.out_size/2)-1:int(size_img/2)+int(self.out_size/2),int(size_img/2)-int(self.out_size/2)-1:int(size_img/2)+int(self.out_size/2)])
                     for sn in range(len(random_slices_indx))]
 
+
             T11 = [np.stack(t1[random_slices_indx[sn], int(size_img/2)-int(self.inp_size/2)-1:int(size_img/2)+int(self.inp_size/2),int(size_img/2)-int(self.inp_size/2)-1:int(size_img/2)+int(self.inp_size/2)])
                    for sn in range(len(random_slices_indx))]
 
@@ -314,10 +320,11 @@ class image_class:
             size_img= np.shape(asl)[1]
             ASL1 = [np.stack( asl[random_slices_indx[sn], int(size_img/2)-int(self.inp_size/2)-1:int(size_img/2)+int(self.inp_size/2),int(size_img/2)-int(self.inp_size/2)-1:int(size_img/2)+int(self.inp_size/2)])
                  for sn in range(len(random_slices_indx))]
-
-            PET1 = [np.stack( pet[random_slices_indx[sn], int(size_img/2)-int(self.out_size/2)-1:int(size_img/2)+int(self.out_size/2),int(size_img/2)-int(self.out_size/2)-1:int(size_img/2)+int(self.out_size/2)])
+            if pet is not None:
+                PET1 = [np.stack( pet[random_slices_indx[sn], int(size_img/2)-int(self.out_size/2)-1:int(size_img/2)+int(self.out_size/2),int(size_img/2)-int(self.out_size/2)-1:int(size_img/2)+int(self.out_size/2)])
                  for sn in range(len(random_slices_indx))]
-
+            else:
+                PET1 = np.reshape(len(ASL1) * self.out_size*self.out_size*[None],(len(ASL1),self.out_size,self.out_size))
             T11 = [np.stack(t1[random_slices_indx[sn],  int(size_img/2)-int(self.inp_size/2)-1:int(size_img/2)+int(self.inp_size/2),int(size_img/2)-int(self.inp_size/2)-1:int(size_img/2)+int(self.inp_size/2)])
                    for sn in range(len(random_slices_indx))]
 
@@ -330,10 +337,10 @@ class image_class:
             ASL2= [ASL2[sn][int(ASL2[sn].shape[0]/2)-int(self.inp_size/2)-1:int(ASL2[sn].shape[0]/2)+int(self.inp_size/2),
                    int(ASL2[sn].shape[1]/2)-int(self.inp_size/2)-1:int(ASL2[sn].shape[1]/2)+int(self.inp_size/2)]
                    if ASL2[sn].shape[0]>self.inp_size or ASL2[sn].shape[1]>self.inp_size else ASL2[sn] for sn in range(len(random_slices_indx))]
-
-            PET2= [ndimage.rotate(PET1[sn],rotate_angle[sn]) if if_rotate[sn] else PET1[sn] for sn in range(len(random_slices_indx))]
-            PET2 = [PET2[sn][ int(PET2[sn].shape[0] / 2) - int(self.out_size / 2) - 1:int(PET2[sn].shape[0] / 2) + int(
-                self.out_size / 2),
+            if pet is not None:
+                PET2= [ndimage.rotate(PET1[sn],rotate_angle[sn]) if if_rotate[sn] else PET1[sn] for sn in range(len(random_slices_indx))]
+                PET2 = [PET2[sn][ int(PET2[sn].shape[0] / 2) - int(self.out_size / 2) - 1:int(PET2[sn].shape[0] / 2) + int(
+                    self.out_size / 2),
                     int(PET2[sn].shape[1] / 2) - int(self.out_size / 2) - 1:int(PET2[sn].shape[1] / 2) + int(
                         self.out_size / 2)]
                     if PET2[sn].shape[0] > self.out_size or PET2[sn].shape[1] > self.out_size else PET2[sn] for sn in
@@ -348,19 +355,22 @@ class image_class:
                     range(len(random_slices_indx))]
 
             ASL1=ASL2
-            PET1=PET2
+            if pet is not None:
+                PET1=PET2
             T11=T12
 
             #flip
             if_flip = np.random.randint(0, 10, len(random_slices_indx)) > 5
             ASL2 = [np.fliplr(ASL1[sn]) if if_flip[sn] else ASL1[sn] for sn in
                     range(len(random_slices_indx))]
-            PET2 = [np.fliplr(PET1[sn]) if if_flip[sn] else PET1[sn] for sn in
-                    range(len(random_slices_indx))]
+            if pet is not None:
+                PET2 = [np.fliplr(PET1[sn]) if if_flip[sn] else PET1[sn] for sn in
+                        range(len(random_slices_indx))]
             T12 = [np.fliplr(T11[sn]) if if_flip[sn] else T11[sn] for sn in
                    range(len(random_slices_indx))]
             ASL1 = ASL2
-            PET1 = PET2
+            if pet is not None:
+                PET1 = PET2
             T11 = T12
 
             #gaussian noise
@@ -386,7 +396,6 @@ class image_class:
                 ASL = ASL1
                 PET = PET1
                 T1=T11
-
             else:
                 ASL = np.vstack((ASL,ASL1))
                 PET = np.vstack((PET,PET1))
