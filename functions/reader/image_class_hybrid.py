@@ -132,7 +132,9 @@ class image_class:
             # self.deform1stdb+=1
             settings.epochs_no+=1
         # select some distinct images for extracting patches!
-        rand_image_no= np.random.randint(0, len(self.scans), int(self.bunch_of_images_no))
+        rand_image_no= np.hstack((np.random.randint(0, 58, int(self.bunch_of_images_no/2)+1),
+                                 np.random.randint(58, len(self.scans), int(self.bunch_of_images_no / 2) )))
+        # rand_image_no=
 
         self.random_images = [x for x in range(len(self.random_images)) if
                               x not in rand_image_no]  # remove selected images from the choice list
