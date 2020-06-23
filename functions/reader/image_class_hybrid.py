@@ -105,6 +105,11 @@ class image_class:
         t1 = t1[1:-1]
         asl = asl[1:-1]
 
+        # if s['pet'] == None:
+        #     print('asl: %f, t1: %f'%(np.max(asl),np.max(t1)))
+        # else:
+        #     print('asl: %f, t1: %f, pet: %f'%(np.max(asl),np.max(t1),np.max(pet)))
+
 
         n = self.node(name_t1=s['t1'],name_asl=s['asl'],name_pet=s['pet'], t1=t1, asl=asl, pet=pet,
                       voxel_size=voxel_size, origin=origin, direction=direction)
@@ -117,7 +122,6 @@ class image_class:
     def random_gen(self,low, high):
         while True:
             yield random.randrange(low, high)
-    # --------------------------------------------------------------------------------------------------------
 
 
     # --------------------------------------------------------------------------------------------------------
@@ -157,11 +161,11 @@ class image_class:
             if len(imm) == 0:
 
                 continue
-            if imm['pet'] is None:
-                aa=aa+1
-            else:
-                bb=bb+1
-            print(aa,bb)
+            # if imm['pet'] is None:
+            #     aa=aa+1
+            # else:
+            #     bb=bb+1
+            # print(aa,bb)
 
             self.collection.append(imm)
             print('train image no read so far: %s'%len(self.collection))
@@ -312,16 +316,16 @@ class image_class:
         ASL=[]
         PET=[]
         T1=[]
-        aa=0
-        bb=0
-        if len(self.collection):
-            for i in range(len(self.collection)):
-                if self.collection[i].pet is None:
-                    aa=aa+1
-                else:
-                    bb=bb+1
-
-            print(aa,bb)
+        # aa=0
+        # bb=0
+        # if len(self.collection):
+        #     for i in range(len(self.collection)):
+        #         if self.collection[i].pet is None:
+        #             aa=aa+1
+        #         else:
+        #             bb=bb+1
+        #
+        #     print(aa,bb)
 
 
         for ii in range(len(self.collection) ):
@@ -445,14 +449,14 @@ class image_class:
                 settings.bunch_asl_slices_vl2 = np.vstack((settings.bunch_asl_slices_vl2, ASL1))
                 settings.bunch_pet_slices_vl2 = np.vstack((settings.bunch_pet_slices_vl2, PET1))
                 settings.bunch_t1_slices_vl2 = np.vstack((settings.bunch_t1_slices_vl2, T11))
-        aa = 0
-        bb = 0
-        if len(settings.bunch_t1_slices2):
-            for k in range(len(settings.bunch_pet_slices2)):  # read batches with or without pet patch
-                if settings.bunch_pet_slices2[k][0, 0] is not None:
-                    aa = aa + 1
-                else:
-                    bb = bb + 1
+        # aa = 0
+        # bb = 0
+        # if len(settings.bunch_t1_slices2):
+        #     for k in range(len(settings.bunch_pet_slices2)):  # read batches with or without pet patch
+        #         if settings.bunch_pet_slices2[k][0, 0] is not None:
+        #             aa = aa + 1
+        #         else:
+        #             bb = bb + 1
 
         settings.tr_isread=True
         settings.read_patche_mutex_tr.release()
@@ -461,7 +465,7 @@ class image_class:
             print('smth wrong')
 
     #--------------------------------------------------------------------------------------------------------
-    def return_patches(self,batch_no,hybrid=0):
+    def return_patches(self,batch_no,hybrid=True):
         settings.train_queue.acquire()
         asl_slices=[]
         pet_slices=[]
@@ -474,7 +478,7 @@ class image_class:
 
 
             for k in range(len(settings.bunch_asl_slices)): #read batches with or without pet patch
-                if hybrid==0: #pet
+                if hybrid==True: #pet
                     # for k in range(len(settings.bunch_asl_slices)):
                     if settings.bunch_pet_slices[k][0, 0] is not None:
                         list_indx.append(k)

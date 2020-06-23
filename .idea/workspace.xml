@@ -67,17 +67,17 @@
         <counts>
           <entry key="dummy" value="3" />
           <entry key="gitignore" value="29" />
-          <entry key="py" value="11964" />
+          <entry key="py" value="12191" />
           <entry key="sh" value="1" />
           <entry key="ssim" value="69" />
-          <entry key="txt" value="1048" />
+          <entry key="txt" value="1062" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Bash" value="1" />
-          <entry key="PLAIN_TEXT" value="1080" />
-          <entry key="Python" value="12033" />
+          <entry key="PLAIN_TEXT" value="1094" />
+          <entry key="Python" value="12260" />
         </counts>
       </usages-collector>
     </session>
@@ -99,8 +99,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/functions/network_caller/hybrid_multi_task_translate.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="196" column="68" selection-start-line="196" selection-start-column="68" selection-end-line="196" selection-end-column="68" />
+            <state relative-caret-position="94">
+              <caret line="231" column="74" selection-start-line="231" selection-start-column="74" selection-end-line="231" selection-end-column="74" />
               <folding>
                 <element signature="e#461#474#0" expanded="true" />
               </folding>
@@ -108,11 +108,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/functions/cnn/hybrid_multi_task_cnn.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="468" column="61" lean-forward="true" selection-start-line="468" selection-start-column="61" selection-end-line="468" selection-end-column="61" />
+            <state relative-caret-position="2203">
+              <caret line="566" column="43" lean-forward="true" selection-start-line="566" selection-start-column="43" selection-end-line="566" selection-end-column="43" />
               <folding>
                 <element signature="e#478#489#0" expanded="true" />
               </folding>
@@ -120,11 +120,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/functions/reader/image_class_hybrid.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="163" column="23" selection-start-line="163" selection-start-column="23" selection-end-line="163" selection-end-column="23" />
+            <state relative-caret-position="99">
+              <caret line="124" column="4" selection-start-line="124" selection-start-column="4" selection-end-line="124" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -149,10 +149,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>paddingfree_conv</find>
-      <find>collec</find>
-      <find>read_</find>
-      <find>_read_data</find>
       <find>read_data_path</find>
       <find>52</find>
       <find>run_ne</find>
@@ -163,11 +159,9 @@
       <find>lambda</find>
       <find>max_pooling2d</find>
       <find>matplotlib</find>
-      <find>hybrid_training_flag</find>
       <find>trainable=train_flg</find>
       <find>collection.a</find>
       <find>opt</find>
-      <find>stop</find>
       <find>collection.ap</find>
       <find>self.random_images</find>
       <find>n.append</find>
@@ -175,10 +169,16 @@
       <find>vstac</find>
       <find>return</find>
       <find>bb=</find>
-      <find>bb</find>
-      <find>.append(i</find>
-      <find>stop_gradient</find>
       <find>print</find>
+      <find>stop_gradient</find>
+      <find>.append(i</find>
+      <find>cost</find>
+      <find>step</find>
+      <find>step%</find>
+      <find>bb</find>
+      <find>collection.app</find>
+      <find>stop</find>
+      <find>hybrid_training_flag</find>
     </findStrings>
     <replaceStrings>
       <replace>CT_image_patchs</replace>
@@ -252,8 +252,8 @@
         <option value="$PROJECT_DIR$/functions/reader/data_reader_hybrid.py" />
         <option value="$PROJECT_DIR$/test_file.py" />
         <option value="$PROJECT_DIR$/functions/cnn/hybrid_multi_task_cnn.py" />
-        <option value="$PROJECT_DIR$/functions/reader/image_class_hybrid.py" />
         <option value="$PROJECT_DIR$/functions/network_caller/hybrid_multi_task_translate.py" />
+        <option value="$PROJECT_DIR$/functions/reader/image_class_hybrid.py" />
       </list>
     </option>
   </component>
@@ -752,7 +752,14 @@
       <option name="project" value="LOCAL" />
       <updated>1592839396246</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="hybird reading">
+      <created>1592894949679</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1592894949679</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -764,8 +771,8 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.8517928" weight="0.3437014" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.8478088" visible="true" weight="0.38569206" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.8517928" visible="true" weight="0.41679627" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.8478088" weight="0.43545878" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -804,7 +811,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="add utilities to run the cnn on the gpu server" />
     <MESSAGE value="mssim" />
     <MESSAGE value="single stage ssim" />
     <MESSAGE value="Training with ASL as the input only" />
@@ -829,7 +835,8 @@
     <MESSAGE value="hybrid image reading" />
     <MESSAGE value="return patches" />
     <MESSAGE value="read samples" />
-    <option name="LAST_COMMIT_MESSAGE" value="read samples" />
+    <MESSAGE value="hybird reading" />
+    <option name="LAST_COMMIT_MESSAGE" value="hybird reading" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -916,23 +923,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/functions/reader/image_class_hybrid.py</url>
-          <line>484</line>
-          <option name="timeStamp" value="419" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/functions/reader/image_class_hybrid.py</url>
-          <line>456</line>
-          <option name="timeStamp" value="428" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/functions/reader/image_class_hybrid.py</url>
-          <line>323</line>
+          <line>327</line>
           <option name="timeStamp" value="430" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/functions/reader/image_class_hybrid.py</url>
-          <line>163</line>
-          <option name="timeStamp" value="433" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -946,6 +938,26 @@
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateCodeFragment">
+      <expression>
+        <expression-string>np.max(asl)</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>imm[4]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>imm[3]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>(step+1)%2</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>if len(settings.bunch_pet_slices_vl2):
     print(3)</expression-string>
@@ -971,27 +983,6 @@
       <expression>
         <expression-string>np.hstack(([self.random_images1[x] for x in r1],
                                   [self.random_images2[x] for x in r2])))</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>r1=np.random.randint(0, len(self.random_images1), int(self.bunch_of_images_no/2)+1)
-r2=np.random.randint(0, len(self.random_images2), int(self.bunch_of_images_no / 2))</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>[self.random_images1[x] for x in r1]</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>self.random_images1[r1]</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>r1=np.random.randint(0, len(self.random_images1), int(self.bunch_of_images_no/2)+1)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
@@ -1312,13 +1303,6 @@ r2=np.random.randint(0, len(self.random_images2), int(self.bunch_of_images_no / 
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/functions/reader/patch_extractor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="47" selection-start-line="47" selection-end-line="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/run_hybrid_multitask_net.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
@@ -1329,30 +1313,37 @@ r2=np.random.randint(0, len(self.random_images2), int(self.bunch_of_images_no / 
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/functions/reader/image_class_hybrid.py">
+    <entry file="file://$PROJECT_DIR$/functions/reader/patch_extractor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="163" column="23" selection-start-line="163" selection-start-column="23" selection-end-line="163" selection-end-column="23" />
+        <state relative-caret-position="48">
+          <caret line="47" selection-start-line="47" selection-end-line="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functions/cnn/hybrid_multi_task_cnn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2203">
+          <caret line="566" column="43" lean-forward="true" selection-start-line="566" selection-start-column="43" selection-end-line="566" selection-end-column="43" />
+          <folding>
+            <element signature="e#478#489#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/functions/network_caller/hybrid_multi_task_translate.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="196" column="68" selection-start-line="196" selection-start-column="68" selection-end-line="196" selection-end-column="68" />
+        <state relative-caret-position="94">
+          <caret line="231" column="74" selection-start-line="231" selection-start-column="74" selection-end-line="231" selection-end-column="74" />
           <folding>
             <element signature="e#461#474#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/functions/cnn/hybrid_multi_task_cnn.py">
+    <entry file="file://$PROJECT_DIR$/functions/reader/image_class_hybrid.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="468" column="61" lean-forward="true" selection-start-line="468" selection-start-column="61" selection-end-line="468" selection-end-column="61" />
-          <folding>
-            <element signature="e#478#489#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="99">
+          <caret line="124" column="4" selection-start-line="124" selection-start-column="4" selection-end-line="124" selection-end-column="4" />
         </state>
       </provider>
     </entry>

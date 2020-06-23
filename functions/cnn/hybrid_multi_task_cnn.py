@@ -499,7 +499,7 @@ class multi_stage_densenet:
                              name='PET',
                              
                              )
-            y = tf.cond(hybrid_training_flag, lambda: (y), lambda: tf.stop_gradient(y))
+            # y = tf.cond(hybrid_training_flag, lambda: (y), lambda: tf.stop_gradient(y))
             pet=tf.nn.tanh(y)
 
         ####################################### ASL Fork

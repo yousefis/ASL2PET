@@ -229,7 +229,9 @@ class net_translate:
 
             ssim_pet = tf.reduce_mean(1 - SSIM(x1=pet_plchld, x2=pet_y, max_val=2.1)[0])
             loss_pet = alpha * ssim_pet + (1 - alpha) * tf.reduce_mean(huber(labels=pet_plchld, logit=pet_y))
-            cost = tf.cond(hybrid_training_flag, lambda: tf.add(loss_asl,loss_pet), lambda: loss_asl)
+            cost = tf.cond(hybrid_training_flag, lambda: loss_asl+loss_pet, lambda: loss_asl)
+            # cost = tf.cond(hybrid_training_flag, lambda: loss_asl+loss_pet/1000, lambda: loss_asl+tf.stop_gradient(loss_pet/1000))
+            # cost = loss_asl
 
         tf.summary.scalar("cost", cost)
         # tf.summary.scalar("denominator", denominator)
@@ -359,7 +361,8 @@ class net_translate:
 
                 while (step * self.batch_no < self.no_sample_per_each_itr):
 
-                    [train_asl_slices, train_pet_slices, train_t1_slices] = _image_class_tr.return_patches(self.batch_no,step%2)
+                    [train_asl_slices, train_pet_slices, train_t1_slices] = _image_class_tr.return_patches(self.batch_no,
+                                                                                        hybrid=(step+1)%2) #hybrid: 0 sith pet, 1 without pet
 
                     if (len(train_asl_slices) < self.batch_no) | (len(train_pet_slices) < self.batch_no) \
                             | (len(train_t1_slices) < self.batch_no):
@@ -369,7 +372,7 @@ class net_translate:
                         continue
 
                     tic = time.time()
-                    if len(train_pet_slices):
+                    if (step+1)%2:
                         hybrid_training_f = True
                     else:
                         hybrid_training_f = False
