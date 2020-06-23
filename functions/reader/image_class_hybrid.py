@@ -30,6 +30,8 @@ class image_class:
         self.is_training=is_training
         self.scans=scans
         self.random_images=list(range(0,len(self.scans)))
+        self.random_images1 = list(range(0, 58))
+        self.random_images2 = list(range(58, len(self.scans)))
         self.counter_save=0
         self.static_counter_vl=0
         self.seed = 100
@@ -127,21 +129,27 @@ class image_class:
         self.seed += 1
         np.random.seed(self.seed)
 
-        if len(self.random_images) < self.bunch_of_images_no:  # if there are no image choices for selection
-            self.random_images = list(range(0, len(self.scans)))
-            # self.deform1stdb+=1
+        if len(self.random_images1) < self.bunch_of_images_no:  # if there are no image choices for selection
+            self.random_images1 = list(range(0,58))
+            self.random_images2 = list(range(58, len(self.scans)))
             settings.epochs_no+=1
+
         # select some distinct images for extracting patches!
-        rand_image_no= np.hstack((np.random.randint(0, 58, int(self.bunch_of_images_no/2)+1),
-                                 np.random.randint(58, len(self.scans), int(self.bunch_of_images_no / 2) )))
+        r1=np.random.randint(0, len(self.random_images1), int(self.bunch_of_images_no/2)+1)
+        r2=np.random.randint(0, len(self.random_images2), int(self.bunch_of_images_no / 2))
+        rand_image_no= np.hstack(([self.random_images1[x] for x in r1],
+                                  [self.random_images2[x] for x in r2]))
         # rand_image_no=
 
-        self.random_images = [x for x in range(len(self.random_images)) if
+        self.random_images1 = [x for x in range(len(self.random_images1)) if
                               x not in rand_image_no]  # remove selected images from the choice list
+        self.random_images2 = [x for x in range(len(self.random_images2)) if
+                               x not in rand_image_no]  # remove selected images from the choice list
         print(rand_image_no)
 
 
-
+        aa=0
+        bb=0
         for img_index in range(len(rand_image_no)):
 
 
@@ -149,6 +157,11 @@ class image_class:
             if len(imm) == 0:
 
                 continue
+            if imm['pet'] is None:
+                aa=aa+1
+            else:
+                bb=bb+1
+            print(aa,bb)
 
             self.collection.append(imm)
             print('train image no read so far: %s'%len(self.collection))
@@ -269,7 +282,6 @@ class image_class:
                 settings.bunch_pet_slices_vl2 = np.vstack((settings.bunch_pet_slices_vl2, PET1))
                 settings.bunch_t1_slices_vl2 = np.vstack((settings.bunch_t1_slices_vl2, T11))
 
- 
 
         settings.vl_isread=True
         if len(settings.bunch_asl_slices_vl2) != len(
@@ -300,6 +312,17 @@ class image_class:
         ASL=[]
         PET=[]
         T1=[]
+        aa=0
+        bb=0
+        if len(self.collection):
+            for i in range(len(self.collection)):
+                if self.collection[i].pet is None:
+                    aa=aa+1
+                else:
+                    bb=bb+1
+
+            print(aa,bb)
+
 
         for ii in range(len(self.collection) ):
             t1 = self.collection[ii].t1
@@ -422,7 +445,14 @@ class image_class:
                 settings.bunch_asl_slices_vl2 = np.vstack((settings.bunch_asl_slices_vl2, ASL1))
                 settings.bunch_pet_slices_vl2 = np.vstack((settings.bunch_pet_slices_vl2, PET1))
                 settings.bunch_t1_slices_vl2 = np.vstack((settings.bunch_t1_slices_vl2, T11))
-
+        aa = 0
+        bb = 0
+        if len(settings.bunch_t1_slices2):
+            for k in range(len(settings.bunch_pet_slices2)):  # read batches with or without pet patch
+                if settings.bunch_pet_slices2[k][0, 0] is not None:
+                    aa = aa + 1
+                else:
+                    bb = bb + 1
 
         settings.tr_isread=True
         settings.read_patche_mutex_tr.release()
@@ -440,8 +470,11 @@ class image_class:
         if len(settings.bunch_asl_slices)>=batch_no and\
             len(settings.bunch_pet_slices) >= batch_no  :
             # \                        len(settings.bunch_t1_slices) >= batch_no:
+
+
+
             for k in range(len(settings.bunch_asl_slices)): #read batches with or without pet patch
-                if hybrid==1: #pet
+                if hybrid==0: #pet
                     # for k in range(len(settings.bunch_asl_slices)):
                     if settings.bunch_pet_slices[k][0, 0] is not None:
                         list_indx.append(k)

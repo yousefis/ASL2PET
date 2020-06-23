@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="19949bfa-827e-4252-b412-827257a1f8f6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/cnn/hybrid_multi_task_cnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions/cnn/hybrid_multi_task_cnn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/network_caller/hybrid_multi_task_translate.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions/network_caller/hybrid_multi_task_translate.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/functions/reader/image_class_hybrid.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions/reader/image_class_hybrid.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -42,7 +44,7 @@
           <entry key="gitignore" value="5" />
           <entry key="md" value="3" />
           <entry key="png" value="1" />
-          <entry key="py" value="350" />
+          <entry key="py" value="351" />
           <entry key="pyi" value="1" />
           <entry key="sh" value="3" />
           <entry key="ssim" value="4" />
@@ -56,7 +58,7 @@
           <entry key="Image" value="1" />
           <entry key="Markdown" value="3" />
           <entry key="PLAIN_TEXT" value="7" />
-          <entry key="Python" value="354" />
+          <entry key="Python" value="355" />
           <entry key="PythonStub" value="1" />
           <entry key="XML" value="1" />
         </counts>
@@ -65,17 +67,17 @@
         <counts>
           <entry key="dummy" value="3" />
           <entry key="gitignore" value="29" />
-          <entry key="py" value="11630" />
+          <entry key="py" value="11964" />
           <entry key="sh" value="1" />
           <entry key="ssim" value="69" />
-          <entry key="txt" value="1035" />
+          <entry key="txt" value="1048" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Bash" value="1" />
-          <entry key="PLAIN_TEXT" value="1067" />
-          <entry key="Python" value="11699" />
+          <entry key="PLAIN_TEXT" value="1080" />
+          <entry key="Python" value="12033" />
         </counts>
       </usages-collector>
     </session>
@@ -83,49 +85,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/functions/cnn/hybrid_multi_task_cnn.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-207">
-              <caret line="476" column="108" lean-forward="true" selection-start-line="476" selection-start-column="108" selection-end-line="476" selection-end-column="108" />
-              <folding>
-                <element signature="e#478#489#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../Programs/TF112/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="1929" selection-start-line="1929" selection-end-line="1929" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../Programs/TF112/lib/python3.6/site-packages/tensorflow/python/ops/array_ops.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="80" selection-start-line="80" selection-end-line="80" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test_file.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/run_hybrid_multitask_net.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="141">
-              <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
+            <state relative-caret-position="207">
+              <caret line="51" selection-start-line="51" selection-end-line="51" />
               <folding>
                 <element signature="e#461#490#0" expanded="true" />
               </folding>
@@ -134,28 +97,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/functions/threads/fill_thread.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="179">
-              <caret line="74" selection-start-line="74" selection-end-line="74" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../Programs/TF112/lib/python3.6/site-packages/numpy/core/shape_base.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="77">
-              <caret line="425" selection-start-line="425" selection-end-line="425" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/functions/network_caller/hybrid_multi_task_translate.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="81">
-              <caret line="337" lean-forward="true" selection-start-line="337" selection-end-line="337" />
+            <state relative-caret-position="45">
+              <caret line="196" column="68" selection-start-line="196" selection-start-column="68" selection-end-line="196" selection-end-column="68" />
               <folding>
                 <element signature="e#461#474#0" expanded="true" />
               </folding>
@@ -164,10 +109,31 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/functions/cnn/hybrid_multi_task_cnn.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="468" column="61" lean-forward="true" selection-start-line="468" selection-start-column="61" selection-end-line="468" selection-end-column="61" />
+              <folding>
+                <element signature="e#478#489#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/functions/reader/image_class_hybrid.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="464" selection-start-line="464" selection-end-line="464" />
+            <state relative-caret-position="585">
+              <caret line="163" column="23" selection-start-line="163" selection-start-column="23" selection-end-line="163" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/functions/reader/patch_extractor.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="48">
+              <caret line="47" selection-start-line="47" selection-end-line="47" />
             </state>
           </provider>
         </entry>
@@ -183,16 +149,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>ave_loss_vali</find>
-      <find>.py</find>
-      <find>cost</find>
-      <find>unet</find>
-      <find>une</find>
-      <find>level_design</find>
-      <find>job</find>
-      <find>log</find>
-      <find>Fork</find>
-      <find>multi_stage_densenet</find>
       <find>paddingfree_conv</find>
       <find>collec</find>
       <find>read_</find>
@@ -209,10 +165,20 @@
       <find>matplotlib</find>
       <find>hybrid_training_flag</find>
       <find>trainable=train_flg</find>
-      <find>stop</find>
       <find>collection.a</find>
-      <find>collection.ap</find>
       <find>opt</find>
+      <find>stop</find>
+      <find>collection.ap</find>
+      <find>self.random_images</find>
+      <find>n.append</find>
+      <find>hstac</find>
+      <find>vstac</find>
+      <find>return</find>
+      <find>bb=</find>
+      <find>bb</find>
+      <find>.append(i</find>
+      <find>stop_gradient</find>
+      <find>print</find>
     </findStrings>
     <replaceStrings>
       <replace>CT_image_patchs</replace>
@@ -286,8 +252,8 @@
         <option value="$PROJECT_DIR$/functions/reader/data_reader_hybrid.py" />
         <option value="$PROJECT_DIR$/test_file.py" />
         <option value="$PROJECT_DIR$/functions/cnn/hybrid_multi_task_cnn.py" />
-        <option value="$PROJECT_DIR$/functions/network_caller/hybrid_multi_task_translate.py" />
         <option value="$PROJECT_DIR$/functions/reader/image_class_hybrid.py" />
+        <option value="$PROJECT_DIR$/functions/network_caller/hybrid_multi_task_translate.py" />
       </list>
     </option>
   </component>
@@ -779,31 +745,57 @@
       <option name="project" value="LOCAL" />
       <updated>1592837246050</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="read samples">
+      <created>1592839396246</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1592839396246</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="8" y="30" width="1276" height="738" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.0996016" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.0996016" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.85338646" weight="0.46189734" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.84940237" visible="true" weight="0.3592535" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.8517928" weight="0.3437014" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.8478088" visible="true" weight="0.38569206" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.1505976" side_tool="true" visible="true" weight="0.3592535" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.15219124" side_tool="true" weight="0.38569206" />
       <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.0996016" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.8517928" weight="0.3437014" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.8478088" visible="true" weight="0.38569206" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.15219124" side_tool="true" visible="true" weight="0.38569206" />
+      <window_info anchor="bottom" id="Python Console" order="10" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -812,7 +804,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="first commit" />
     <MESSAGE value="add utilities to run the cnn on the gpu server" />
     <MESSAGE value="mssim" />
     <MESSAGE value="single stage ssim" />
@@ -837,7 +828,8 @@
     <MESSAGE value="image_class hybrid" />
     <MESSAGE value="hybrid image reading" />
     <MESSAGE value="return patches" />
-    <option name="LAST_COMMIT_MESSAGE" value="return patches" />
+    <MESSAGE value="read samples" />
+    <option name="LAST_COMMIT_MESSAGE" value="read samples" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -922,6 +914,26 @@
           <line>345</line>
           <option name="timeStamp" value="364" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/functions/reader/image_class_hybrid.py</url>
+          <line>484</line>
+          <option name="timeStamp" value="419" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/functions/reader/image_class_hybrid.py</url>
+          <line>456</line>
+          <option name="timeStamp" value="428" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/functions/reader/image_class_hybrid.py</url>
+          <line>323</line>
+          <option name="timeStamp" value="430" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/functions/reader/image_class_hybrid.py</url>
+          <line>163</line>
+          <option name="timeStamp" value="433" />
+        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
@@ -935,54 +947,51 @@
   <component name="debuggerHistoryManager">
     <expressions id="evaluateCodeFragment">
       <expression>
-        <expression-string>np.hstack((np.random.randint(0, 58, int(self.bunch_of_images_no/2)+1),
-                                 np.random.randint(58, len(self.scans), int(self.bunch_of_images_no / 2) )))</expression-string>
+        <expression-string>if len(settings.bunch_pet_slices_vl2):
+    print(3)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>np.vstack((np.random.randint(0, 58, int(self.bunch_of_images_no/2)+1),
-                                 np.random.randint(58, len(self.scans), int(self.bunch_of_images_no / 2) )))</expression-string>
+        <expression-string>len(settings.bunch_pet_slices_vl2)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>np.hstack((rand_image_no,rand_image_no2))</expression-string>
+        <expression-string>hybrid</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>np.hstack(rand_image_no,rand_image_no2)</expression-string>
+        <expression-string>np.hstack(([self.random_images1[x] for x in r1],
+                                  [self.random_images2[x] for x in r2]))</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>np.vstack(rand_image_no,rand_image_no2)</expression-string>
+        <expression-string>np.hstack(([self.random_images1[x] for x in r1],
+                                  [self.random_images2[x] for x in r2])))</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>np.stack(rand_image_no,rand_image_no2)</expression-string>
+        <expression-string>r1=np.random.randint(0, len(self.random_images1), int(self.bunch_of_images_no/2)+1)
+r2=np.random.randint(0, len(self.random_images2), int(self.bunch_of_images_no / 2))</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>rand_image_no+(rand_image_no2)</expression-string>
+        <expression-string>[self.random_images1[x] for x in r1]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>rand_image_no.append(rand_image_no2)</expression-string>
+        <expression-string>self.random_images1[r1]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>rand_image_no+rand_image_no2</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>rand_image_no2= np.random.randint(58, len(self.scans), int(self.bunch_of_images_no/2)+1)</expression-string>
+        <expression-string>r1=np.random.randint(0, len(self.random_images1), int(self.bunch_of_images_no/2)+1)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
@@ -1254,13 +1263,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/functions/reader/patch_extractor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="42" selection-start-line="42" selection-end-line="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../Programs/TF112/lib/python3.6/site-packages/tensorflow/python/ops/math_ops.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
@@ -1289,33 +1291,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/functions/cnn/hybrid_multi_task_cnn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-207">
-          <caret line="476" column="108" lean-forward="true" selection-start-line="476" selection-start-column="108" selection-end-line="476" selection-end-column="108" />
-          <folding>
-            <element signature="e#478#489#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/run_hybrid_multitask_net.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
-          <folding>
-            <element signature="e#461#490#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/functions/threads/fill_thread.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="74" selection-start-line="74" selection-end-line="74" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/lib64/python3.6/threading.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="121">
@@ -1330,20 +1305,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/functions/network_caller/hybrid_multi_task_translate.py">
+    <entry file="file://$PROJECT_DIR$/functions/threads/fill_thread.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="337" lean-forward="true" selection-start-line="337" selection-end-line="337" />
+        <state relative-caret-position="179">
+          <caret line="74" selection-start-line="74" selection-end-line="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functions/reader/patch_extractor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="47" selection-start-line="47" selection-end-line="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run_hybrid_multitask_net.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="51" selection-start-line="51" selection-end-line="51" />
           <folding>
-            <element signature="e#461#474#0" expanded="true" />
+            <element signature="e#461#490#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/functions/reader/image_class_hybrid.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="464" selection-start-line="464" selection-end-line="464" />
+        <state relative-caret-position="585">
+          <caret line="163" column="23" selection-start-line="163" selection-start-column="23" selection-end-line="163" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functions/network_caller/hybrid_multi_task_translate.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="196" column="68" selection-start-line="196" selection-start-column="68" selection-end-line="196" selection-end-column="68" />
+          <folding>
+            <element signature="e#461#474#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functions/cnn/hybrid_multi_task_cnn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="468" column="61" lean-forward="true" selection-start-line="468" selection-start-column="61" selection-end-line="468" selection-end-column="61" />
+          <folding>
+            <element signature="e#478#489#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
