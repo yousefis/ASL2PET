@@ -120,7 +120,7 @@ class net_translate:
         _patch_extractor_thread_vl.start()
         _read_thread_vl.start()
         # ======================================
-        bunch_of_images_no = 15
+        bunch_of_images_no = 14
         _image_class_tr = image_class(train_data,
                                       bunch_of_images_no=bunch_of_images_no,
                                       is_training=1, inp_size=self.asl_size, out_size=self.pet_size

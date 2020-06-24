@@ -133,43 +133,44 @@ class image_class:
         self.seed += 1
         np.random.seed(self.seed)
 
-        if len(self.random_images1) < self.bunch_of_images_no:  # if there are no image choices for selection
+        if len(self.random_images1) < int(self.bunch_of_images_no/2):  # if there are no image choices for selection
             self.random_images1 = list(range(0,58))
             self.random_images2 = list(range(58, len(self.scans)))
             settings.epochs_no+=1
 
         # select some distinct images for extracting patches!
-        r1=np.random.randint(0, len(self.random_images1), int(self.bunch_of_images_no/2)+1)
+        r1=np.random.randint(0, len(self.random_images1), int(self.bunch_of_images_no / 2))
         r2=np.random.randint(0, len(self.random_images2), int(self.bunch_of_images_no / 2))
+
+        print([self.random_images1[x] for x in r1])
+        print([self.random_images2[x] for x in r2])
+
         rand_image_no= np.hstack(([self.random_images1[x] for x in r1],
                                   [self.random_images2[x] for x in r2]))
         # rand_image_no=
 
-        self.random_images1 = [x for x in range(len(self.random_images1)) if
+        self.random_images1 = [x for x in (self.random_images1) if
                               x not in rand_image_no]  # remove selected images from the choice list
-        self.random_images2 = [x for x in range(len(self.random_images2)) if
+        self.random_images2 = [x for x in (self.random_images2) if
                                x not in rand_image_no]  # remove selected images from the choice list
-        print(rand_image_no)
 
 
-        aa=0
-        bb=0
+        a=0
+        b=0
         for img_index in range(len(rand_image_no)):
 
 
             imm = self.read_image(self.scans[rand_image_no[img_index]])
             if len(imm) == 0:
-
                 continue
-            # if imm['pet'] is None:
-            #     aa=aa+1
-            # else:
-            #     bb=bb+1
-            # print(aa,bb)
+            if imm[5] is None:
+                a=a+1
+            else:
+                b=b+1
 
             self.collection.append(imm)
             print('train image no read so far: %s'%len(self.collection))
-
+        # print(a,b)
         settings.tr_isread=False
         settings.read_patche_mutex_tr.release()
 
@@ -316,16 +317,16 @@ class image_class:
         ASL=[]
         PET=[]
         T1=[]
-        # aa=0
-        # bb=0
-        # if len(self.collection):
-        #     for i in range(len(self.collection)):
-        #         if self.collection[i].pet is None:
-        #             aa=aa+1
-        #         else:
-        #             bb=bb+1
-        #
-        #     print(aa,bb)
+        aa=0
+        bb=0
+        if len(self.collection):
+            for i in range(len(self.collection)):
+                if self.collection[i].pet is None:
+                    aa=aa+1
+                else:
+                    bb=bb+1
+
+            print(aa,bb)
 
 
         for ii in range(len(self.collection) ):
@@ -449,15 +450,15 @@ class image_class:
                 settings.bunch_asl_slices_vl2 = np.vstack((settings.bunch_asl_slices_vl2, ASL1))
                 settings.bunch_pet_slices_vl2 = np.vstack((settings.bunch_pet_slices_vl2, PET1))
                 settings.bunch_t1_slices_vl2 = np.vstack((settings.bunch_t1_slices_vl2, T11))
-        # aa = 0
-        # bb = 0
-        # if len(settings.bunch_t1_slices2):
-        #     for k in range(len(settings.bunch_pet_slices2)):  # read batches with or without pet patch
-        #         if settings.bunch_pet_slices2[k][0, 0] is not None:
-        #             aa = aa + 1
-        #         else:
-        #             bb = bb + 1
-
+        aa1 = 0
+        bb1 = 0
+        if len(settings.bunch_t1_slices2):
+            for k in range(len(settings.bunch_pet_slices2)):  # read batches with or without pet patch
+                if settings.bunch_pet_slices2[k][0, 0] is None:
+                    aa1 = aa1 + 1
+                else:
+                    bb1 = bb1 + 1
+        print(aa,aa1,bb,bb1)
         settings.tr_isread=True
         settings.read_patche_mutex_tr.release()
         if len(settings.bunch_t1_slices)!=len(settings.bunch_asl_slices) or len(settings.bunch_asl_slices)!=len(
