@@ -5,7 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/functions/cnn/hybrid_multi_task_cnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions/cnn/hybrid_multi_task_cnn.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/functions/network_caller/hybrid_multi_task_translate.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions/network_caller/hybrid_multi_task_translate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/reader/image_class_hybrid.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions/reader/image_class_hybrid.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -44,7 +43,7 @@
           <entry key="gitignore" value="5" />
           <entry key="md" value="3" />
           <entry key="png" value="1" />
-          <entry key="py" value="351" />
+          <entry key="py" value="353" />
           <entry key="pyi" value="1" />
           <entry key="sh" value="3" />
           <entry key="ssim" value="4" />
@@ -58,7 +57,7 @@
           <entry key="Image" value="1" />
           <entry key="Markdown" value="3" />
           <entry key="PLAIN_TEXT" value="7" />
-          <entry key="Python" value="355" />
+          <entry key="Python" value="357" />
           <entry key="PythonStub" value="1" />
           <entry key="XML" value="1" />
         </counts>
@@ -67,17 +66,17 @@
         <counts>
           <entry key="dummy" value="3" />
           <entry key="gitignore" value="29" />
-          <entry key="py" value="12191" />
+          <entry key="py" value="12552" />
           <entry key="sh" value="1" />
           <entry key="ssim" value="69" />
-          <entry key="txt" value="1062" />
+          <entry key="txt" value="1092" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Bash" value="1" />
-          <entry key="PLAIN_TEXT" value="1094" />
-          <entry key="Python" value="12260" />
+          <entry key="PLAIN_TEXT" value="1124" />
+          <entry key="Python" value="12621" />
         </counts>
       </usages-collector>
     </session>
@@ -87,7 +86,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/run_hybrid_multitask_net.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
+            <state relative-caret-position="261">
               <caret line="51" selection-start-line="51" selection-end-line="51" />
               <folding>
                 <element signature="e#461#490#0" expanded="true" />
@@ -96,11 +95,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/functions/network_caller/hybrid_multi_task_translate.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="94">
-              <caret line="231" column="74" selection-start-line="231" selection-start-column="74" selection-end-line="231" selection-end-column="74" />
+            <state relative-caret-position="180">
+              <caret line="234" column="12" selection-start-line="234" selection-start-column="12" selection-end-line="234" selection-end-column="12" />
               <folding>
                 <element signature="e#461#474#0" expanded="true" />
               </folding>
@@ -111,20 +110,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/functions/cnn/hybrid_multi_task_cnn.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2203">
-              <caret line="566" column="43" lean-forward="true" selection-start-line="566" selection-start-column="43" selection-end-line="566" selection-end-column="43" />
-              <folding>
-                <element signature="e#478#489#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="150">
+              <caret line="473" column="12" lean-forward="true" selection-start-line="473" selection-start-column="12" selection-end-line="473" selection-end-column="12" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/functions/cnn/multi_task_cnn.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="121">
+              <caret line="412" column="56" selection-start-line="412" selection-start-column="52" selection-end-line="412" selection-end-column="56" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/functions/reader/image_class_hybrid.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="99">
-              <caret line="124" column="4" selection-start-line="124" selection-start-column="4" selection-end-line="124" selection-end-column="4" />
+              <caret line="124" selection-start-line="124" selection-end-line="124" />
             </state>
           </provider>
         </entry>
@@ -149,13 +154,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>read_data_path</find>
-      <find>52</find>
-      <find>run_ne</find>
-      <find>data_path_AMUC</find>
-      <find>data_path_LUMC</find>
-      <find>image_class</find>
-      <find>imm</find>
       <find>lambda</find>
       <find>max_pooling2d</find>
       <find>matplotlib</find>
@@ -170,14 +168,21 @@
       <find>return</find>
       <find>bb=</find>
       <find>print</find>
-      <find>stop_gradient</find>
       <find>.append(i</find>
-      <find>cost</find>
       <find>step</find>
       <find>step%</find>
       <find>bb</find>
       <find>collection.app</find>
       <find>stop</find>
+      <find>cos</find>
+      <find>pet</find>
+      <find>FORK</find>
+      <find>pet_img</find>
+      <find>pet_plchld</find>
+      <find>cost</find>
+      <find>return_</find>
+      <find>hybrid_training_f</find>
+      <find>stop_gradient</find>
       <find>hybrid_training_flag</find>
     </findStrings>
     <replaceStrings>
@@ -246,14 +251,14 @@
         <option value="$PROJECT_DIR$/run_multitask_net.py" />
         <option value="$PROJECT_DIR$/submit_job_multitask.py" />
         <option value="$PROJECT_DIR$/functions/network_caller/multi_task_translate.py" />
-        <option value="$PROJECT_DIR$/functions/cnn/multi_task_cnn.py" />
         <option value="$PROJECT_DIR$/functions/reader/data_reader.py" />
         <option value="$PROJECT_DIR$/run_hybrid_multitask_net.py" />
         <option value="$PROJECT_DIR$/functions/reader/data_reader_hybrid.py" />
         <option value="$PROJECT_DIR$/test_file.py" />
+        <option value="$PROJECT_DIR$/functions/reader/image_class_hybrid.py" />
+        <option value="$PROJECT_DIR$/functions/cnn/multi_task_cnn.py" />
         <option value="$PROJECT_DIR$/functions/cnn/hybrid_multi_task_cnn.py" />
         <option value="$PROJECT_DIR$/functions/network_caller/hybrid_multi_task_translate.py" />
-        <option value="$PROJECT_DIR$/functions/reader/image_class_hybrid.py" />
       </list>
     </option>
   </component>
@@ -280,6 +285,18 @@
               <item name="ASL_PET_translation--001" type="b2602c69:ProjectViewProjectNode" />
               <item name="ASL_PET_translation--001" type="462c0819:PsiDirectoryNode" />
               <item name="functions" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ASL_PET_translation--001" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ASL_PET_translation--001" type="462c0819:PsiDirectoryNode" />
+              <item name="functions" type="462c0819:PsiDirectoryNode" />
+              <item name="cnn" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ASL_PET_translation--001" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ASL_PET_translation--001" type="462c0819:PsiDirectoryNode" />
+              <item name="functions" type="462c0819:PsiDirectoryNode" />
+              <item name="network_caller" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ASL_PET_translation--001" type="b2602c69:ProjectViewProjectNode" />
@@ -759,20 +776,27 @@
       <option name="project" value="LOCAL" />
       <updated>1592894949679</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="debugging hybrid reading data">
+      <created>1592923999730</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1592923999730</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="8" y="30" width="1276" height="738" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.0996016" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.07250996" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.8517928" visible="true" weight="0.41679627" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.8478088" weight="0.43545878" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.8517928" visible="true" weight="0.30326593" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.8478088" weight="0.30793157" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -811,7 +835,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="mssim" />
     <MESSAGE value="single stage ssim" />
     <MESSAGE value="Training with ASL as the input only" />
     <MESSAGE value="training by asl onlyu" />
@@ -836,7 +859,8 @@
     <MESSAGE value="return patches" />
     <MESSAGE value="read samples" />
     <MESSAGE value="hybird reading" />
-    <option name="LAST_COMMIT_MESSAGE" value="hybird reading" />
+    <MESSAGE value="debugging hybrid reading data" />
+    <option name="LAST_COMMIT_MESSAGE" value="debugging hybrid reading data" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -917,14 +941,14 @@
           <option name="timeStamp" value="349" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/functions/cnn/hybrid_multi_task_cnn.py</url>
-          <line>345</line>
-          <option name="timeStamp" value="364" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/functions/reader/image_class_hybrid.py</url>
           <line>327</line>
           <option name="timeStamp" value="430" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/functions/network_caller/hybrid_multi_task_translate.py</url>
+          <line>402</line>
+          <option name="timeStamp" value="444" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -1204,23 +1228,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/functions/network_caller/multi_task_translate.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2205">
-          <caret line="162" column="47" selection-start-line="162" selection-start-column="47" selection-end-line="162" selection-end-column="47" />
-          <folding>
-            <element signature="e#461#474#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/functions/cnn/multi_task_cnn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7845">
-          <caret line="528" column="40" selection-start-line="528" selection-start-column="40" selection-end-line="528" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/functions/losses/ssim_loss.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="720">
@@ -1303,16 +1310,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/run_hybrid_multitask_net.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="51" selection-start-line="51" selection-end-line="51" />
-          <folding>
-            <element signature="e#461#490#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/functions/reader/patch_extractor.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="48">
@@ -1320,30 +1317,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/functions/cnn/hybrid_multi_task_cnn.py">
+    <entry file="file://$PROJECT_DIR$/functions/reader/image_class_hybrid.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2203">
-          <caret line="566" column="43" lean-forward="true" selection-start-line="566" selection-start-column="43" selection-end-line="566" selection-end-column="43" />
+        <state relative-caret-position="99">
+          <caret line="124" selection-start-line="124" selection-end-line="124" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run_hybrid_multitask_net.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="51" selection-start-line="51" selection-end-line="51" />
           <folding>
-            <element signature="e#478#489#0" expanded="true" />
+            <element signature="e#461#490#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/functions/network_caller/hybrid_multi_task_translate.py">
+    <entry file="file://$PROJECT_DIR$/functions/cnn/multi_task_cnn.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="94">
-          <caret line="231" column="74" selection-start-line="231" selection-start-column="74" selection-end-line="231" selection-end-column="74" />
+        <state relative-caret-position="121">
+          <caret line="412" column="56" selection-start-line="412" selection-start-column="52" selection-end-line="412" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functions/network_caller/multi_task_translate.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="293">
+          <caret line="225" column="36" lean-forward="true" selection-start-line="219" selection-start-column="7" selection-end-line="225" selection-end-column="36" />
           <folding>
             <element signature="e#461#474#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/functions/reader/image_class_hybrid.py">
+    <entry file="file://$PROJECT_DIR$/functions/cnn/hybrid_multi_task_cnn.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="124" column="4" selection-start-line="124" selection-start-column="4" selection-end-line="124" selection-end-column="4" />
+        <state relative-caret-position="150">
+          <caret line="473" column="12" lean-forward="true" selection-start-line="473" selection-start-column="12" selection-end-line="473" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functions/network_caller/hybrid_multi_task_translate.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="234" column="12" selection-start-line="234" selection-start-column="12" selection-end-line="234" selection-end-column="12" />
+          <folding>
+            <element signature="e#461#474#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

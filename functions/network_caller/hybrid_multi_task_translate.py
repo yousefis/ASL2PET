@@ -223,15 +223,38 @@ class net_translate:
         loadModel = 0
         # self.loss = ssim_loss()
         alpha = .84
+
         with tf.name_scope('cost'):
             ssim_asl = tf.reduce_mean(1 - SSIM(x1=asl_out_plchld, x2=asl_y, max_val=34.0)[0])
             loss_asl = alpha * ssim_asl + (1 - alpha) * tf.reduce_mean(huber(labels=asl_out_plchld, logit=asl_y))
 
             ssim_pet = tf.reduce_mean(1 - SSIM(x1=pet_plchld, x2=pet_y, max_val=2.1)[0])
-            loss_pet = alpha * ssim_pet + (1 - alpha) * tf.reduce_mean(huber(labels=pet_plchld, logit=pet_y))
-            cost = tf.cond(hybrid_training_flag, lambda: loss_asl+loss_pet, lambda: loss_asl)
-            # cost = tf.cond(hybrid_training_flag, lambda: loss_asl+loss_pet/1000, lambda: loss_asl+tf.stop_gradient(loss_pet/1000))
-            # cost = loss_asl
+            loss_pet = tf.cond(hybrid_training_flag,
+                               lambda:alpha * ssim_pet + (1 - alpha) * tf.reduce_mean(huber(labels=pet_plchld, logit=pet_y)),
+                               lambda:tf.stop_gradient(alpha * ssim_pet + (1 - alpha) * tf.reduce_mean(huber(labels=pet_plchld, logit=pet_y))))
+
+            cost = tf.cond(hybrid_training_flag, lambda: loss_asl + loss_pet,
+                           lambda: loss_asl )
+            # cost = tf.cond(hybrid_training_flag, lambda: ssim_asl + ssim_pet,
+            #                lambda: ssim_asl )
+
+            # hybrid: 0 without pet, 1 with pet
+
+        # with tf.name_scope('cost'):
+        #     ssim_asl = tf.reduce_mean(1 - SSIM(x1=asl_out_plchld, x2=asl_y, max_val=34.0)[0])
+        #     # loss_asl = alpha * ssim_asl + (1 - alpha) * tf.reduce_mean(huber(labels=asl_out_plchld, logit=asl_y))
+        #     loss_asl =ssim_asl
+        #
+        #     ssim_pet = tf.reduce_mean(1 - SSIM(x1=pet_plchld, x2=pet_y, max_val=2.1)[0])
+        #     # loss_pet = alpha * ssim_pet + (1 - alpha) * tf.reduce_mean(huber(labels=pet_plchld, logit=pet_y))
+        #     loss_pet =ssim_pet
+        #
+        #     # cost = tf.cond(hybrid_training_flag, lambda: loss_asl+tf.stop_gradient(loss_pet), lambda: loss_asl+loss_pet)
+        #     # cost = tf.cond(hybrid_training_flag,
+        #     #                lambda: loss_asl+0*tf.stop_gradient(loss_pet),  #true of 1 without pet
+        #     #                lambda: loss_asl+loss_pet) #false or 0 with pet
+        #
+        #     cost = loss_pet
 
         tf.summary.scalar("cost", cost)
         # tf.summary.scalar("denominator", denominator)
@@ -295,10 +318,10 @@ class net_translate:
                             time.sleep(0.5)
                             # print('sleep 3 validation')
                             continue
-                        if len(validation_pet_slices):
-                            hybrid_training_f = True
-                        else:
-                            hybrid_training_f = False
+                        # if len(validation_pet_slices):
+                        #     hybrid_training_f = True
+                        # else:
+                        #     hybrid_training_f = False
                         tic = time.time()
                         [loss_vali] = sess.run([cost],
                                                feed_dict={asl_plchld: validation_asl_slices,
@@ -312,7 +335,7 @@ class net_translate:
                                                           is_training: False,
                                                           ave_loss_vali: -1,
                                                           is_training_bn: False,
-                                                          hybrid_training_flag:hybrid_training_f
+                                                          hybrid_training_flag:False
                                                           })
                         elapsed = time.time() - tic
                         loss_validation += loss_vali
@@ -350,7 +373,7 @@ class net_translate:
                                                            is_training: False,
                                                            ave_loss_vali: loss_validation,
                                                            is_training_bn: False,
-                                                           hybrid_training_flag: hybrid_training_f
+                                                           hybrid_training_flag: False
                                                            })
 
                     validation_writer.add_summary(sum_validation, point)
@@ -360,9 +383,12 @@ class net_translate:
                 '''loop for training batches'''
 
                 while (step * self.batch_no < self.no_sample_per_each_itr):
+                    if  (step + 1) % 2:  # hybrid: 0 without pet, 1 with pet
+                        hybrid_training_f=True
+                    else:
+                        hybrid_training_f=False
+                    [train_asl_slices, train_pet_slices, train_t1_slices] = _image_class_tr.return_patches(self.batch_no,hybrid_training_f)
 
-                    [train_asl_slices, train_pet_slices, train_t1_slices] = _image_class_tr.return_patches(self.batch_no,
-                                                                                        hybrid=(step+1)%2) #hybrid: 0 sith pet, 1 without pet
 
                     if (len(train_asl_slices) < self.batch_no) | (len(train_pet_slices) < self.batch_no) \
                             | (len(train_t1_slices) < self.batch_no):
@@ -372,10 +398,8 @@ class net_translate:
                         continue
 
                     tic = time.time()
-                    if (step+1)%2:
-                        hybrid_training_f = True
-                    else:
-                        hybrid_training_f = False
+
+                    # hybrid_training_f=True
                     [loss_train1, opt, ] = sess.run([cost, optimizer, ],
                                                     feed_dict={asl_plchld: train_asl_slices,
                                                                t1_plchld: train_t1_slices,
