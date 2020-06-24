@@ -226,17 +226,17 @@ class net_translate:
 
         with tf.name_scope('cost'):
             ssim_asl = tf.reduce_mean(1 - SSIM(x1=asl_out_plchld, x2=asl_y, max_val=34.0)[0])
-            loss_asl = alpha * ssim_asl + (1 - alpha) * tf.reduce_mean(huber(labels=asl_out_plchld, logit=asl_y))
+            # loss_asl = alpha * ssim_asl + (1 - alpha) * tf.reduce_mean(huber(labels=asl_out_plchld, logit=asl_y))
 
             ssim_pet = tf.reduce_mean(1 - SSIM(x1=pet_plchld, x2=pet_y, max_val=2.1)[0])
-            loss_pet = tf.cond(hybrid_training_flag,
-                               lambda:alpha * ssim_pet + (1 - alpha) * tf.reduce_mean(huber(labels=pet_plchld, logit=pet_y)),
-                               lambda:tf.stop_gradient(alpha * ssim_pet + (1 - alpha) * tf.reduce_mean(huber(labels=pet_plchld, logit=pet_y))))
+            # loss_pet = tf.cond(hybrid_training_flag,
+            #                    lambda:alpha * ssim_pet + (1 - alpha) * tf.reduce_mean(huber(labels=pet_plchld, logit=pet_y)),
+            #                    lambda:tf.stop_gradient(alpha * ssim_pet + (1 - alpha) * tf.reduce_mean(huber(labels=pet_plchld, logit=pet_y))))
 
-            cost = tf.cond(hybrid_training_flag, lambda: loss_asl + loss_pet,
-                           lambda: loss_asl )
-            # cost = tf.cond(hybrid_training_flag, lambda: ssim_asl + ssim_pet,
-            #                lambda: ssim_asl )
+            # cost = tf.cond(hybrid_training_flag, lambda: loss_asl + loss_pet,
+            #                lambda: loss_asl )
+            cost = tf.cond(hybrid_training_flag, lambda: ssim_asl + ssim_pet,
+                           lambda: ssim_asl )
 
             # hybrid: 0 without pet, 1 with pet
 

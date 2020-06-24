@@ -5,6 +5,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/functions/network_caller/hybrid_multi_task_translate.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions/network_caller/hybrid_multi_task_translate.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/functions/reader/image_class_hybrid.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions/reader/image_class_hybrid.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_file.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_file.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -43,7 +44,7 @@
           <entry key="gitignore" value="5" />
           <entry key="md" value="3" />
           <entry key="png" value="1" />
-          <entry key="py" value="356" />
+          <entry key="py" value="358" />
           <entry key="pyi" value="1" />
           <entry key="sh" value="3" />
           <entry key="ssim" value="4" />
@@ -57,7 +58,7 @@
           <entry key="Image" value="1" />
           <entry key="Markdown" value="3" />
           <entry key="PLAIN_TEXT" value="7" />
-          <entry key="Python" value="360" />
+          <entry key="Python" value="362" />
           <entry key="PythonStub" value="1" />
           <entry key="XML" value="1" />
         </counts>
@@ -66,17 +67,17 @@
         <counts>
           <entry key="dummy" value="3" />
           <entry key="gitignore" value="29" />
-          <entry key="py" value="12883" />
+          <entry key="py" value="12906" />
           <entry key="sh" value="1" />
           <entry key="ssim" value="69" />
-          <entry key="txt" value="1139" />
+          <entry key="txt" value="1160" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Bash" value="1" />
-          <entry key="PLAIN_TEXT" value="1171" />
-          <entry key="Python" value="12952" />
+          <entry key="PLAIN_TEXT" value="1192" />
+          <entry key="Python" value="12975" />
         </counts>
       </usages-collector>
     </session>
@@ -98,10 +99,22 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/functions/network_caller/hybrid_multi_task_translate.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="111">
-              <caret line="400" lean-forward="true" selection-start-line="400" selection-end-line="400" />
+            <state relative-caret-position="169">
+              <caret line="233" column="145" lean-forward="true" selection-start-line="233" selection-start-column="145" selection-end-line="233" selection-end-column="145" />
               <folding>
                 <element signature="e#461#474#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test_file.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="205">
+              <caret line="42" column="55" selection-start-line="42" selection-start-column="55" selection-end-line="42" selection-end-column="55" />
+              <folding>
+                <element signature="e#947#965#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -137,8 +150,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/functions/reader/image_class_hybrid.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="144" selection-start-line="144" selection-end-line="144" />
+            <state relative-caret-position="169">
+              <caret line="371" lean-forward="true" selection-start-line="371" selection-end-line="371" />
             </state>
           </provider>
         </entry>
@@ -172,9 +185,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>bb=</find>
-      <find>print</find>
-      <find>.append(i</find>
       <find>step</find>
       <find>step%</find>
       <find>bb</find>
@@ -195,13 +205,16 @@
       <find>patch_</find>
       <find>print(a</find>
       <find>return_pa</find>
-      <find>hybrid_training_flag=T</find>
       <find>15</find>
       <find>FORK</find>
       <find>print(aa</find>
       <find>imm</find>
-      <find>bat</find>
       <find>read_image</find>
+      <find>1770213176063689</find>
+      <find>aa</find>
+      <find>bat</find>
+      <find>hybrid_training_flag=T</find>
+      <find>ssim</find>
     </findStrings>
     <replaceStrings>
       <replace>CT_image_patchs</replace>
@@ -272,10 +285,10 @@
         <option value="$PROJECT_DIR$/functions/reader/data_reader.py" />
         <option value="$PROJECT_DIR$/run_hybrid_multitask_net.py" />
         <option value="$PROJECT_DIR$/functions/reader/data_reader_hybrid.py" />
-        <option value="$PROJECT_DIR$/test_file.py" />
         <option value="$PROJECT_DIR$/functions/cnn/multi_task_cnn.py" />
         <option value="$PROJECT_DIR$/functions/cnn/hybrid_multi_task_cnn.py" />
         <option value="$PROJECT_DIR$/functions/network_caller/hybrid_multi_task_translate.py" />
+        <option value="$PROJECT_DIR$/test_file.py" />
         <option value="$PROJECT_DIR$/functions/reader/image_class_hybrid.py" />
       </list>
     </option>
@@ -809,19 +822,26 @@
       <option name="project" value="LOCAL" />
       <updated>1593001911718</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="fixed hybrid sampling">
+      <created>1593009448748</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1593009448748</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1280" height="738" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13423352" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20174742" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.8517928" visible="true" weight="0.33281493" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.8517928" visible="true" weight="0.43545878" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.8478088" weight="0.43234837" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -861,7 +881,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="tune the network" />
     <MESSAGE value="augmentation in cpu/ gpu version exists but is doubtable" />
     <MESSAGE value="prediction based on asl only" />
     <MESSAGE value="finishing the network test process" />
@@ -886,7 +905,8 @@
     <MESSAGE value="hybrid cnn" />
     <MESSAGE value="hybrid network caller" />
     <MESSAGE value="hybrid network cnn gradient managing" />
-    <option name="LAST_COMMIT_MESSAGE" value="hybrid network cnn gradient managing" />
+    <MESSAGE value="fixed hybrid sampling" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed hybrid sampling" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -968,17 +988,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/functions/reader/image_class_hybrid.py</url>
-          <line>461</line>
+          <line>454</line>
           <option name="timeStamp" value="454" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/functions/reader/image_class_hybrid.py</url>
-          <line>173</line>
+          <line>166</line>
           <option name="timeStamp" value="458" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/functions/reader/image_class_hybrid.py</url>
-          <line>164</line>
+          <line>161</line>
           <option name="timeStamp" value="460" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -990,11 +1010,6 @@
           <url>file://$PROJECT_DIR$/functions/reader/image_class_hybrid.py</url>
           <line>135</line>
           <option name="timeStamp" value="465" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/functions/reader/image_class_hybrid.py</url>
-          <line>144</line>
-          <option name="timeStamp" value="468" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -1056,13 +1071,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/functions/layers/upsampling.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="41" selection-start-line="1" selection-start-column="41" selection-end-line="1" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/functions/losses/mse.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -1304,13 +1312,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_file.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../Programs/TF112/lib/python3.6/site-packages/tensorflow/python/ops/array_ops.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
@@ -1373,23 +1374,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/functions/cnn/hybrid_multi_task_cnn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="72" column="33" selection-start-line="72" selection-start-column="33" selection-end-line="72" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/functions/network_caller/hybrid_multi_task_translate.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="400" lean-forward="true" selection-start-line="400" selection-end-line="400" />
-          <folding>
-            <element signature="e#461#474#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/functions/threads/fill_thread.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="179">
@@ -1404,10 +1388,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../../Programs/TF112/lib/python3.6/site-packages/tensorflow/python/framework/dtypes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="111">
+          <caret line="522" selection-start-line="522" selection-end-line="522" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functions/cnn/hybrid_multi_task_cnn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="72" column="33" selection-start-line="72" selection-start-column="33" selection-end-line="72" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_file.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="42" column="55" selection-start-line="42" selection-start-column="55" selection-end-line="42" selection-end-column="55" />
+          <folding>
+            <element signature="e#947#965#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functions/network_caller/hybrid_multi_task_translate.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="233" column="145" lean-forward="true" selection-start-line="233" selection-start-column="145" selection-end-line="233" selection-end-column="145" />
+          <folding>
+            <element signature="e#461#474#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/functions/reader/image_class_hybrid.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="144" selection-start-line="144" selection-end-line="144" />
+        <state relative-caret-position="169">
+          <caret line="371" lean-forward="true" selection-start-line="371" selection-end-line="371" />
         </state>
       </provider>
     </entry>

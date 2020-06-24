@@ -155,22 +155,15 @@ class image_class:
                                x not in rand_image_no]  # remove selected images from the choice list
 
 
-        a=0
-        b=0
+
         for img_index in range(len(rand_image_no)):
-
-
             imm = self.read_image(self.scans[rand_image_no[img_index]])
             if len(imm) == 0:
                 continue
-            if imm[5] is None:
-                a=a+1
-            else:
-                b=b+1
 
             self.collection.append(imm)
             print('train image no read so far: %s'%len(self.collection))
-        # print(a,b)
+
         settings.tr_isread=False
         settings.read_patche_mutex_tr.release()
 
