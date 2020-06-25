@@ -39,7 +39,7 @@ class net_translate:
         self.validation_samples = 200
         self.Logs = Logs
         self.LOGDIR = server_path + self.Logs + '/'
-        self.learning_rate = .0000001
+        self.learning_rate = .00001
         self.total_iteration = 100000
 
         self.no_sample_per_each_itr = 1000
@@ -383,13 +383,19 @@ class net_translate:
                 '''loop for training batches'''
                 patch_step=0
                 while (step * self.batch_no < self.no_sample_per_each_itr):
-
-                    [train_asl_slices, train_pet_slices, train_t1_slices] = _image_class_tr.return_patches(self.batch_no,(patch_step + 1) % 2)
-                    if (patch_step + 1) % 2:  # hybrid: 0 without pet, 1 with pet
+                    if patch_step<5 :  # hybrid: 0 without pet, 1 with pet
                         hybrid_training_f = True
-                    else:
+                        db = 'AMUC'
+                    elif patch_step<10:
                         hybrid_training_f = False
-                    patch_step=patch_step+1
+                        db = 'LUMC'
+                    else:
+                        patch_step=0
+                    patch_step = patch_step + 1
+                    [train_asl_slices, train_pet_slices, train_t1_slices] = _image_class_tr.return_patches(self.batch_no,hybrid_training_f)
+
+
+
                     if (len(train_asl_slices) < self.batch_no) | (len(train_pet_slices) < self.batch_no) \
                             | (len(train_t1_slices) < self.batch_no):
                         # |(len(train_t1_slices)<self.batch_no):
@@ -435,10 +441,10 @@ class net_translate:
                     process = psutil.Process(os.getpid())
 
                     print(
-                        'point: %d, elapsed_time:%d step*self.batch_no:%f , LR: %.15f, loss_train1:%f,memory_percent: %4s' % (
+                        'point: %d, elapsed_time:%d step*self.batch_no:%f , LR: %.15f, loss_train1:%f,memory_percent: %4s, %s' % (
                             int((point)), elapsed,
                             step * self.batch_no, self.learning_rate, loss_train1,
-                            str(process.memory_percent())))
+                            str(process.memory_percent()),db))
 
                     point = int((point))  # (self.no_sample_per_each_itr/self.batch_no)*itr1+step
 
