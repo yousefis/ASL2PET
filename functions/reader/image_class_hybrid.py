@@ -459,6 +459,9 @@ class image_class:
             print('smth wrong')
 
     #--------------------------------------------------------------------------------------------------------
+
+
+
     def return_patches(self,batch_no,hybrid=True):
         settings.train_queue.acquire()
         asl_slices=[]

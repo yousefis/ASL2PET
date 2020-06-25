@@ -381,15 +381,15 @@ class net_translate:
                     print('end of validation---------%d' % (point))
                     # end if
                 '''loop for training batches'''
-
+                patch_step=0
                 while (step * self.batch_no < self.no_sample_per_each_itr):
-                    if  (step + 1) % 2:  # hybrid: 0 without pet, 1 with pet
-                        hybrid_training_f=True
+
+                    [train_asl_slices, train_pet_slices, train_t1_slices] = _image_class_tr.return_patches(self.batch_no,(patch_step + 1) % 2)
+                    if (patch_step + 1) % 2:  # hybrid: 0 without pet, 1 with pet
+                        hybrid_training_f = True
                     else:
-                        hybrid_training_f=False
-                    [train_asl_slices, train_pet_slices, train_t1_slices] = _image_class_tr.return_patches(self.batch_no,hybrid_training_f)
-
-
+                        hybrid_training_f = False
+                    patch_step=patch_step+1
                     if (len(train_asl_slices) < self.batch_no) | (len(train_pet_slices) < self.batch_no) \
                             | (len(train_t1_slices) < self.batch_no):
                         # |(len(train_t1_slices)<self.batch_no):
