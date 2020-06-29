@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="19949bfa-827e-4252-b412-827257a1f8f6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/cnn/hybrid_multi_task_cnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions/cnn/hybrid_multi_task_cnn.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/functions/network_caller/hybrid_multi_task_translate.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions/network_caller/hybrid_multi_task_translate.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/functions/reader/image_class_hybrid.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions/reader/image_class_hybrid.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/submit_job_hybrid_multitask.py" beforeDir="false" afterPath="$PROJECT_DIR$/submit_job_hybrid_multitask.py" afterDir="false" />
@@ -72,13 +71,13 @@
           <entry key="py" value="13333" />
           <entry key="sh" value="1" />
           <entry key="ssim" value="69" />
-          <entry key="txt" value="1208" />
+          <entry key="txt" value="1248" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Bash" value="1" />
-          <entry key="PLAIN_TEXT" value="1240" />
+          <entry key="PLAIN_TEXT" value="1280" />
           <entry key="Python" value="13402" />
         </counts>
       </usages-collector>
@@ -98,8 +97,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/functions/network_caller/hybrid_multi_task_translate.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="94">
-              <caret line="232" column="60" lean-forward="true" selection-start-line="231" selection-start-column="35" selection-end-line="232" selection-end-column="60" />
+            <state relative-caret-position="199">
+              <caret line="239" column="51" selection-start-line="239" selection-start-column="51" selection-end-line="239" selection-end-column="51" />
               <folding>
                 <element signature="e#461#474#0" expanded="true" />
               </folding>
@@ -490,13 +489,6 @@
       <option name="presentableId" value="Default" />
       <updated>1587632329826</updated>
     </task>
-    <task id="LOCAL-00003" summary="first commit">
-      <created>1588075975960</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1588075975960</updated>
-    </task>
     <task id="LOCAL-00004" summary="first commit">
       <created>1588079273308</created>
       <option name="number" value="00004" />
@@ -833,7 +825,14 @@
       <option name="project" value="LOCAL" />
       <updated>1593071446126</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="hybrid cnn was fixed">
+      <created>1593421026615</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1593421026616</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -885,7 +884,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="noise augmentation" />
     <MESSAGE value="test process" />
     <MESSAGE value="multi task learning. pet with &amp; asl without skip connections." />
     <MESSAGE value="hybrid multi-task learning" />
@@ -910,7 +908,8 @@
     <MESSAGE value="loss function update" />
     <MESSAGE value="hybrid sampling" />
     <MESSAGE value="change LR" />
-    <option name="LAST_COMMIT_MESSAGE" value="change LR" />
+    <MESSAGE value="hybrid cnn was fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="hybrid cnn was fixed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1405,8 +1404,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/functions/network_caller/hybrid_multi_task_translate.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="94">
-          <caret line="232" column="60" lean-forward="true" selection-start-line="231" selection-start-column="35" selection-end-line="232" selection-end-column="60" />
+        <state relative-caret-position="199">
+          <caret line="239" column="51" selection-start-line="239" selection-start-column="51" selection-end-line="239" selection-end-column="51" />
           <folding>
             <element signature="e#461#474#0" expanded="true" />
           </folding>
