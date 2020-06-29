@@ -125,7 +125,7 @@ class image_class:
 
 
     # --------------------------------------------------------------------------------------------------------
-    def read_bunch_of_images(self):  # for training
+    def read_bunch_of_images(self,is_hybrid=True):  # for training
         if settings.tr_isread==False:
             return
         settings.read_patche_mutex_tr.acquire()
@@ -139,8 +139,12 @@ class image_class:
             settings.epochs_no+=1
 
         # select some distinct images for extracting patches!
-        r1=np.random.randint(0, len(self.random_images1), int(self.bunch_of_images_no / 2))
-        r2=np.random.randint(0, len(self.random_images2), int(self.bunch_of_images_no / 2))
+        if is_hybrid:
+            r1=np.random.randint(0, len(self.random_images1), int(self.bunch_of_images_no / 2))
+            r2=np.random.randint(0, len(self.random_images2), int(self.bunch_of_images_no / 2))
+        else:
+            r1 = np.random.randint(0, len(self.random_images1), int(self.bunch_of_images_no))
+            r2=[]
 
         print([self.random_images1[x] for x in r1])
         print([self.random_images2[x] for x in r2])
@@ -157,7 +161,7 @@ class image_class:
 
 
         for img_index in range(len(rand_image_no)):
-            imm = self.read_image(self.scans[rand_image_no[img_index]])
+            imm = self.read_image(self.scans[int(rand_image_no[img_index])])
             if len(imm) == 0:
                 continue
 
