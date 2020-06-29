@@ -178,12 +178,17 @@ class net_translate:
 
         show_img = pet_plchld[:, :, :, 0, np.newaxis]
         tf.summary.image('02: target_pet', show_img, 3)
+
+        show_img = asl_out_plchld[:, :, :, 0, np.newaxis]
+        tf.summary.image('03: target_asl', show_img, 3)
         #
         show_img = asl_y[:, :, :, 0, np.newaxis]
-        tf.summary.image('03: output_asl', show_img, 3)
+        tf.summary.image('04: output_asl', show_img, 3)
 
         show_img = pet_y[:, :, :, 0, np.newaxis]
-        tf.summary.image('03: output_pet', show_img, 3)
+        tf.summary.image('05: output_pet', show_img, 3)
+
+
         # -----------------
         # show_img = loss_upsampling11[:, :, :, 0, np.newaxis]
         # tf.summary.image('04: loss_upsampling11', show_img, 3)
@@ -226,17 +231,23 @@ class net_translate:
 
         with tf.name_scope('cost'):
             ssim_asl = tf.reduce_mean(1 - SSIM(x1=asl_out_plchld, x2=asl_y, max_val=34.0)[0])
-            # loss_asl = alpha * ssim_asl + (1 - alpha) * tf.reduce_mean(huber(labels=asl_out_plchld, logit=asl_y))
+            loss_asl = alpha * ssim_asl + (1 - alpha) * tf.reduce_mean(huber(labels=asl_out_plchld, logit=asl_y))
 
             ssim_pet = tf.reduce_mean(1 - SSIM(x1=pet_plchld, x2=pet_y, max_val=2.1)[0])
+            loss_pet = alpha * ssim_pet + (1 - alpha) * tf.reduce_mean(huber(labels=pet_plchld, logit=pet_y))
             # loss_pet = tf.cond(hybrid_training_flag,
             #                    lambda:alpha * ssim_pet + (1 - alpha) * tf.reduce_mean(huber(labels=pet_plchld, logit=pet_y)),
             #                    lambda:tf.stop_gradient(alpha * ssim_pet + (1 - alpha) * tf.reduce_mean(huber(labels=pet_plchld, logit=pet_y))))
 
             # cost = tf.cond(hybrid_training_flag, lambda: loss_asl + loss_pet,
             #                lambda: loss_asl )
-            cost = tf.cond(hybrid_training_flag, lambda: ssim_asl + ssim_pet,
-                           lambda: ssim_asl )
+            # cost = tf.cond(hybrid_training_flag, lambda: ssim_asl + ssim_pet,
+            #                lambda: ssim_asl )
+
+            cost_withpet =   tf.reduce_mean(loss_asl + loss_pet)
+
+
+            cost_withoutpet = loss_asl
 
             # hybrid: 0 without pet, 1 with pet
 
@@ -256,13 +267,15 @@ class net_translate:
         #
         #     cost = loss_pet
 
-        tf.summary.scalar("cost", cost)
+        tf.summary.scalar("cost_withoutpet", cost_withoutpet)
+        tf.summary.scalar("cost_withpet", cost_withpet)
         # tf.summary.scalar("denominator", denominator)
         extra_update_ops = tf.get_collection(tf.GraphKeys.UPDATE_OPS)
 
 
         with tf.control_dependencies(extra_update_ops):
-            optimizer = tf.train.AdamOptimizer(learning_rate=self.learning_rate, ).minimize(cost)
+            optimizer_withpet = tf.train.AdamOptimizer(learning_rate=self.learning_rate, ).minimize(cost_withpet)
+            optimizer_withoutpet = tf.train.AdamOptimizer(learning_rate=self.learning_rate, ).minimize(cost_withoutpet)
 
         with tf.name_scope('validation'):
             average_validation_loss = ave_loss_vali
@@ -323,7 +336,7 @@ class net_translate:
                         # else:
                         #     hybrid_training_f = False
                         tic = time.time()
-                        [loss_vali] = sess.run([cost],
+                        [loss_vali] = sess.run([cost_withpet],
                                                feed_dict={asl_plchld: validation_asl_slices,
                                                           t1_plchld: validation_t1_slices,
                                                           pet_plchld: validation_pet_slices,
@@ -381,6 +394,7 @@ class net_translate:
                     print('end of validation---------%d' % (point))
                     # end if
                 '''loop for training batches'''
+                db = ''
                 patch_step=0
                 while (step * self.batch_no < self.no_sample_per_each_itr):
                     if patch_step<5 :  # hybrid: 0 without pet, 1 with pet
@@ -391,8 +405,11 @@ class net_translate:
                         db = 'LUMC'
                     else:
                         patch_step=0
+                    # hybrid_training_f = True
                     patch_step = patch_step + 1
                     [train_asl_slices, train_pet_slices, train_t1_slices] = _image_class_tr.return_patches(self.batch_no,hybrid_training_f)
+                    # if not hybrid_training_f:
+                    #     continue
 
 
 
@@ -406,7 +423,8 @@ class net_translate:
                     tic = time.time()
 
                     # hybrid_training_f=True
-                    [loss_train1, opt, ] = sess.run([cost, optimizer, ],
+                    if hybrid_training_f:
+                        [loss_train1, opt, ] = sess.run([cost_withpet, optimizer_withpet, ],
                                                     feed_dict={asl_plchld: train_asl_slices,
                                                                t1_plchld: train_t1_slices,
                                                                pet_plchld: train_pet_slices,
@@ -419,6 +437,24 @@ class net_translate:
                                                                ave_loss_vali: -1,
                                                                is_training_bn: True,
                                                                hybrid_training_flag: hybrid_training_f})
+                    else:
+                        [loss_train1, opt, ] = sess.run([cost_withoutpet, optimizer_withoutpet, ],
+                                                        feed_dict={asl_plchld: train_asl_slices,
+                                                                   t1_plchld: train_t1_slices,
+                                                                   pet_plchld: train_pet_slices,
+                                                                   asl_out_plchld: train_asl_slices[:,
+                                                                                   int(self.asl_size / 2) - int(
+                                                                                       self.pet_size / 2) - 1:
+                                                                                   int(self.asl_size / 2) + int(
+                                                                                       self.pet_size / 2),
+                                                                                   int(self.asl_size / 2) - int(
+                                                                                       self.pet_size / 2) - 1:
+                                                                                   int(self.asl_size / 2) + int(
+                                                                                       self.pet_size / 2), :],
+                                                                   is_training: True,
+                                                                   ave_loss_vali: -1,
+                                                                   is_training_bn: True,
+                                                                   hybrid_training_flag: hybrid_training_f})
                     elapsed = time.time() - tic
                     [sum_train] = sess.run([summ],
                                            feed_dict={asl_plchld: train_asl_slices,
