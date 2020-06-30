@@ -114,13 +114,19 @@ def test_all_nets(out_dir, Log, which_data):
             pet = imm[5][np.newaxis, img_indx,
                   40 - int(pet_size / 2) - 1:40 + int(pet_size / 2),
                   40 - int(pet_size / 2) - 1:40 + int(pet_size / 2), np.newaxis]
-            [loss, asl_out, pet_out ] = sess.run([cost, asl_y, pet_y],
+            [loss, asl_out, pet_out ] = sess.run([ssim_pet, asl_y, pet_y],
                                      feed_dict={asl_plchld: asl,
-                                                t1_plchld: t1,
-                                                pet_plchld: pet,
-                                                is_training: False,
-                                                ave_loss_vali: -1,
-                                                is_training_bn: False})
+                                                 t1_plchld: t1,
+                                                 pet_plchld: pet,
+                                                 asl_out_plchld:asl[:,
+                                                 int(asl_size / 2) - int(pet_size / 2) - 1:
+                                                 int(asl_size / 2) + int(pet_size / 2),
+                                                 int(asl_size / 2) - int(pet_size / 2) - 1:
+                                                 int(asl_size / 2) + int(pet_size / 2), :],
+                                                 is_training: False,
+                                                 ave_loss_vali: -1,
+                                                 is_training_bn: False})
+
 
             # plt.imshow(np.squeeze(out))
             # plt.figure()
@@ -128,7 +134,7 @@ def test_all_nets(out_dir, Log, which_data):
             ssim = 1 - loss
             list_ssim.append(ssim)
             list_name.append(ss[-3] + '_' + ss[-1].split(".")[0].split("ASL_")[1] + '_t1_' + name)
-            print(ssim)
+            print(list_name[img_indx],': ',ssim)
             matplotlib.image.imsave(parent_path + Log + out_dir + ss[-3] + '/' + ss[-1].split(".")[0].split("ASL_")[
                 1] + '/t1_' + name + '.png', np.squeeze(t1), cmap='gray')
             matplotlib.image.imsave(parent_path + Log + out_dir + ss[-3] + '/' + ss[-1].split(".")[0].split("ASL_")[
