@@ -158,7 +158,7 @@ def test_all_nets(out_dir,Log,which_data):
 
 if __name__=="__main__":
     Log="Log_asl_pet/denseunet_multistage_mssim7/"
-    which_data = 1
+    which_data = 2
     if which_data==1:
         out_dir="0_vali_result/"
     elif which_data==2:
