@@ -16,8 +16,7 @@ import numpy as np
 import SimpleITK as sitk
 import collections
 from random import shuffle
-from functions.settings import settings as settings
-import random
+from functions.settings_hr import settings_hr as settings
 from scipy import ndimage
 import random
 
