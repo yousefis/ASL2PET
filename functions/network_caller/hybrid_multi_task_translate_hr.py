@@ -16,20 +16,21 @@ import shutil
 # from functions.densenet_unet import _densenet_unet
 # from functions.networks.dense_unet2 import _densenet_unet
 import logging
-from functions.cnn.hybrid_multi_task_cnn import multi_stage_densenet
+from functions.cnn.hybrid_multi_task_cnn_hr import multi_stage_densenet
 # import wandb
 from functions.reader.data_reader_hybrid_hr import *
 from functions.reader.image_class_hybrid_hr import *
 from functions.losses.ssim_loss import  SSIM
-from functions.threads import *
+import functions.threads.fill_thread_hr as fill_thread
+import functions.threads.read_thread_hr as read_thread
 import psutil
 # calculate the dice coefficient
 from shutil import copyfile
-from functions.reader.patch_extractor import _patch_extractor_thread
+import functions.reader.patch_extractor_hybrid_hr as _patch_extractor_thread
 from functions.reader.data_reader_hybrid_hr import _read_data
 from functions.losses.L1 import huber
-
-
+# from functions.settings_hr import settings_hr as settings
+import time
 # --------------------------------------------------------------------------------------------------------
 class net_translate:
     def __init__(self, data_path_AMUC,data_path_LUMC, server_path, Logs, config):
@@ -102,20 +103,22 @@ class net_translate:
         _image_class_vl = image_class(validation_data,
                                       bunch_of_images_no=bunch_of_images_no,
                                       is_training=0, inp_size=self.asl_size, out_size=self.pet_size)
-        _patch_extractor_thread_vl = _patch_extractor_thread(_image_class=_image_class_vl,
+        _patch_extractor_thread_vl = _patch_extractor_thread._patch_extractor_thread(_image_class=_image_class_vl,
                                                              img_no=bunch_of_images_no,
-                                                             mutex=settings.mutex,
-                                                             is_training=0,
+                                                             mutex= settings.mutex,
+                                                             is_training=0
                                                              )
-        _fill_thread_vl = fill_thread(validation_data,
+        _fill_thread_vl = fill_thread.fill_thread(validation_data,
                                       _image_class_vl,
                                       mutex=settings.mutex,
                                       is_training=0,
                                       patch_extractor=_patch_extractor_thread_vl,
                                       )
 
-        _read_thread_vl = read_thread(_fill_thread_vl, mutex=settings.mutex,
-                                      validation_sample_no=self.validation_samples, is_training=0)
+        _read_thread_vl = read_thread.read_thread(_fill_thread_vl,
+                                      mutex=settings.mutex,
+                                      validation_sample_no=self.validation_samples,
+                                      is_training=0)
         _fill_thread_vl.start()
         _patch_extractor_thread_vl.start()
         _read_thread_vl.start()
@@ -125,18 +128,18 @@ class net_translate:
                                       bunch_of_images_no=bunch_of_images_no,
                                       is_training=1, inp_size=self.asl_size, out_size=self.pet_size
                                       )
-        _patch_extractor_thread_tr = _patch_extractor_thread(_image_class=_image_class_tr,
+        _patch_extractor_thread_tr = _patch_extractor_thread._patch_extractor_thread(_image_class=_image_class_tr,
                                                              img_no=bunch_of_images_no,
                                                              mutex=settings.mutex,
                                                              is_training=1,
                                                              )
-        _fill_thread = fill_thread(train_data,
+        _fill_thread = fill_thread.fill_thread(train_data,
                                    _image_class_tr,
                                    mutex=settings.mutex,
                                    is_training=1,
                                    patch_extractor=_patch_extractor_thread_tr,
                                    )
-        _read_thread = read_thread(_fill_thread, mutex=settings.mutex, is_training=1)
+        _read_thread = read_thread.read_thread(_fill_thread, mutex=settings.mutex, is_training=1)
         _fill_thread.start()
         _patch_extractor_thread_tr.start()
         _read_thread.start()
@@ -202,7 +205,6 @@ class net_translate:
         sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))
         # devices = sess.list_devices()
         # print(devices)
-        from tensorflow.python.client import device_lib
         # print(device_lib.list_local_devices())
         print('*****************************************')
         print('*****************************************')
@@ -212,9 +214,8 @@ class net_translate:
         validation_writer = tf.summary.FileWriter(self.LOGDIR + '/validation', graph=sess.graph)
         try:
             os.mkdir(self.LOGDIR + 'code/')
-            copyfile('./run_net.py', self.LOGDIR + 'code/run_net.py')
-            copyfile('./submit_job.py', self.LOGDIR + 'code/submit_job.py')
-            copyfile('./test_file.py', self.LOGDIR + 'code/test_file.py')
+            copyfile('./run_hybrid_multitask_net_hr.py', self.LOGDIR + 'code/run_hybrid_multitask_net_hr.py')
+            copyfile('./submit_job_hybrid_multitask_hr.py', self.LOGDIR + 'code/submit_job_hybrid_multitask_hr.pys')
             shutil.copytree('./functions/', self.LOGDIR + 'code/functions/')
         except:
             a = 1
