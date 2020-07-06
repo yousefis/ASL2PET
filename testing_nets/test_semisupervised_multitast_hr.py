@@ -7,7 +7,8 @@ from shutil import copyfile
 from functions.losses.ssim_loss import SSIM
 from functions.reader.data_reader_hybrid_hr import *
 from functions.reader.data_reader_hybrid_hr import _read_data
-from functions.cnn.hybrid_multi_task_cnn import multi_stage_densenet
+# from functions.cnn.hybrid_multi_task_cnn import multi_stage_densenet
+from functions.cnn.hybrid_multi_task_cnn_hr import multi_stage_densenet
 from functions.measures.measures import _measure
 from functions.reader.image_class_hybrid_hr import image_class
 
@@ -23,9 +24,10 @@ from functions.losses.L1 import huber
 
 eps = 1E-5
 plot_tag = 'densenet'
-config = [1, 3, 3, 3, 1]
-pet_size = 231
-asl_size = 219
+config = [1, 3, 5, 3, 1]
+
+asl_size =231
+pet_size = 219
 with tf.variable_scope('crop_claculation'):
     in_size0 = tf.to_int32(0, name='in_size0')
     in_size1 = tf.to_int32(asl_size, name='in_size1')
@@ -94,8 +96,8 @@ def test_all_nets(out_dir, Log, which_data):
     ckpt = tf.train.get_checkpoint_state(chckpnt_dir)
     saver.restore(sess, ckpt.model_checkpoint_path)
     _meas = _measure()
-    copyfile('./test_multitask.py',
-             parent_path + Log + out_dir + 'test_multitask.py')
+    copyfile('./test_semisupervised_multitast_hr.py',
+             parent_path + Log + out_dir + 'test_semisupervised_multitast_hr.py')
 
     _image_class = image_class(data,
                                bunch_of_images_no=1,
@@ -119,17 +121,17 @@ def test_all_nets(out_dir, Log, which_data):
             # name = (ss[10] + '_' + ss[11] + '_' + ss[12].split('%')[0]).split('_CT')[0]
             tic = time.time()
             t1 = imm[3][img_indx,
-                 40 - int(asl_size / 2) - 1:40 + int(asl_size / 2),
-                 40 - int(asl_size / 2) - 1:40 + int(asl_size / 2)]
+                 int(imm[3].shape[-1]/2) - int(asl_size / 2) - 1:int(imm[3].shape[-1]/2)  + int(asl_size / 2),
+                 int(imm[3].shape[-1] / 2) - int(asl_size / 2) - 1:int(imm[3].shape[-1]/2)  + int(asl_size / 2)]
             t1 = t1[np.newaxis, ..., np.newaxis]
             asl = imm[4][np.newaxis, img_indx,
-                  40 - int(asl_size / 2) - 1:40 + int(asl_size / 2),
-                  40 - int(asl_size / 2) - 1:40 + int(asl_size / 2), np.newaxis]
+                  int(imm[3].shape[-1] / 2) - int(asl_size / 2) - 1:int(imm[3].shape[-1] / 2) + int(asl_size / 2),
+                  int(imm[3].shape[-1] / 2) - int(asl_size / 2) - 1:int(imm[3].shape[-1] / 2)+ int(asl_size / 2), np.newaxis]
             pet = imm[5][np.newaxis, img_indx,
-                  40 - int(pet_size / 2) - 1:40 + int(pet_size / 2),
-                  40 - int(pet_size / 2) - 1:40 + int(pet_size / 2), np.newaxis]
+                  int(imm[3].shape[-1] / 2)- int(pet_size / 2) - 1:int(imm[3].shape[-1] / 2) + int(pet_size / 2),
+                  int(imm[3].shape[-1] / 2)- int(pet_size / 2) - 1:int(imm[3].shape[-1] / 2) + int(pet_size / 2), np.newaxis]
 
-            [loss,pet_out,asl_out] = sess.run([cost_withpet,pet_y,asl_y],
+            [loss,pet_out,asl_out] = sess.run([ssim_pet,pet_y,asl_y],
                                    feed_dict={asl_plchld: asl,
                                               t1_plchld: t1,
                                               pet_plchld: pet,
@@ -147,7 +149,7 @@ def test_all_nets(out_dir, Log, which_data):
 
 
 
-            ssim = 1 - loss
+            ssim =  loss
             list_ssim.append(ssim)
             list_name.append(ss[-3] + '_' + ss[-1].split(".")[0].split("ASL_")[1] + '_t1_' + name)
             print(list_name[img_indx],': ',ssim)
@@ -179,7 +181,7 @@ def test_all_nets(out_dir, Log, which_data):
 
 
 if __name__ == "__main__":
-    Log = "Log_asl_pet/denseunet_hybrid_02/"
+    Log = "Log_asl_pet/denseunet_hybrid_hr_02/"
     which_data = 2
     if which_data == 1:
         out_dir = "0_vali_result/"
