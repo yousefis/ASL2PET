@@ -13,7 +13,7 @@
 ## Status: {Research}
 ##################################################
 import  threading, time
-from functions.settings import settings as settings
+from functions.settings_hr import settings_hr as settings
 
 
 class _patch_extractor_thread(threading.Thread):
