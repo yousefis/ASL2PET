@@ -74,31 +74,39 @@ class image_class:
     # --------------------------------------------------------------------------------------------------------
     #read information of each image
     def read_image(self,s):
+        # reading the image volume t1 in sitk format
         T1= sitk.ReadImage(''.join(s['t1']))
+        # getting the volume properties: voxel size, direction and origin
         voxel_size = T1.GetSpacing()
         origin = T1.GetOrigin()
         direction = T1.GetDirection()
+
+        #read mask
         mask = sitk.GetArrayFromImage(sitk.ReadImage(''.join(s['mask'])))
 
-        # t1 = np.multiply(sitk.GetArrayFromImage(T1),mask)/1000
-        # asl = np.multiply(sitk.GetArrayFromImage(sitk.ReadImage(''.join(s['asl']))),mask)
-        # pet = np.multiply(sitk.GetArrayFromImage(sitk.ReadImage(''.join(s['pet']))),mask)
-
+        # convert t1 from the sitk format to an array
         t1 = sitk.GetArrayFromImage(T1)
+
+        # normalize t1
         t1 = t1 / np.max(t1)
+
+        # read and convert ASL volume into an array
         asl = sitk.GetArrayFromImage(sitk.ReadImage(''.join(s['asl'])))
         # asl = asl / np.max(asl)
+
+        # read and convert PET volume into an array
         pet = sitk.GetArrayFromImage(sitk.ReadImage(''.join(s['pet'])))
         # pet = pet / np.max(pet)
-        
+
+        # thersholding the negative values
         t1[np.where(t1<0)]=0
         asl[np.where(asl < 0)] = 0
         pet[np.where(pet < 0)] = 0
-        
         t1 = t1[1:-1]
         asl = asl[1:-1]
         pet = pet[1:-1]
 
+        # return all volumes in one node
         n = self.node(name_t1=s['t1'],name_asl=s['asl'],name_pet=s['pet'], t1=t1, asl=asl, pet=pet,
                       voxel_size=voxel_size, origin=origin, direction=direction)
         return n
@@ -136,8 +144,7 @@ class image_class:
 
 
         for img_index in range(len(rand_image_no)):
-
-
+            #read and append volumes to a collection
             imm = self.read_image(self.scans[rand_image_no[img_index]])
             if len(imm) == 0:
 
@@ -223,6 +230,8 @@ class image_class:
             '''random numbers for selecting random samples'''
             random_slices_indx = list(range(0,15))
             size_img = np.shape(asl)[1]
+
+            # extract 2d slices from the volumes
             ASL1 = [np.stack(asl[random_slices_indx[sn], int(size_img/2)-int(self.inp_size/2)-1:int(size_img/2)+int(self.inp_size/2),int(size_img/2)-int(self.inp_size/2)-1:int(size_img/2)+int(self.inp_size/2)])
                     for sn in range(len(random_slices_indx))]
 
@@ -242,14 +251,13 @@ class image_class:
                 PET = np.vstack((PET, PET1))
                 T1 = np.vstack((T1, T11))
 
+        # shuffle the list of slices
         ASL1, PET1, T11 = self.shuffle_lists(ASL, PET, T1)
 
         if self.is_training == 1:
-
             settings.bunch_asl_slices2 = np.copy(ASL1)
             settings.bunch_pet_slices2 = np.copy(PET1)
             settings.bunch_t1_slices2 = np.copy(T11)
-
         else:
 
             if len(settings.bunch_pet_slices_vl2) == 0:
