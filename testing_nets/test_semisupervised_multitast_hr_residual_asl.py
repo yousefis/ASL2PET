@@ -68,7 +68,7 @@ def test_all_nets(out_dir, Log, which_data):
     is_training_bn = tf.placeholder(tf.bool, name='is_training_bn')
 
     msdensnet = multi_stage_densenet()
-    asl_y, pet_y = msdensnet.multi_stage_densenet(asl_img=asl_plchld,
+    asl_y1,asl_y2, pet_y = msdensnet.multi_stage_densenet(asl_img=asl_plchld,
                                                   t1_img=t1_plchld,
                                                   pet_img=pet_plchld,
                                                   hybrid_training_flag=hybrid_training_flag,
@@ -78,16 +78,18 @@ def test_all_nets(out_dir, Log, which_data):
                                                   )
     alpha = .84
     with tf.name_scope('cost'):
-        ssim_asl = tf.reduce_mean(1 - SSIM(x1=asl_out_plchld, x2=asl_y, max_val=34.0)[0])
-        loss_asl = alpha * ssim_asl + (1 - alpha) * tf.reduce_mean(huber(labels=asl_out_plchld, logit=asl_y))
+        ssim_asl1 = tf.reduce_mean(1 - SSIM(x1=asl_out_plchld, x2=asl_y1, max_val=34.0)[0])
+        loss_asl1 = alpha * ssim_asl1 + (1 - alpha) * tf.reduce_mean(huber(labels=asl_out_plchld, logit=asl_y1))
+
+        ssim_asl = tf.reduce_mean(1 - SSIM(x1=asl_out_plchld, x2=asl_y2, max_val=34.0)[0])
+        loss_asl = alpha * ssim_asl + (1 - alpha) * tf.reduce_mean(huber(labels=asl_out_plchld, logit=asl_y2))
 
         ssim_pet = tf.reduce_mean(1 - SSIM(x1=pet_plchld, x2=pet_y, max_val=2.1)[0])
         loss_pet = alpha * ssim_pet + (1 - alpha) * tf.reduce_mean(huber(labels=pet_plchld, logit=pet_y))
 
-        cost_withpet = tf.reduce_mean(loss_asl + loss_pet)
+    cost_withpet = tf.reduce_mean(loss_asl + loss_asl1 + loss_pet)
 
-        cost_withoutpet = loss_asl
-
+    cost_withoutpet = loss_asl + loss_asl1
 
     sess = tf.Session()
     saver = tf.train.Saver()
@@ -106,14 +108,17 @@ def test_all_nets(out_dir, Log, which_data):
                                out_size=pet_size)
     list_ssim = []
     list_name = []
+    list_ssim_NC = []
+    list_ssim_HC = []
     for scan in range(len(data)):
         ss = str(data[scan]['asl']).split("/")
         imm = _image_class.read_image(data[scan])
         try:
             os.mkdir(parent_path + Log + out_dir + ss[-3])
+            os.mkdir(parent_path + Log + out_dir + ss[-3] + '/' + ss[-1].split(".")[0].split("ASL_")[1])
         except:
             a = 1
-        os.mkdir(parent_path + Log + out_dir + ss[-3] + '/' + ss[-1].split(".")[0].split("ASL_")[1])
+
         for img_indx in range(np.shape(imm[3])[0]):
             print('img_indx:%s' % (img_indx))
 
@@ -131,7 +136,7 @@ def test_all_nets(out_dir, Log, which_data):
                   int(imm[3].shape[-1] / 2)- int(pet_size / 2) - 1:int(imm[3].shape[-1] / 2) + int(pet_size / 2),
                   int(imm[3].shape[-1] / 2)- int(pet_size / 2) - 1:int(imm[3].shape[-1] / 2) + int(pet_size / 2), np.newaxis]
 
-            [loss,pet_out,asl_out] = sess.run([ssim_pet,pet_y,asl_y],
+            [loss,pet_out,asl_out1,asl_out2] = sess.run([ssim_pet,pet_y,asl_y1,asl_y2],
                                    feed_dict={asl_plchld: asl,
                                               t1_plchld: t1,
                                               pet_plchld: pet,
@@ -146,11 +151,13 @@ def test_all_nets(out_dir, Log, which_data):
                                               hybrid_training_flag: False
                                               })
 
-
-
-
-            ssim =  1-loss
+            ssim = 1 - loss
             list_ssim.append(ssim)
+            str_nm = (ss[-3] + '_' + ss[-1].split(".")[0].split("ASL_")[1] + '_t1_' + name)
+            if 'HN' in str_nm:
+                list_ssim_NC.append(ssim)
+            elif 'HY' in str_nm:
+                list_ssim_HC.append(ssim)
             list_name.append(ss[-3] + '_' + ss[-1].split(".")[0].split("ASL_")[1] + '_t1_' + name)
             print(list_name[img_indx],': ',ssim)
             matplotlib.image.imsave(parent_path + Log + out_dir + ss[-3] + '/' + ss[-1].split(".")[0].split("ASL_")[
@@ -160,7 +167,7 @@ def test_all_nets(out_dir, Log, which_data):
             matplotlib.image.imsave(parent_path + Log + out_dir + ss[-3] + '/' + ss[-1].split(".")[0].split("ASL_")[
                 1] + '/pet_' + name + '_' + '.png', np.squeeze(pet), cmap='gray')
             matplotlib.image.imsave(parent_path + Log + out_dir + ss[-3] + '/' + ss[-1].split(".")[0].split("ASL_")[
-                1] + '/res_asl' + name + '_' + str(ssim) + '.png', np.squeeze(asl_out), cmap='gray')
+                1] + '/res_asl' + name + '_' + str(ssim) + '.png', np.squeeze(asl_out2), cmap='gray')
             matplotlib.image.imsave(parent_path + Log + out_dir + ss[-3] + '/' + ss[-1].split(".")[0].split("ASL_")[
                 1] + '/res_pet' + name + '_' + str(ssim) + '.png', np.squeeze(pet_out), cmap='gray')
 
@@ -169,13 +176,21 @@ def test_all_nets(out_dir, Log, which_data):
     df = pd.DataFrame(list_ssim,
                       columns=pd.Index(['ssim'],
                                        name='Genus')).round(2)
+    a = {'HC': list_ssim_HC, 'NC': list_ssim_NC}
+    df2 = pd.DataFrame.from_dict(a, orient='index')
+    df2.transpose()
+
     # Create a Pandas Excel writer using XlsxWriter as the engine.
     writer = pd.ExcelWriter(parent_path + Log + out_dir + '/all_ssim.xlsx',
                             engine='xlsxwriter')
+    writer2 = pd.ExcelWriter(parent_path + Log + out_dir + '/all_ssim.xlsx',
+                             engine='xlsxwriter')
     # Convert the dataframe to an XlsxWriter Excel object.
     df.to_excel(writer, sheet_name='Sheet1')
+    df2.to_excel(writer2, sheet_name='Sheet2')
     # Close the Pandas Excel writer and output the Excel file.
     writer.save()
+    writer2.save()
 
     print(parent_path + Log + out_dir + '/all_ssim.xlsx')
 
