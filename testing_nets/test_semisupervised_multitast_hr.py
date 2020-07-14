@@ -106,14 +106,17 @@ def test_all_nets(out_dir, Log, which_data):
                                out_size=pet_size)
     list_ssim = []
     list_name = []
+    list_ssim_NC=[]
+    list_ssim_HC=[]
     for scan in range(len(data)):
         ss = str(data[scan]['asl']).split("/")
         imm = _image_class.read_image(data[scan])
         try:
             os.mkdir(parent_path + Log + out_dir + ss[-3])
+            os.mkdir(parent_path + Log + out_dir + ss[-3] + '/' + ss[-1].split(".")[0].split("ASL_")[1])
         except:
             a = 1
-        os.mkdir(parent_path + Log + out_dir + ss[-3] + '/' + ss[-1].split(".")[0].split("ASL_")[1])
+
         for img_indx in range(np.shape(imm[3])[0]):
             print('img_indx:%s' % (img_indx))
 
@@ -149,8 +152,15 @@ def test_all_nets(out_dir, Log, which_data):
 
 
 
-            ssim =  loss
+            ssim =  1-loss
             list_ssim.append(ssim)
+            str_nm= (ss[-3] + '_' + ss[-1].split(".")[0].split("ASL_")[1] + '_t1_' + name)
+            if 'HN' in str_nm:
+                list_ssim_NC.append(ssim)
+            elif 'HY' in str_nm:
+                list_ssim_HC.append(ssim)
+
+
             list_name.append(ss[-3] + '_' + ss[-1].split(".")[0].split("ASL_")[1] + '_t1_' + name)
             print(list_name[img_indx],': ',ssim)
             matplotlib.image.imsave(parent_path + Log + out_dir + ss[-3] + '/' + ss[-1].split(".")[0].split("ASL_")[
@@ -169,19 +179,29 @@ def test_all_nets(out_dir, Log, which_data):
     df = pd.DataFrame(list_ssim,
                       columns=pd.Index(['ssim'],
                                        name='Genus')).round(2)
+
+    a = {'HC': list_ssim_HC, 'NC': list_ssim_NC}
+    df2 = pd.DataFrame.from_dict(a, orient='index')
+    df2.transpose()
+
+
     # Create a Pandas Excel writer using XlsxWriter as the engine.
     writer = pd.ExcelWriter(parent_path + Log + out_dir + '/all_ssim.xlsx',
                             engine='xlsxwriter')
+    writer2 = pd.ExcelWriter(parent_path + Log + out_dir + '/all_ssim.xlsx',
+                            engine='xlsxwriter')
     # Convert the dataframe to an XlsxWriter Excel object.
     df.to_excel(writer, sheet_name='Sheet1')
+    df2.to_excel(writer2, sheet_name='Sheet2')
     # Close the Pandas Excel writer and output the Excel file.
     writer.save()
+    writer2.save()
 
     print(parent_path + Log + out_dir + '/all_ssim.xlsx')
 
 
 if __name__ == "__main__":
-    Log = "Log_asl_pet/denseunet_hybrid_hr_02/"
+    Log = "Log_asl_pet/denseunet_hybrid_hr_03/"
     which_data = 2
     if which_data == 1:
         out_dir = "0_vali_result/"
