@@ -201,8 +201,8 @@ def test_all_nets(out_dir, Log, which_data):
 
 
 if __name__ == "__main__":
-    Log = "Log_asl_pet/denseunet_hybrid_hr_03/"
-    which_data = 2
+    Log = "Log_asl_pet/denseunet_hybrid_03/"
+    which_data = 1
     if which_data == 1:
         out_dir = "0_vali_result/"
     elif which_data == 2:
