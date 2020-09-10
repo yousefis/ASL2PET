@@ -13,7 +13,7 @@
 ## Status: {Research}
 ##################################################
 from datetime import datetime
-from functions.network_caller.hybrid_multi_task_translate import net_translate
+from functions.network_caller.hybrid_multi_task_translate_rest import net_translate
 import numpy as np
 import tensorflow as tf
 import os
@@ -24,12 +24,12 @@ if __name__ == '__main__':
 
     '''
     no_averages=35
-    config = [1, 3, 1, 3, 1]
+    config = [1, 3, 5, 3, 1]
     np.random.seed(1)
     tf.set_random_seed(1)
 
     server_path = '/exports/lkeb-hpc/syousefi/Code/'
-    Logs = 'Log_asl_pet/denseunet_hybrid_01/'
+    Logs = 'Log_asl_pet/denseunet_hybrid_03/'
 
     # use mixed precision
     mixed_precision = True

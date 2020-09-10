@@ -356,7 +356,7 @@ class multi_stage_densenet:
         #         img_rows=self.flip_lr_input(img_rows, is_training)
         #     with tf.variable_scope('rotate'):
         #         img_rows,degree=self.rotate_input(img_rows, is_training)
-        augmented_data=img_rows
+        # augmented_data=img_rows
 
         with tf.variable_scope('stack-contact'):
             # stack_concat=img_rows[0]

@@ -212,9 +212,8 @@ class net_translate:
         validation_writer = tf.summary.FileWriter(self.LOGDIR + '/validation', graph=sess.graph)
         try:
             os.mkdir(self.LOGDIR + 'code/')
-            copyfile('./run_net.py', self.LOGDIR + 'code/run_net.py')
-            copyfile('./submit_job.py', self.LOGDIR + 'code/submit_job.py')
-            copyfile('./test_file.py', self.LOGDIR + 'code/test_file.py')
+            copyfile('./run_hybrid_multitask_net.py', self.LOGDIR + 'code/run_hybrid_multitask_net.py')
+            copyfile('./submit_job_hybrid_multitask.py', self.LOGDIR + 'code/submit_job_hybrid_multitask.pys')
             shutil.copytree('./functions/', self.LOGDIR + 'code/functions/')
         except:
             a = 1

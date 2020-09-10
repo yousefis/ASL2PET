@@ -46,7 +46,17 @@ def do_conv(input_tensor, dim):
     output_tensor = [tf.nn.convolution(input=tf.expand_dims(chn, axis=-1), filter=kernel_tensor, padding='VALID',
                                        strides=[1] * spatial_rank) for chn in chn_wise_list]
     return tf.concat(output_tensor, axis=-1)
-
+#************************************************************************
+def MSE(x1,x2):
+    mse = tf.losses.mean_squared_error(
+        labels=x1,
+        predictions=x2)
+    return mse
+def PSNR(x1,x2):
+    x1 = tf.image.convert_image_dtype(x1, tf.float32)
+    x2 = tf.image.convert_image_dtype(x2, tf.float32)
+    psnr = tf.reduce_mean(tf.image.psnr(x1, x2, max_val=1.0))
+    return psnr
 def SSIM(x1, x2, max_val=1.0,axes=None):
 
     C1 = (0.01 * max_val)**2
@@ -79,9 +89,9 @@ def SSIM(x1, x2, max_val=1.0,axes=None):
     elif not spatial_rank == 3 and axes==None:
         axes = tf.constant([-3, -2, -1, 0], dtype=tf.int32)
 
-    mssim = tf.reduce_mean(ssim_map, axis=axes)
+    ssim = tf.reduce_mean(ssim_map, axis=axes)
 
-    return mssim,tf.reduce_mean(denominator, axis=axes),ssim_map
+    return ssim,tf.reduce_mean(denominator, axis=axes),ssim_map
 
 def GPU_SSIM(x1, x2, max_val):
 

@@ -24,8 +24,9 @@ from random import shuffle
 
 
 class _read_data:
-    def __init__(self,data_path):
-        self.data_path=data_path
+    def __init__(self,data_path_AMUC,data_path_LUMC):
+        self.data_path_AMUC=data_path_AMUC
+        self.data_path_LUMC=data_path_LUMC
     # ========================
     def read_image_seg_penalize_volume(self, CTs, GTVs, Torso, Penalize, img_index, ct_cube_size, gtv_cube_size):
 
@@ -146,18 +147,55 @@ class _read_data:
         return CT_image, GTV_image, Torso_image, Penalize_image, GTV_image.shape[0], voxel_size, origin, direction
 
     # ========================
-    def read_data_path(self):  # join(self.resampled_path, f)
+    def read_data_path(self,fold,average_no=52):  # join(self.resampled_path, f)
+        if average_no==0:
+            average_no_tag=''
+        else:
+            average_no_tag = '_'+str(average_no)
         print('Reading images from hard drive!')
-        average_no=52
-        data_dir = [join(self.data_path, f)
-                    for f in listdir(self.data_path)
-                    if (not (isfile(join(self.data_path, f))) and
-                        not (os.path.isfile(join(self.data_path, f + '/delete.txt'))))]
-        data_dir.sort()
-        triple_data=[]
+        # read LUMC data
+        # data_dir_lumc = [join(self.data_path_LUMC, f)
+        #                  for f in listdir(self.data_path_LUMC)
+        #                  if (not (isfile(join(self.data_path_LUMC, f))) and
+        #                      not (os.path.isfile(join(self.data_path_LUMC, f + '/delete.txt'))))]
+        # data_dir_lumc.sort()
+        data_dir_lumc=[]
+
+        triple_data_lumc = []
+        tags = ['checkerboard.nii', 'motor.nii', 'rest.nii', 'tomenjerry.nii']
+        for pp in data_dir_lumc:
+            asl_dir = pp + '/ASL' + average_no_tag + '/'
+            asls = [join(asl_dir, f)
+                    for f in listdir(asl_dir)
+                    if ((isfile(join(asl_dir, f))))]
+            asls.sort()
+
+            t1_dir = pp + '/T1/T1.nii'
+
+            for i in range(len(tags)):
+                asl = asl_dir + tags[i]
+                if asl in asls:
+                    triple_atom_lumc = {'t1': t1_dir, 'asl': asl, 'pet': None, 'mask': None}
+                    triple_data_lumc.append(triple_atom_lumc)
+
+
+        test_data_lumc = triple_data_lumc[91:]#triple_data_lumc[:27]
+        validation_data_lumc = []#triple_data_lumc[27:39]
+        trian_data_lumc = triple_data_lumc[:91]
+
+        #===================
+
+
+        #read AMUC data
+        data_dir_amuc = [join(self.data_path_AMUC, f)
+                         for f in listdir(self.data_path_AMUC)
+                         if (not (isfile(join(self.data_path_AMUC, f))) and
+                        not (os.path.isfile(join(self.data_path_AMUC, f + '/delete.txt'))))]
+        data_dir_amuc.sort()
+        triple_data_amuc=[]
         tags= ['_W1_HN1','_W1_HN2','_W1_HY','_W6_HN','_W6_HY']
-        for pp in data_dir:
-            asl_dir=pp+'/ASL_'+str(average_no)+'/'
+        for pp in data_dir_amuc:
+            asl_dir=pp+'/ASL'+average_no_tag+'/'
             asls = [join(asl_dir, f)
                  for f in listdir(asl_dir)
                  if ( (isfile(join(asl_dir, f))) )   ]
@@ -174,27 +212,60 @@ class _read_data:
                 asl=asl_dir+'ASL'+tags[i]+'.nii'
                 pet=pet_dir+'PET'+tags[i]+'.nii'
                 if asl in asls and pet in pets:
-                    triple_atom= {'t1':t1_dir,'asl':asl,'pet':pet,'mask':mask}
-                    triple_data.append(triple_atom)
+                    triple_atom_amuc= {'t1':t1_dir,'asl':asl,'pet':pet,'mask':mask}
+                    triple_data_amuc.append(triple_atom_amuc)
                 elif asl in asls and not pet in pets:
                     continue #for now we are not going to use these cases
-                    triple_atom = {'t1': t1_dir, 'asl': asl, 'pet': None}
-                    triple_data.append(triple_atom)
+                    triple_atom_amuc = {'t1': t1_dir, 'asl': asl, 'pet': None}
+                    triple_data_amuc.append(triple_atom_amuc)
                 elif not asl in asls and pet in pets:
                     continue #for now we are not going to use these cases
-                    triple_atom = {'t1': t1_dir, 'asl': None, 'pet': pet}
-                    triple_data.append(triple_atom)
+                    triple_atom_amuc = {'t1': t1_dir, 'asl': None, 'pet': pet}
+                    triple_data_amuc.append(triple_atom_amuc)
 
-        test_data= triple_data[:10]
-        validation_data = triple_data[10:15]
-        trian_data= triple_data[15:]
+        if fold==1:
+            test_data_amuc= triple_data_amuc[:10]
+            validation_data_amuc = triple_data_amuc[10:20]
+            trian_data_amuc= triple_data_amuc[20:]
+        # elif fold==2:
+        #     test_data_amuc = triple_data_amuc[:10]
+        #     validation_data_amuc = triple_data_amuc[15:20] #2pp
+        #     trian_data_amuc = triple_data_amuc[10:20]+triple_data_amuc[20:]
+        elif fold==3:
+            test_data_amuc = triple_data_amuc[:10]
+            validation_data_amuc = triple_data_amuc[20:27]
+            trian_data_amuc = triple_data_amuc[10:20] + triple_data_amuc[27:]
+        elif fold==4:
+            test_data_amuc = triple_data_amuc[:10]
+            validation_data_amuc = triple_data_amuc[27:36]
+            trian_data_amuc = triple_data_amuc[10:27] + triple_data_amuc[36:]
+        elif fold == 5:
+            test_data_amuc = triple_data_amuc[:10]
+            validation_data_amuc = triple_data_amuc[36:44]
+            trian_data_amuc = triple_data_amuc[10:36] + triple_data_amuc[44:]
+        elif fold == 6:
+            test_data_amuc = triple_data_amuc[:10]
+            validation_data_amuc = triple_data_amuc[44:54]
+            trian_data_amuc = triple_data_amuc[10:44] + triple_data_amuc[54:]
+        elif fold == 7:
+            test_data_amuc = triple_data_amuc[:10]
+            validation_data_amuc = triple_data_amuc[54:64]
+            trian_data_amuc = triple_data_amuc[10:54] + triple_data_amuc[64:]
+        elif fold == 8:
+            test_data_amuc = triple_data_amuc[:10]
+            validation_data_amuc = triple_data_amuc[64:]
+            trian_data_amuc = triple_data_amuc[10:64]
+
+
+        trian_data=trian_data_amuc+trian_data_lumc
+
+        validation_data=validation_data_amuc+validation_data_lumc
+
+        test_data=test_data_amuc+test_data_lumc
 
 
 
-
-
-
-        return trian_data,validation_data,test_data
+        return trian_data, validation_data, test_data
 
     # ========================
     def read_image_path3(self, image_path):  # for padding_images

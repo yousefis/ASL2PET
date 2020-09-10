@@ -159,17 +159,34 @@ def test_all_nets(out_dir, Log, which_data):
                 list_ssim_HC.append(ssim)
 
             list_name.append(ss[-3] + '_' + ss[-1].split(".")[0].split("ASL_")[1] + '_t1_' + name)
-            print(list_name[img_indx],': ',ssim)
-            matplotlib.image.imsave(parent_path + Log + out_dir + ss[-3] + '/' + ss[-1].split(".")[0].split("ASL_")[
-                1] + '/t1_' + name + '.png', np.squeeze(t1), cmap='gray')
-            matplotlib.image.imsave(parent_path + Log + out_dir + ss[-3] + '/' + ss[-1].split(".")[0].split("ASL_")[
-                1] + '/asl_' + name + '_' + '.png', np.squeeze(asl), cmap='gray')
-            matplotlib.image.imsave(parent_path + Log + out_dir + ss[-3] + '/' + ss[-1].split(".")[0].split("ASL_")[
-                1] + '/pet_' + name + '_' + '.png', np.squeeze(pet), cmap='gray')
-            matplotlib.image.imsave(parent_path + Log + out_dir + ss[-3] + '/' + ss[-1].split(".")[0].split("ASL_")[
-                1] + '/res_asl' + name + '_' + str(ssim) + '.png', np.squeeze(asl_out), cmap='gray')
-            matplotlib.image.imsave(parent_path + Log + out_dir + ss[-3] + '/' + ss[-1].split(".")[0].split("ASL_")[
-                1] + '/res_pet' + name + '_' + str(ssim) + '.png', np.squeeze(pet_out), cmap='gray')
+            try:
+                list_name.append(ss[-3] + '_' + ss[-1].split(".")[0].split("ASL_")[1] + '_t1_' + name)
+                nm_fig = parent_path + Log + out_dir + ss[-3] + '/' + ss[-1].split(".")[0].split("ASL_")[1]
+            except:
+                list_name.append(ss[-3] + '_' + ss[-1].split(".")[0] + '_t1_' + name)
+                nm_fig = parent_path + Log + out_dir + ss[-3] + '/' + ss[-1].split(".")[0]
+            print(list_name[img_indx], ': ', ssim)
+
+            # print(list_name[img_indx],': ',ssim)
+            # matplotlib.image.imsave(parent_path + Log + out_dir + ss[-3] + '/' + ss[-1].split(".")[0].split("ASL_")[
+            #     1] + '/t1_' + name + '.png', np.squeeze(t1), cmap='gray')
+            # matplotlib.image.imsave(parent_path + Log + out_dir + ss[-3] + '/' + ss[-1].split(".")[0].split("ASL_")[
+            #     1] + '/asl_' + name + '_' + '.png', np.squeeze(asl), cmap='gray')
+            # matplotlib.image.imsave(parent_path + Log + out_dir + ss[-3] + '/' + ss[-1].split(".")[0].split("ASL_")[
+            #     1] + '/pet_' + name + '_' + '.png', np.squeeze(pet), cmap='gray')
+            # matplotlib.image.imsave(parent_path + Log + out_dir + ss[-3] + '/' + ss[-1].split(".")[0].split("ASL_")[
+            #     1] + '/res_asl' + name + '_' + str(ssim) + '.png', np.squeeze(asl_out), cmap='gray')
+            # matplotlib.image.imsave(parent_path + Log + out_dir + ss[-3] + '/' + ss[-1].split(".")[0].split("ASL_")[
+            #     1] + '/res_pet' + name + '_' + str(ssim) + '.png', np.squeeze(pet_out), cmap='gray')
+
+            sitk.WriteImage(sitk.GetImageFromArray(np.squeeze(t1)), nm_fig + '/t1_' + name + '.mha')
+            sitk.WriteImage(sitk.GetImageFromArray(np.squeeze(asl)), nm_fig + '/asl_' + name + '_' + '.mha')
+            # if hybrid_training_f:
+            sitk.WriteImage(sitk.GetImageFromArray(np.squeeze(pet)), nm_fig + '/pet_' + name + '_' + '.mha')
+            sitk.WriteImage(sitk.GetImageFromArray(np.squeeze(pet_out)),
+                            nm_fig + '/res_pet' + name + '_' + str(ssim) + '.mha')
+            sitk.WriteImage(sitk.GetImageFromArray(np.squeeze(asl_out)),
+                            nm_fig + '/res_asl' + name + '_' + str(ssim) + '.mha')
 
             elapsed = time.time() - tic
 
@@ -197,6 +214,7 @@ def test_all_nets(out_dir, Log, which_data):
 
 if __name__ == "__main__":
     Log = "Log_asl_pet/denseunet_hybrid_hr_not1_01/"
+
     which_data = 1
     if which_data == 1:
         out_dir = "0_vali_result/"

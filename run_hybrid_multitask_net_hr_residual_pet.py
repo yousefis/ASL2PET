@@ -13,7 +13,7 @@
 ## Status: {Research}
 ##################################################
 from datetime import datetime
-from functions.network_caller.hybrid_multi_task_translate_hr_residual_pet import net_translate
+from functions.network_caller.hybrid_multi_task_translate_rest import net_translate
 import numpy as np
 import tensorflow as tf
 import os

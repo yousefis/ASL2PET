@@ -538,7 +538,7 @@ class multi_stage_densenet:
         ####################################### ASL Fork
         asl1= self.asl_decoder( 'decoder1_',level_ds3, in_size0, crop_size0, is_training, config)
         # == == == == == == == == == == == == == == == == == == == == == ==
-        out_dim=219
+        out_dim=187
         in_y=tf.keras.layers.ZeroPadding2D(padding=int((input_dim-out_dim)/2))(asl1)
         [level_ds3_encoder2, crop1_encoder2, crop2_encoder2] = self.encoder('encoder2_', in_y, is_training, in_size3, in_size4,
                                                  in_size5, crop_size0, crop_size1, crop_size2, config)

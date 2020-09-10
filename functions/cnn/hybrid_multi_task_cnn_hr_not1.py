@@ -551,4 +551,3 @@ class multi_stage_densenet:
 
 
         return  asl,pet
-

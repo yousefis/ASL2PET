@@ -132,7 +132,7 @@ class image_class:
         self.seed += 1
         np.random.seed(self.seed)
 
-        if len(self.random_images1) < int(self.bunch_of_images_no/2):  # if there are no image choices for selection
+        if len(self.random_images1) < int(self.bunch_of_images_no/2)or len(self.random_images2) < int(self.bunch_of_images_no/2):  # if there are no image choices for selection
             self.random_images1 = list(range(0,58))
             self.random_images2 = list(range(58, len(self.scans)))
             settings.epochs_no+=1

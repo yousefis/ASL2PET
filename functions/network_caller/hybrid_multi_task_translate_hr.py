@@ -16,7 +16,7 @@ import shutil
 # from functions.densenet_unet import _densenet_unet
 # from functions.networks.dense_unet2 import _densenet_unet
 import logging
-from functions.cnn.hybrid_multi_task_cnn_hr import multi_stage_densenet
+from functions.cnn.hybrid_multi_task_cnn_hr_residual_attention import multi_stage_densenet
 # import wandb
 from functions.reader.data_reader_hybrid_hr import *
 from functions.reader.image_class_hybrid_hr import *
