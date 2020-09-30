@@ -23,7 +23,7 @@ if __name__ == '__main__':
     this function calls the translation network
 
     '''
-    fold=1
+    fold=6
     no_averages=0
     config = [3, 3, 5, 3, 3]
     np.random.seed(1)
