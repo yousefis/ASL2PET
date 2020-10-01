@@ -22,7 +22,7 @@ import os
 if __name__ == '__main__':
     '''
     this function calls the translation network
-
+   
     '''
     no_averages=0
     config = [1, 3, 5, 3, 1]
