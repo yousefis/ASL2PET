@@ -150,8 +150,8 @@ def test_all_nets(out_dir, Log, which_data,fold):
     parent_path = '/exports/lkeb-hpc/syousefi/Code/'
     chckpnt_dir = parent_path + Log + 'unet_checkpoints/'
     ckpt = tf.train.get_checkpoint_state(chckpnt_dir)
-    # saver.restore(sess, ckpt.model_checkpoint_path)
-    saver.restore(sess, chckpnt_dir+'densenet_unet_inter_epoch0_point15000.ckpt-15000')
+    saver.restore(sess, ckpt.model_checkpoint_path)
+    # saver.restore(sess, chckpnt_dir+'densenet_unet_inter_epoch0_point15000.ckpt-15000')
     _meas = _measure()
     copyfile('test_semisupervised_multitast_hr_rest_not1_noresdatt.py',
              parent_path + Log + out_dir + 'test_semisupervised_multitast_hr_rest_not1_noresdatt.py')
@@ -255,14 +255,14 @@ def test_all_nets(out_dir, Log, which_data,fold):
                 nm_fig = parent_path + Log + out_dir + ss[-3] + '/' + ss[-1].split(".")[0]
             print(list_name[img_indx], ': ', ssim)
 
-            # sitk.WriteImage(sitk.GetImageFromArray(np.squeeze(t1)), nm_fig + '/t1_' + name + '.mha')
-            # sitk.WriteImage(sitk.GetImageFromArray(np.squeeze(asl)), nm_fig + '/asl_' + name + '_' + '.mha')
-            # if hybrid_training_f:
-            #     sitk.WriteImage(sitk.GetImageFromArray(np.squeeze(pet)), nm_fig + '/pet_' + name + '_' + '.mha')
-            # sitk.WriteImage(sitk.GetImageFromArray(np.squeeze(pet_out)),
-            #                 nm_fig + '/res_pet' + name + '_' + str(ssim) + '.mha')
-            # sitk.WriteImage(sitk.GetImageFromArray(np.squeeze(asl_out)),
-            #                 nm_fig + '/res_asl' + name + '_' + str(ssim) + '.mha')
+            sitk.WriteImage(sitk.GetImageFromArray(np.squeeze(t1)), nm_fig + '/t1_' + name + '.mha')
+            sitk.WriteImage(sitk.GetImageFromArray(np.squeeze(asl)), nm_fig + '/asl_' + name + '_' + '.mha')
+            if hybrid_training_f:
+                sitk.WriteImage(sitk.GetImageFromArray(np.squeeze(pet)), nm_fig + '/pet_' + name + '_' + '.mha')
+            sitk.WriteImage(sitk.GetImageFromArray(np.squeeze(pet_out)),
+                            nm_fig + '/res_pet' + name + '_' + str(ssim) + '.mha')
+            sitk.WriteImage(sitk.GetImageFromArray(np.squeeze(asl_out)),
+                            nm_fig + '/res_asl' + name + '_' + str(ssim) + '.mha')
 
             elapsed = time.time() - tic
     df = pd.DataFrame.from_dict({'SSIM_HC': list_ssim_HC,
@@ -312,10 +312,10 @@ def test_all_nets(out_dir, Log, which_data,fold):
 
 
 if __name__ == "__main__":
-    fold=8
+    fold=1
     # Log = 'Log_asl_pet/rest/00_cross_validation/not1_noskippatt_noresidualatt/residual_attention2_not1_no_residualatt_fold_' + str(fold) + '/'
     Log = '/Log_asl_pet/rest/01_cross_validation/multitask_not1/denseunet_hybrid_not1_0' + str(fold) + '/'
-    which_data =1
+    which_data =2
     if which_data == 1:
         out_dir = "0_vali_result/"
     elif which_data == 2:
