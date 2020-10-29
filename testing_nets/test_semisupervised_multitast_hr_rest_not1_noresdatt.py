@@ -255,14 +255,14 @@ def test_all_nets(out_dir, Log, which_data,fold):
                 nm_fig = parent_path + Log + out_dir + ss[-3] + '/' + ss[-1].split(".")[0]
             print(list_name[img_indx], ': ', ssim)
 
-            sitk.WriteImage(sitk.GetImageFromArray(np.squeeze(t1)), nm_fig + '/t1_' + name + '.mha')
-            sitk.WriteImage(sitk.GetImageFromArray(np.squeeze(asl)), nm_fig + '/asl_' + name + '_' + '.mha')
+            sitk.WriteImage(sitk.GetImageFromArray(np.squeeze(t1)), nm_fig + '/t1_' + name + '.nii')
+            sitk.WriteImage(sitk.GetImageFromArray(np.squeeze(asl)), nm_fig + '/asl_' + name + '_' + '.nii')
             if hybrid_training_f:
-                sitk.WriteImage(sitk.GetImageFromArray(np.squeeze(pet)), nm_fig + '/pet_' + name + '_' + '.mha')
+                sitk.WriteImage(sitk.GetImageFromArray(np.squeeze(pet)), nm_fig + '/pet_' + name + '_' + '.nii')
             sitk.WriteImage(sitk.GetImageFromArray(np.squeeze(pet_out)),
-                            nm_fig + '/res_pet' + name + '_' + str(ssim) + '.mha')
+                            nm_fig + '/res_pet' + name + '_' + str(ssim) + '.nii')
             sitk.WriteImage(sitk.GetImageFromArray(np.squeeze(asl_out)),
-                            nm_fig + '/res_asl' + name + '_' + str(ssim) + '.mha')
+                            nm_fig + '/res_asl' + name + '_' + str(ssim) + '.nii')
 
             elapsed = time.time() - tic
     df = pd.DataFrame.from_dict({'SSIM_HC': list_ssim_HC,
