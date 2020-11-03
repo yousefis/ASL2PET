@@ -1,4 +1,3 @@
-
 ##################################################
 ## {Description}
 ##################################################
@@ -14,7 +13,7 @@
 ## Status: {Research}
 ##################################################
 from datetime import datetime
-from functions.network_caller.hybrid_multi_task_translate_hr_residual_attention2_UnetSkipAttention_not1 import net_translate
+from functions.network_caller.hybrid_single_task_translate_hr_plust1_skip_att import net_translate
 import numpy as np
 import tensorflow as tf
 import os
@@ -22,15 +21,17 @@ import os
 if __name__ == '__main__':
     '''
     this function calls the translation network
-   
+
     '''
+
+    fold=8
     no_averages=0
     config = [1, 3, 5, 3, 1]
     np.random.seed(1)
     tf.set_random_seed(1)
-    fold=4
+
     server_path = '/exports/lkeb-hpc/syousefi/Code/'
-    Logs = 'Log_asl_pet/rest/01_cross_validation/resi_skip_att_not1/residual_skip_not1_fold_'+str(fold)+'/'
+    Logs = 'Log_asl_pet/rest/01_cross_validation/single_plust1_skipatt/single_plust1_skipatt_fold_' + str(fold) + '/'
 
     # use mixed precision
     mixed_precision = True
