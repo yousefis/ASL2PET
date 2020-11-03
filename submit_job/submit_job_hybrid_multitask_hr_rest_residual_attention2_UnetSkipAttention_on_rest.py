@@ -23,20 +23,20 @@ import functions.gpu_server_manager.slurm_utils as slurm
 def submit_job(fold):
     # Choosing the preferred setting and backup the whole code and submit the job
     # script_address= server_path+Logs
-    queue = 'gpu'  # 'cpu', 'gpu', 'LKEBgpu'
+    queue = 'LKEBgpu'  # 'cpu', 'gpu', 'LKEBgpu'
     manager = 'Slurm'  # 'OGE', Slurm
     setting = dict()
     setting['never_generate_image'] = False
     TF='TF112' #version of tensorflow 1.12
 
     net_config = [3, 3, 5, 3, 3]
-    main_script = '/run_hybrid_singletask_net_hr_not1_rest_no_residual_att.py'
+    main_script = '/run_hybrid_multitask_net_hr_residual_attention2_UnetSkipAttention_on_rest.py'
 
 
     # Slurm
-    setting['cluster_MemPerCPU'] = 4200   #2200  # 6200
+    setting['cluster_MemPerCPU'] = 6200   #2200  # 6200
     setting['cluster_Partition'] = queue             # 'gpu', 'LKEBgpu'
-    setting['cluster_NodeList'] = 'res-hpc-gpu01'    # None, LKEBgpu: ['res-hpc-lkeb03', 'res-hpc-lkeb02', 'res-hpc-gpu01']
+    setting['cluster_NodeList'] = 'res-hpc-lkeb05'    # None, LKEBgpu: ['res-hpc-lkeb03', 'res-hpc-lkeb02', 'res-hpc-gpu01']
     setting['cluster_NumberOfCPU'] = 5#7#10 #3               # Number of CPU per job
     setting['cluster_where_to_run'] = 'Cluster'      # 'Cluster', 'Auto'
     setting['cluster_venv_slurm'] = '/exports/lkeb-hpc/syousefi/Programs/'+TF+'/bin/activate'  # venv path
@@ -51,7 +51,7 @@ def submit_job(fold):
     # A backup from all files are created. So later if you modify the codes, this does not affect the submitted code.
     backup_script_address, backup_number = backup_script(script_address=os.path.realpath(__file__), main_script=main_script, folder_script  =folder_script,net_config=net_config)
     ext = ''.join(str(net_config[e]) for e in range(len(net_config)))
-    job_name = 'not1att_'+str(fold)+'_'+ext+'_'+str(backup_number)
+    job_name = 'skip_'+str(fold)+'_'+str(backup_number)
     write_and_submit_job(setting, manager=manager, job_name=job_name, script_address=backup_script_address,fold=fold)
 
 
@@ -69,7 +69,7 @@ def write_and_submit_job(setting, manager, job_name, script_address,fold):
     # job_output_file = job_script_folder + 'output.txt'
 
     server_path = '/exports/lkeb-hpc/syousefi/Code/'
-    backup_folder='Log_asl_pet/rest/01_cross_validation/single_not1/single_not1_fold_' + str(fold) + '/'
+    backup_folder='Log_asl_pet/rest/01_cross_validation/residual_attention2_UnetSkipAttention_restonly/'+str(fold)+'/'
     job_script_folder = server_path+backup_folder+'Jobs/'
     job_output_file =job_script_folder+'output.txt'
 
@@ -126,5 +126,5 @@ def backup_script(script_address, main_script, folder_script, net_config):
 
 
 if __name__ == '__main__':
-    fold=1
+    fold=4
     submit_job(fold)
