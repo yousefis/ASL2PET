@@ -241,10 +241,10 @@ def test_all_nets(out_dir, Log, which_data,fold):
 
 
 if __name__ == "__main__":
-    fold=3
+    fold=1
     # Log = "Log_asl_pet/rest/00_cross_validation/witht1_no_skipatt/residual_attention2_fold_"+str(fold)+'/'
     Log = "Log_asl_pet/rest/01_cross_validation/not1_noskippatt_noresidualatt/residual_attention2_not1_no_residualatt_fold_" + str(fold) + "/"
-    which_data = 1
+    which_data = 2
     if which_data == 1:
         out_dir = "0_vali_result/"
     elif which_data == 2:
