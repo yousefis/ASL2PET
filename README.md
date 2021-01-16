@@ -19,8 +19,8 @@ In this project the inputs are the ASL and T1 scans and the output is a PET scan
 </p>
 
 <p>
-    <img src="visual.png" alt>
-    <img src="motor.png" alt>
+    <img src="visual1.png" alt>
+    <img src="motor1.png" alt>
     <em>Figure 2- Results for the visual cortex and motor cortex data.</em>
 </p>
 
