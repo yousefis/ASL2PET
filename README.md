@@ -5,7 +5,7 @@ In this project the inputs are the ASL and T1 scans and the output is a PET scan
 
 # Proposed CNN
 <p>
-    <img src="net.png" alt>
+    <img src="net1.png" alt>
     <em>Figure 1- DDAUnet network.</em>
 </p>
 
