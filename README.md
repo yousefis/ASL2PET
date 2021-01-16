@@ -18,6 +18,12 @@ In this project the inputs are the ASL and T1 scans and the output is a PET scan
     <em>Figure 2- Results for the normocapnia and hypercapnia data.</em>
 </p>
 
+<p>
+    <img src="visual.png" alt>
+    <img src="motor.png" alt>
+    <em>Figure 2- Results for the visual cortex and motor cortex data.</em>
+</p>
+
 # Requirments
 Tensorflow<2 & python>3.4
 
