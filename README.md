@@ -8,6 +8,8 @@ In this project the inputs are the ASL and T1 scans and the output is a PET scan
     <img src="net.png" alt>
     <em>Figure 1- DDAUnet network.</em>
 </p>
+
+
 # Results
 
 <p>
