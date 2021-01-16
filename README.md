@@ -25,7 +25,7 @@ In this project the inputs are the ASL and T1 scans and the output is a PET scan
 
 <p>
     <img src="motor1.png" alt>
-    <em>Figure 2- Results for the motor cortex data.</em>
+    <em>Figure 3- Results for the motor cortex data.</em>
 </p>
 
 # Requirments
