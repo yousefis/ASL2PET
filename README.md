@@ -2,7 +2,7 @@
 
 If this repository helps you in anyway, show your love :heart: by putting a :star: on this project 
 
-In this project the inputs are the ASL and T1 scans and the output is a PET scan
+Source code for the paper: [ASL to PET Translation by a Semi-supervised Residual-based Attention-guided Convolutional Neural Network](https://arxiv.org/pdf/2103.05116.pdf). In this project the inputs are the ASL and T1 scans and the output is a PET scan.
 
 # Proposed CNN
 <p>
